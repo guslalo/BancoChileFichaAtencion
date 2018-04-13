@@ -1,0 +1,51 @@
+header {
+    //background: #565656;
+    background: #194D87;
+    height: 55px;
+    p {
+        margin-bottom: 0px;
+        color: #ffffff;
+        display: inline-block;
+    }
+    > .row {
+        height: 100%;
+    }
+    i {
+        color: #ffffff;
+    }
+}
+
+.logo {
+    /*display:flex;
+    align-items: center;*/
+    height:55px;
+    cursor: pointer;
+    img {
+        max-width:200px;
+        height: 100%;
+        width: 100%;
+    }
+}
+.wraperPerfil {
+    float: right;
+    width:auto;
+    height: 100%;
+}
+
+.boxAgenda {
+    padding-right: 20px;
+    margin-right: 19px;
+    display: inline-block;
+    height: 100%;
+    line-height: 55px;
+    font-size: 16px;
+    i {
+        vertical-align: text-bottom;
+    }
+}
+
+
+.leftRelative{
+    left: -15px;
+    position: relative;
+}

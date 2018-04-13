@@ -1,0 +1,474 @@
+<div class="fichaAtencion">
+    <div class="row">
+       <!--contenido  -->
+       <div class="col-12 col-md-8 contenidoRight">
+          <!-- navegacion y guardar -->
+          <div class="row">
+              <div class="col-12 col-md-2">
+                <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md"> <!--btn-link -->
+                  <i class="material-icons align-top">clear</i> Cancelar
+                </button>  
+              </div>
+              <div class="col-12 col-md-4">
+                  <button type="button" class="btn btn-outline-secondary btn-block mb-3 mb-md"  routerLink="/nueva-atencion">
+                    <i class="material-icons align-top">chevron_left</i> 
+                    Volver al formulario general
+                  </button>
+              </div>
+              <div class="col">
+                  <button type="button" class="btn btn-success float-right btnMobile">
+                    <i class="material-icons align-top">save</i>
+                    Guardar y cerrar
+                  </button>
+              </div>
+            </div><!-- /navegacion y guardar -->
+          <div class="row mt-5">
+              <div class="col-12 col-md-9">
+                <h4>
+                  <span class="align-middle">Nueva atención</span> - <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4) 
+                    <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
+                  </span>
+                </h4>
+                <p>Formulario de caso discapacidad</p>
+              </div>
+              <div class="col-12 col-md-3">
+                  <div ngbDropdown class="d-inline-block btnMobile">
+                    <button class="btn btn-outline-secondary btnMobile" id="dropdownBasic1" ngbDropdownToggle>
+                      <i class="material-icons align-top">share</i>
+                      Opciones informe
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item" routerLink="/ver-informe">Ver Informe</button>
+                      <button class="dropdown-item">Mensajería</button>
+                      <button class="dropdown-item">Descargar</button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <!-- pasos generales -->
+          <div class="row pasos">
+            <div class="col-12 col-md pr-md-0 mt-4 mt-md-0">
+              <div class="pasoCompleto">
+                <a routerLink="/acreditacion-discapacidad" routerLinkActive="active">
+                  <i class="material-icons align-top">check</i>
+                  <div class="textos"> 
+                    <p>Acreditación de discapacidad</p>
+                    <span>Completado</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md p-md-0">
+              <div class="pasoActivo">
+                <div class="textos ml-4 ml-md-5"> 
+                  <p>Informe de discapacidad</p>
+                  <span>En proceso</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md pl-md-0">
+              <div class="pasoClaro">
+                <div class="textos ml-4 ml-md-5"> 
+                  <p>Respuesta gestor</p>
+                  <span>pendiente</span>
+                </div>
+              </div>
+            </div>
+          </div><!-- pasos generales -->
+          <!-- titulos -->
+          <div class="row mt-4">
+            <div class="col">
+              <h5 class="font-weight-semi-bold">Informe de discapacidad</h5>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <h6 class="font-weight-semi-bold">1- Diagnóstico</h6>
+            </div>
+          </div><!-- titulos -->
+  
+          <div class="row">
+            <div class="col">
+              <form >
+                <div class="form-row">
+                  
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Tipo de dificultad</label>
+                    <select id="inputState" class="form-control custom-select">
+                      <option selected>Seleccionar</option>
+                      <option>...</option>
+                      <option>...</option>
+                    </select>       
+                  </div>
+  
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Tipo de discapacidad</label>
+                    <select id="inputState" class="form-control custom-select">
+                      <option selected>Seleccionar</option>
+                      <option>...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Porcentaje % de discapacidad</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput" placeholder="">
+               
+                  </div>
+                </div> 
+  
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Tipo de diagnóstico</label>
+                    <select id="inputState" class="form-control custom-select">
+                        <option selected>Seleccionar</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-8">
+                    <label for="inputState">Diagnóstico</label>
+                    <input class="form-control" type="text" placeholder="Escribir diagnóstico">
+                  </div>
+                </div>
+                
+                <!-- titulos -->
+                <div class="row mt-4">
+                  <div class="col">
+                    <h6 class="font-weight-semi-bold">2- Información de jefatura</h6>
+                  </div>
+                </div><!-- titulos -->
+                  <div class="form-row">
+                    <div class="form-inline col-12">
+                        <span class="label">
+                      <span class="spanEspecial ml-0">Jefatura conoce discapacidad</span>
+                      </span>
+                      <switch></switch>
+                      
+                    </div>
+                    <div class="form-group col-12">
+                      <textarea class="form-control mt-2" id="exampleFormControlTextarea1" placeholder="Escribir observaciones" rows="4"></textarea>
+                    </div> 
+                  </div>
+                  <div class="form-row mt-2">
+                    <div class="form-inline col-12">
+                        <span class="label">
+                      <span class="spanEspecial ml-0">Jefatura conoce diagnóstico</span>
+                      </span>
+                      <switch></switch>
+                      
+                    </div>
+                    <textarea style="display:none;" class="form-control mt-2" id="exampleFormControlTextarea1" placeholder="Escribir observaciones" rows="4"></textarea>
+                  </div>
+                
+                <!-- titulos -->
+                <div class="row mt-4">
+                  <div class="col">
+                    <h6 class="font-weight-semi-bold">3- Beneficios</h6>
+                  </div>
+                </div><!-- titulos -->
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="inputState">Seleccióna los beneficios que requiere el trabajador</label>
+                      <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                          <ngb-panel title="Selección de beneficios" id="ngb-panel-0">
+                            <ng-template ngbPanelContent>
+                                <div class="row">
+                                <div class="col-12 col-md-4">
+                                  <div class="form-check custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Extención aporte seguro</label>
+                                  </div>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                      <label class="custom-control-label" for="customCheck2">Continuación del seguro</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                      <label class="custom-control-label" for="customCheck3">Extención aporte seguro</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                      <label class="custom-control-label" for="customCheck4">Días de permiso adicional</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                      <label class="custom-control-label" for="customCheck5">Extención aporte seguro</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                        <label class="custom-control-label" for="customCheck6">Continuación del seguro</label>
+                                      </div>
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                        <label class="custom-control-label" for="customCheck7">Extención aporte seguro</label>
+                                      </div>
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                        <label class="custom-control-label" for="customCheck8">Días de permiso adicional</label>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-md-4">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck9">
+                                        <label class="custom-control-label" for="customCheck9">Extención aporte seguro</label>
+                                      </div>
+                                      <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="customCheck10">
+                                          <label class="custom-control-label" for="customCheck10">Continuación del seguro</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="customCheck25">
+                                          <label class="custom-control-label" for="customCheck25">Extención aporte seguro</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                  
+                            </ng-template>
+                          </ngb-panel>
+                        </ngb-accordion>
+                    </div>
+                  </div>
+                
+                    
+                </form>
+                <!--paso anterior siguiente-->
+                <div class="row prevnext">
+                    <div class="col text-left">
+                      <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md" routerLink="/acreditacion-discapacidad"> <!--btn-link -->
+                        <i class="material-icons align-middle">chevron_left</i> paso anterior
+                      </button>  
+            
+                    </div>
+                    <div class="col text-right">
+                        <button class="btn btn-info text-truncate btnMobile" routerLink="/informe-discapacidad"  type="button" (click)="open(content)">
+                          <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
+                          Solicitar revisión al gestor
+                        </button>
+                    </div>
+                </div><!--/paso anterior siguiente-->
+            </div>
+          </div>
+  
+       </div> <!-- /contenido-->
+
+       <!--sidebar  -->
+       <div class="col-12 col-md sideRight">
+          <div class="ficha">
+            <h4 class="font-weight-bold">Ficha del trabajador</h4>
+            <hr>
+            <h5 class="mb-3">Información personal</h5>
+            <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Género</span>
+                            <p>Masculino</p>
+                        </td>
+                        <td>
+                            <span>Tel celular</span>
+                            <p>(+569) 78598358</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>Fecha de nacimiento</span>
+                          <p>8 Febrero de 1986</p>
+                        </td>
+                        <td>
+                            <span>Email</span>
+                            <p>r.ramirez@gmail.com</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Previsión</span>
+                            <p>Isapre Colmena</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <h5 class="mb-3">Cargas</h5>
+              <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Hijo - Daniel Ramírez</span>
+                            <p>(20.259.987-7)</p>
+                        </td>
+                        <td>
+                            <span>Cónyugue - Patricia Jara</span>
+                            <p>(14.259.987-7)</p>
+                        </td>
+                      </tr>
+                    
+                      
+                    </tbody>
+                  </table>
+              </div>
+              <hr>
+              <h5 class="mb-3">Información Laboral</h5>
+              <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Email</span>
+                            <p>ramirez@bancochile.cl</p>
+                        </td>
+                        <td>
+                            <span>Departamento</span>
+                            <p>Marketing Empresas</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Tel Oficina</span>
+                            <p>(+562) 25687878</p>
+                        </td>
+                        <td>
+                            <span>Cargo</span>
+                            <p>Jefe Marketing</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Sucursal</span>
+                            <p>Estado</p>
+                        </td>
+                        <td>
+                            <span>Direccion Sucrusal</span>
+                            <p>Estado 123, santiago.</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+       </div><!--/sidebar  -->
+    </div>
+  </div>
+  
+  <!--modal  -->
+  <ng-template #content let-c="close" let-d="dismiss" >
+      <div class="modal-header">
+        <h4 class="modal-title">Solicitud de revisión</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-1 col-form-label">Para</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                </div>
+                <div class="col-sm-2">
+                    <div ngbDropdown>
+                      <button class="btn btn-outline-info btn-block mt-3 mb-3 mt-md mb-md" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button class="dropdown-item">
+                          <div class="prioridad">
+                            <div class="colorPrioridad amarillo"></div>
+                          </div>
+                          Moderada
+                        </button>
+                        <button class="dropdown-item">
+                          <div class="prioridad">
+                            <div class="colorPrioridad verde"></div>
+                          </div>
+                          Baja
+                        </button>
+                        <button class="dropdown-item">
+                          <div class="prioridad">
+                            <div class="colorPrioridad rojo"></div>
+                          </div>
+                          Alta
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Fecha vencimiento" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="input-group-text " (click)="d.toggle()" type="button">
+                            <i class="material-icons">date_range</i>
+                          </button> 
+                        </div>
+                      </div> 
+                </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-1 col-form-label">Asunto</label>
+              <div class="col-sm-11">
+                <input type="text" class="form-control" id="inputPassword" placeholder="">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-8">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck5">
+                        <label class="custom-control-label" for="customCheck5">
+                          Invitar a Jorge a ver <span class="font-weight-semi-bold">informe de discapacidad Rodrigo Ramirez</span>
+                        </label>
+                      </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <p  (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Previsualizar antecedentes 
+                      <i class="material-icons align-middle">keyboard_arrow_down</i>
+                    </p>
+                </div>
+                <div class="col-12">
+                  <div class="previsualizar" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                      <div class="card-body">
+                        You can collapse this card by clicking Toggle
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                
+            </div>
+            <div class="form-group row">
+              <!--información requerida -->
+              <div class="col-md-3">
+                <p>Información requerida</p>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="inputPassword" placeholder="">
+              </div><!--/información requerida -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-12">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+               </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                </div>
+              </div>
+            </div>
+          </form>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btnMobile" (click)="c('Close click')">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-success btnMobile" (click)="c('Close click')" routerLink="/respuesta-gestor-discapacidad">
+          Enviar <i class="material-icons align-middle">send</i>
+        </button>
+      </div>
+    </ng-template><!--modal  -->

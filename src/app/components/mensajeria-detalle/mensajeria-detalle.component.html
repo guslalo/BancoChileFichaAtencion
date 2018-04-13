@@ -1,0 +1,199 @@
+<div class="wrapMensaje">
+
+  <div class="mensajeHead"> 
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Informe de discapacidad Rodrigo Ramirez (13.697.957-7)</h4>
+        <span>Paulina Gallardo y Jorge Guzman</span>
+      </div>
+      <div class="col-md-4 text-right">
+        <button type="button" class="btn btn-success ml-4" routerLink="/detalle-mensaje">
+          <i class="material-icons align-middle">check</i>
+          Marcar completado
+        </button>
+        <button type="button" class="btn btn-link">
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+            <i class="material-icons  align-middle">more_vert</i>
+        </button>
+        <!-- colapsable -->
+        <div id="collapseExample" class="detalleSolicitud">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Detalles de la solicitud</h5>
+                <div class="row">
+                  <div class="col-12">
+                    <span>Trabajador relacionado</span>
+                    <p class="font-weight-semi-bold">Rodrigo Ramirez (17.265.598-7)</p>
+                  </div>
+                  <div class="col-12">
+                    <span>Atención relacionada</span>
+                    <p class="font-weight-semi-bold">Atención 7 de enero 2018</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                      <span>Asignado a</span>
+                  </div>
+                  <div class="col-12">
+                      <div  class="boxperfil text-right">
+                        <div class="boxImgPerfil">
+                          <div class="imgPerfil rounded-circle">
+                              <img src="assets/img/perfil.jpeg">
+                          </div>
+                        </div>
+                        <div  class="boxTextos">
+                          <p class="name">José Gallardo</p>
+                          <p  class="cargo">Asistente social</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                      <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->
+                        Sumar personas
+                     </button>  
+                  </div>
+                  <div class="col-12">
+                      <div ngbDropdown>
+                          <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad amarillo"></div>
+                              </div>
+                              Moderada
+                            </button>
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad verde"></div>
+                              </div>
+                              Baja
+                            </button>
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad rojo"></div>
+                              </div>
+                              Alta
+                            </button>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="col-12">
+                      <div ngbDropdown>
+                          <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Vence</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad amarillo"></div>
+                              </div>
+                              Moderada
+                            </button>
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad verde"></div>
+                              </div>
+                              Baja
+                            </button>
+                            <button class="dropdown-item">
+                              <div class="prioridad">
+                                <div class="colorPrioridad rojo"></div>
+                              </div>
+                              Alta
+                            </button>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <span>Enlaces y documentos</span>
+                    <i class="material-icons">description</i>
+                    <p>Informe discapacidad</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div><!-- /colapsable -->  
+      </div>
+    </div>
+    <hr>
+  </div>
+
+  <div class="mensajeCuerpo">  <div class="row">
+      <div class="col-12">
+        
+        <div class="mensajePropio default">
+            <p class="text-right">Tú</p>
+            <div class="card border-info  mb-3">
+                <div class="card-header" style="display:none">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title" style="display:none">Light card title</h5>
+                  <p class="card-text">Hola jorge! necesito que evalúes el caso de Rodrio para el Lune. Quiero saber si es factible cambiar el cargo del trabajador asi como otorigar algunos dias de permiso asuntos medicos.</p>
+                </div>
+                <div class="card-footer bg-transparent border-secondary ">
+                  <div class="row">
+                    <div class="col-1">
+                        <i class="material-icons">description</i>
+                    </div>
+                    <div class="col-10">
+                        <p>Invitaste a Jorge a ver el Informe de discapacidad de <span class="font-weight-semi-bold">Rodrigo Ramirez</span></p>
+                        <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->
+                           Factibilidad dias de permiso
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->
+                          Factibilidad dias de permiso
+                       </button>   
+                    </div>
+                    <div class="col-1">
+                        Ver
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="mensajeRecibido">
+            <p class="text-left">Jorge Guzman</p>
+            <div class="card border-info  mb-3">
+                <div class="card-body">
+                  <p class="card-text">Hola jorge! necesito que evalúes el caso de Rodrio para el Lune. Quiero saber si es factible cambiar el cargo del trabajador asi como otorigar algunos dias de permiso asuntos medicos.</p>
+                </div>
+       
+              </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+  <!-- mensajeFooter-->
+  <div class="mensajeFooter">
+    <!-- escribir mensaje -->
+    <div class="row">
+        <div class="col">
+          <div class="escribir">
+            <textarea class="form-control" placeholder="Escribir un mensaje aquí" rows="6"></textarea>
+          </div>  
+        </div>
+    </div> <!-- /escribir mensaje -->
+
+    <div class="row mt-4 mb-4">
+        <div class="col-md-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+          </div>
+        </div>
+        <div class="col-md-9 text-right">
+            <button type="button" class="btn btn-success"> <!--btn-link -->
+              <i class="material-icons align-top">send</i> Enviar
+            </button>  
+        </div>
+    </div>
+  </div><!-- /mensajeFooter-->
+ 
+
+
+
+</div>
