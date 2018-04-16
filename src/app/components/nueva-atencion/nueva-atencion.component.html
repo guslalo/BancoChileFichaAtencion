@@ -154,7 +154,12 @@
                     <i class="{{item.childs[0].childs[0].childs[0].parameters[0].value}}">{{item.childs[0].childs[0].childs[0].default_value}}</i> 
                     <span class="{{item.childs[0].childs[0].childs[1].parameters[0].value}}">{{item.childs[0].childs[0].childs[1].default_value}}</span>
                   </span>
-                  <switch></switch>
+                  <switch id="switch-{{item.childs[0].id_element}}" [onText]="hero.on"
+                  [offText]="hero.off"
+           
+                  (statusChange)="onFlagChange($event + $id)"
+                  [onColor]="hero.colorOn"
+                  [offColor]="hero.colorOff"></switch>
                 </div>
 
                 <!--listo-->
@@ -163,11 +168,15 @@
                     <i class="{{item.childs[1].childs[0].childs[0].parameters[0].value}}">{{item.childs[1].childs[0].childs[0].default_value}}</i>
                     <span class="{{item.childs[0].childs[0].childs[1].parameters[0].value}}">{{item.childs[1].childs[0].childs[1].default_value}}</span>
                   </span>
-                  <switch></switch>
+                  <switch id="switch-{{item.childs[1].id_element}}" [onText]="hero.on"
+                  [offText]="hero.off"
+                  (statusChange)="onFlagChange($event)"
+                  [onColor]="hero.colorOn"
+                  [offColor]="hero.colorOff"></switch>
                 </div>
                 <!--listo-->
                 <div id="{{item.childs[2].id_element}}" class="{{item.childs[0].parameters[0].value}}">
-                  <button class="{{item.childs[2].childs[0].parameters[0].value}}" type="button" routerLink="/acreditacion-discapacidad"><!-- disabled="" enabled="" -->
+                  <button class="{{item.childs[2].childs[0].parameters[0].value}}" type="button" routerLink="/acreditacion-discapacidad" disabled=""><!--  enabled="" -->
                     <i class="{{item.childs[2].childs[0].childs[0].parameters[0].value}}">{{item.childs[2].childs[0].childs[0].default_value}}</i>
                     {{item.childs[2].childs[0].default_value}}
                   </button>

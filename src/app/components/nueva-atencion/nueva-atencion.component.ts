@@ -28,6 +28,9 @@ export class NuevaAtencionComponent implements OnInit {
   public Fila4: Array<Fila>;
   public Fila6: Array<Fila>;
   public Fila8: Array<Fila>;
+
+  public switch: Array<switchForm>;
+
   /*test = {
     name: 'Test  2',
     section: 'Section 2'
@@ -51,9 +54,34 @@ constructor(private http : HttpClient, private FormsService: FormService) {
   this.Fila6 = new Array<Fila>();
   this.Fila8 = new Array<Fila>();
 
+   this.switch = new Array<switchForm>();
+ 
+     
+
+}
+onFlagChange(event){
+  console.log(event);
+  if(event= true){
+    $("#switch-discapacidad-inline").click();
+  }
+  
 }
 
+
+heroes: any;
+hero: = {
+  id: '3',
+  on: 'Si',
+  off: 'No',
+  colorOn:'green',
+  colorOff:'red'
+  
+};
+
+
   ngOnInit() {
+    
+   
     //console.log("cargando");
     this.FormsService.getSolicitud().subscribe(
       
