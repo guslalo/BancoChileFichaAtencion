@@ -154,12 +154,12 @@
                     <i class="{{item.childs[0].childs[0].childs[0].parameters[0].value}}">{{item.childs[0].childs[0].childs[0].default_value}}</i> 
                     <span class="{{item.childs[0].childs[0].childs[1].parameters[0].value}}">{{item.childs[0].childs[0].childs[1].default_value}}</span>
                   </span>
-                  <switch id="switch-{{item.childs[0].id_element}}" [onText]="hero.on"
-                  [offText]="hero.off"
-           
-                  (statusChange)="onFlagChange($event + $id)"
-                  [onColor]="hero.colorOn"
-                  [offColor]="hero.colorOff"></switch>
+                  <switch id="switch-{{item.childs[0].id_element}}" 
+                  [onText]="switchUi.onText"
+                  [offText]="switchUi.onText"  
+                  (statusChange)="onFlagChange($event)"
+                  [onColor]="switchUi.onColor"
+                  [offColor]="switchUi.offColor"></switch>
                 </div>
 
                 <!--listo-->
@@ -168,11 +168,12 @@
                     <i class="{{item.childs[1].childs[0].childs[0].parameters[0].value}}">{{item.childs[1].childs[0].childs[0].default_value}}</i>
                     <span class="{{item.childs[0].childs[0].childs[1].parameters[0].value}}">{{item.childs[1].childs[0].childs[1].default_value}}</span>
                   </span>
-                  <switch id="switch-{{item.childs[1].id_element}}" [onText]="hero.on"
-                  [offText]="hero.off"
+                  <switch id="switch-{{item.childs[1].id_element}}" 
+                  [onText]="switchUi.onText"
+                  [offText]="switchUi.onText"  
                   (statusChange)="onFlagChange($event)"
-                  [onColor]="hero.colorOn"
-                  [offColor]="hero.colorOff"></switch>
+                  [onColor]="switchUi.onColor"
+                  [offColor]="switchUi.offColor"></switch>
                 </div>
                 <!--listo-->
                 <div id="{{item.childs[2].id_element}}" class="{{item.childs[0].parameters[0].value}}">

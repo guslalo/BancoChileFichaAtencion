@@ -69,13 +69,11 @@ onFlagChange(event){
 
 
 heroes: any;
-hero: = {
-  id: '3',
-  on: 'Si',
-  off: 'No',
-  colorOn:'green',
-  colorOff:'red'
-  
+switchUi: any = {
+  onText: 'Si',
+  offText: 'No',
+  onColor:'green',
+  offColor:'red'
 };
 
 

@@ -1,5 +1,5 @@
 export interface switchForm {
-    status: string;
+    status: boolean;
     onText:string;
     offText:string;
     onColor:string;
