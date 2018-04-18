@@ -39,8 +39,6 @@ export interface Dynamic_element {
 export interface Parameter {
     key: string;
     value: string;
-   // atributo: Atributo[];
-
 }
 
 
