@@ -56,37 +56,53 @@ constructor(private http : HttpClient, private FormsService: FormService) {
 
    this.switch = new Array<switchForm>();
  
-     
+ 
 
 }
-onFlagChange(event){
-  console.log(event);
-  if(event= true){
-    $("#switch-discapacidad-inline").click();
-  }
-  
-}
 
+
+
+private activado:Boolean;
 
 heroes: any;
 switchUi: any = {
   onText: 'Si',
   offText: 'No',
   onColor:'green',
-  offColor:'red'
+  offColor:'red',
+  status:false
 };
 
 
+onFlagChange(event){ 
+ 
+}/**/
+
+idSwitch(id){
+  if(id == 's1'){
+     //let sdi = document.getElementById('switch-discapacidad-inline');
+     console.log(id);
+  }
+  if(id == 's2'){
+    //let sdi = document.getElementById('switch-discapacidad-inline');
+    console.log(id);
+    //$('#completar-discapacidad-inline').prop('disabled', false); 
+ }
+}
+
   ngOnInit() {
-    
+
    
     //console.log("cargando");
     this.FormsService.getSolicitud().subscribe(
       
       data => {
+       
         //console.log("cargado listo");
         this.isLoading = false;
         this.loadingComplete = true;
+
+      
 
         this.formSolicitud.push(data['results'][0]);
 
@@ -125,6 +141,9 @@ switchUi: any = {
           }
         }
         //let IdElemento  = this.dynamic_element.filter(r => r.id_element);
+       /* $("#caso-social-inline *").click( function(){
+          alert("nasd");
+        });*/
       },
       error => {
           console.log(<any>error);
