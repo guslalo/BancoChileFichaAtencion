@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class FormService {
 
-  public formsApi = 'http://localhost:8000/assistance/api/'
+  public formsApi = 'https://rinnolab.cl/assistance/api/'
   public token = 'Token a94c50828c5a091e4a41a5a3854189bc98092d6c';
   public headers = { 'Authorization': this.token };
 

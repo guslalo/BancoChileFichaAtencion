@@ -17,6 +17,10 @@ export class AcreditacionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
 
+  public loading = false;
+  public loadingComplete = false;
+  public isLoading = true ;
+
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
 
   }
@@ -25,6 +29,9 @@ export class AcreditacionComponent implements OnInit {
     this.subscription = this.FormsService.getFormulario('acreditacion-discapacidad').subscribe(
       
       data => {
+        this.isLoading = false;
+        this.loadingComplete = true;
+        
         let stringToHtml = '';
         for(let form of data['results']){
           stringToHtml = HtmlTreeService.buildForm(form);
