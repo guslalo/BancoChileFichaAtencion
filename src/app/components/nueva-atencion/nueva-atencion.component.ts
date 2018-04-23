@@ -91,7 +91,6 @@ idSwitch(id){
 }
 
   ngOnInit() {
-
    
     //console.log("cargando");
     this.FormsService.getSolicitud().subscribe(
