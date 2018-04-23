@@ -11,12 +11,11 @@
           <i class="material-icons align-middle">check</i>
           Marcar completado
         </button>
-        <button type="button" class="btn btn-link">
-        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        <button type="button" class="btn btn-link" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
             <i class="material-icons  align-middle">more_vert</i>
         </button>
         <!-- colapsable -->
-        <div id="collapseExample" class="detalleSolicitud">
+        <div id="collapseExample" class="detalleSolicitud" [ngbCollapse]="!isCollapsed">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Detalles de la solicitud</h5>
@@ -48,7 +47,6 @@
                       </div>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-12">
                       <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->

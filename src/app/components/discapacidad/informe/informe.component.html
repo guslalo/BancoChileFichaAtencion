@@ -89,12 +89,12 @@
   
           <div class="row">
             <div class="col">
-              <form >
-                <div class="form-row">
-                  
+              <form>
+                <!-- fila1 -->
+                <div class="form-row">    
                   <div class="form-group col-md-4">
-                    <label for="inputState">Tipo de dificultad</label>
-                    <select id="inputState" class="form-control custom-select is-invalid">
+                    <label for="tipo-dificultad">Tipo de dificultad</label>
+                    <select id="tipo-dificultad" class="form-control custom-select" required><!-- is-invalid-->
                       <option selected>Seleccionar</option>
                       <option>...</option>
                       <option>...</option>
@@ -108,35 +108,48 @@
                   </div>
   
                   <div class="form-group col-md-4">
-                    <label for="inputState">Tipo de discapacidad</label>
-                    <select id="inputState" class="form-control custom-select">
+                    <label for="tipo-discapacidad">Tipo de discapacidad</label>
+                    <select id="tipo-discapacidad" class="form-control custom-select" required>
+                      <option selected>Seleccionar</option>
+                      <option>...</option>
+                      <option>...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Debe completar la información
+                    </div>
+                    <div class="valid-feedback">
+                      Correcto!
+                    </div> 
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="porcentaje-discapacidad">Porcentaje % de discapacidad</label>
+                    <input type="number" class="form-control is-valid" id="porcentaje-discapacidad" placeholder="">
+                    <div class="invalid-feedback">
+                      Debe completar la información
+                    </div>
+                    <div class="valid-feedback">
+                      Correcto!
+                    </div> 
+                  </div>
+                </div><!-- fila1 -->
+                <!-- fila2 -->
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="tipo-diagnostico">Tipo de diagnóstico</label>
+                    <select id="tipo-diagnostico" class="form-control custom-select">
                       <option selected>Seleccionar</option>
                       <option>...</option>
                       <option>...</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputState">Porcentaje % de discapacidad</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput" placeholder="">
-               
-                  </div>
-                </div> 
-  
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="inputState">Tipo de diagnóstico</label>
-                    <select id="inputState" class="form-control custom-select">
-                        <option selected>Seleccionar</option>
-                        <option>...</option>
-                        <option>...</option>
-                    </select>
-                  </div>
                   <div class="form-group col-md-8">
-                    <label for="inputState">Diagnóstico</label>
-                    <input class="form-control" type="text" placeholder="Escribir diagnóstico">
+                    <label for="diagnostico">Diagnóstico</label>
+                    <input id="diagnostico" class="form-control" type="text" placeholder="Escribir diagnóstico">
                   </div>
-                </div>
+                </div><!-- fila2 -->
                 
+
+
                 <!-- titulos -->
                 <div class="row mt-4">
                   <div class="col">
@@ -145,8 +158,8 @@
                 </div><!-- titulos -->
                   <div class="form-row">
                     <div class="form-inline col-12">
-                        <span class="label">
-                      <span class="spanEspecial ml-0">Jefatura conoce discapacidad</span>
+                      <span class="label  ml-0 mr-3 ">
+                        Jefatura conoce discapacidad
                       </span>
                       <switch></switch>
                       
@@ -179,56 +192,56 @@
                       <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                           <ngb-panel title="Selección de beneficios" id="ngb-panel-0">
                             <ng-template ngbPanelContent>
-                                <div class="row">
+                              <div class="row">
                                 <div class="col-12 col-md-4">
                                   <div class="form-check custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">Extención aporte seguro</label>
                                   </div>
                                   <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                      <label class="custom-control-label" for="customCheck2">Continuación del seguro</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                      <label class="custom-control-label" for="customCheck3">Extención aporte seguro</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                      <label class="custom-control-label" for="customCheck4">Días de permiso adicional</label>
-                                    </div>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">Continuación del seguro</label>
+                                  </div>
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                    <label class="custom-control-label" for="customCheck3">Extención aporte seguro</label>
+                                  </div>
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                    <label class="custom-control-label" for="customCheck4">Días de permiso adicional</label>
+                                  </div>
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                      <label class="custom-control-label" for="customCheck5">Extención aporte seguro</label>
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                    <label class="custom-control-label" for="customCheck5">Extención aporte seguro</label>
+                                  </div>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                      <label class="custom-control-label" for="customCheck6">Continuación del seguro</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                        <label class="custom-control-label" for="customCheck6">Continuación del seguro</label>
-                                      </div>
-                                      <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                        <label class="custom-control-label" for="customCheck7">Extención aporte seguro</label>
-                                      </div>
-                                      <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                        <label class="custom-control-label" for="customCheck8">Días de permiso adicional</label>
-                                      </div>
+                                      <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                      <label class="custom-control-label" for="customCheck7">Extención aporte seguro</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                      <label class="custom-control-label" for="customCheck8">Días de permiso adicional</label>
+                                    </div>
                                   </div>
                                   <div class="col-12 col-md-4">
+                                    <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck9">
+                                      <label class="custom-control-label" for="customCheck9">Extención aporte seguro</label>
+                                    </div>
                                       <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck9">
-                                        <label class="custom-control-label" for="customCheck9">Extención aporte seguro</label>
+                                        <input type="checkbox" class="custom-control-input" id="customCheck10">
+                                        <label class="custom-control-label" for="customCheck10">Continuación del seguro</label>
                                       </div>
                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="customCheck10">
-                                          <label class="custom-control-label" for="customCheck10">Continuación del seguro</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="customCheck25">
-                                          <label class="custom-control-label" for="customCheck25">Extención aporte seguro</label>
-                                        </div>
+                                        <input type="checkbox" class="custom-control-input" id="customCheck11">
+                                        <label class="custom-control-label" for="customCheck11">Extención aporte seguro</label>
+                                      </div>
                                     </div>
                                 </div>
                                   
