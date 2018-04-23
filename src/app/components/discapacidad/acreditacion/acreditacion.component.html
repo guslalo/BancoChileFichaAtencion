@@ -82,119 +82,21 @@
 
       <div class="row">
         <div class="col">
-          <form >
-            <div class="form-row mt-2">
-                <div class="form-group  col-12">
-                    <span class="label">
-                  <span class="spanEspecial ml-0">¿Desea participar?</span>
-                  </span>
-                  <switch></switch>
-                  
-                </div>
-                <textarea style="display:none;" class="form-control mt-2" id="exampleFormControlTextarea1" placeholder="Escribir observaciones" rows="4"></textarea>
+          <div [innerHtml]="MyForm">
+
+          </div>
+          <div class="form-row">
+            <div class="form-group col-12 col-md-4">
+              <div class="col text-right">
+                <button class="btn btn-info text-truncate btnMobile" routerLink="/informe-discapacidad"  type="button">
+                  <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
+                  Continuar informe de discapacidad
+                </button>
               </div>
-              <div class="form-row">
-                
-                <div class="form-group col-12 col-md-4">
-                  <label for="inputState">Registro nacional de discapacidad</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input is-invalid" id="customFileLang" lang="es" required>
-                    <div class="invalid-feedback">
-                      Debe completar la información
-                    </div>
-                    <div class="valid-feedback">
-                      Correcto!
-                    </div> 
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                  </div>
-                      
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="inputState">Pensión de invalidez</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input is-valid" id="customFileLang" lang="es" required>
-                    <div class="valid-feedback">
-                      Correcto!
-                      </div>
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                  </div> 
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputState">Acreditación COMPIN</label>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                      <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                    </div> 
-                </div>
-              </div> 
-
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="inputState">Otra acreditación</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                  </div>     
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="inputState">Informe social</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                  </div> 
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputState">Informe médico</label>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                      <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                    </div> 
-                  </div>
-                </div>
-        
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="inputState">Fecha de la citación IVADEC</label>
-                    <div class="input-group">
-                      <input class="form-control" placeholder="Seleccione Fecha" name="dp"  ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="input-group-text " (click)="d.toggle()" type="button">
-                          <i class="material-icons">date_range</i>
-                        </button> 
-                      </div>
-                    </div>        
-                  </div> 
-                  <div class="form-group col-md-12">
-                      <label>Observaciones gestión</label>
-                      <textarea class="form-control is-invalid" id="exampleFormControlTextarea1" placeholder="Escribir observaciones" rows="4" required ></textarea>
-                      <div class="invalid-feedback">
-                        Debe completar la información
-                      </div> 
-                  </div>
-                </div>
-            </form>
-            <!--paso anterior siguiente-->
-            <div class="row prevnext">
-                
-                <div class="col text-center align-middle" style="display:none">
-                  <a routerLink="/informe-discapacidad" routerLinkActive="active">
-                    <span class="align-middle">paso siguiente</span>
-                    <i class="material-icons align-middle">chevron_right</i>
-                  </a>
-                </div>
-                <div class="col text-right">
-                    <button class="btn btn-info text-truncate btnMobile" routerLink="/informe-discapacidad"  type="button">
-                      <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
-                      Continuar informe de discapacidad
-                    </button>
-                </div>
-            </div><!--/paso anterior siguiente-->
+            </div>
+          </div>
         </div>
-      </div>
-
-     </div><!-- /contenido-->
+      </div><!-- /contenido-->
 
      <!--sidebar  -->
      <div class="col-12 col-md sideRight">
