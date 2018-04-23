@@ -101,9 +101,7 @@ idSwitch(id){
         //console.log("cargado listo");
         this.isLoading = false;
         this.loadingComplete = true;
-
       
-
         this.formSolicitud.push(data['results'][0]);
 
         //arreglo de filas
