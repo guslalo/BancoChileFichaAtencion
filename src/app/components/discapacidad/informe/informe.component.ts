@@ -1,8 +1,11 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { FormService } from '../../../services/servicios.service';
-import { switchForm } from '../../../models/switch';
-import { Form, Group, Fila, Result } from '../../../models/forms';
+import HtmlTreeService from '../../../services/html-tree.service';
+import { Dynamic_Form } from '../../../models/dynamic_form';
+import { Dynamic_Element } from '../../../models/dynamic_form';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -15,43 +18,18 @@ export class InformeComponent implements OnInit {
     
   //colapsable antecedentes
   public isCollapsed = true;
+  MyForm: SafeHtml;
+  subscription;
 
+  
   public loading = false;
-
-  //modelo form solicitud
-  public formSolicitud: Array<Form>;
-
-  //arreglo de filas
-  public formFilas: Array<Group>;
   public loadingComplete = false;
   public isLoading = true ;
-   //filas
-   public Fila1: Array<Fila>;
-   public Fila2: Array<Fila>;
-   public Fila3: Array<Fila>;
-   public Fila4: Array<Fila>;
-   public Fila6: Array<Fila>;
-   public Fila8: Array<Fila>;
 
   //modal
   closeResult: string;
-  constructor(private modalService: NgbModal, private http : HttpClient, private FormsService: FormService) {
+  constructor(private modalService: NgbModal, private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
 
-
-    
-  //result inicializado
-  this.formSolicitud = Array<Form>();
-
-  //arreglo de filas
-  this.formFilas = new Array<Group>();
-
-  //filas
-  this.Fila1 = new Array<Fila>();
-  this.Fila2 = new Array<Fila>();
-  this.Fila3 = new Array<Fila>();
-  this.Fila4 = new Array<Fila>();
-  this.Fila6 = new Array<Fila>();
-  this.Fila8 = new Array<Fila>();
 
    //this.switch = new Array<switchForm>();
  
@@ -74,12 +52,31 @@ export class InformeComponent implements OnInit {
     }
   }
 
-
+  
   ngOnInit() {
+    this.subscription = this.FormsService.getFormulario('informe-discapacidad').subscribe(
+      
+      data => {
+        this.isLoading = false;
+        this.loadingComplete = true;
 
-   
-    //console.log("cargando");
-   
+        let stringToHtml = '';
+        for(let form of data['results']){
+          stringToHtml = HtmlTreeService.buildForm(form);
+        }
+        
+        this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
+          stringToHtml
+        )
+        //console.log(stringToHtml);
+      },
+      error => {
+          console.log(<any>error);
+      }
+    );
+  }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

@@ -19,6 +19,7 @@ export default class HtmlTreeService {
     let child = '';
     let parametros = '';
     let value = '';
+    let validate = '<div>test</div>'
     for(let par of childs.parameters){
       value = par.value ? '="' + par.value + '"' : ' ';
       parametros += par.key + value ;
