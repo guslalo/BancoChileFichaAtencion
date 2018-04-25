@@ -26,6 +26,13 @@ import { FormService } from './services/servicios.service';
 import { FichaSidebarComponent } from './components/ficha-sidebar/ficha-sidebar.component';
 import { LoadersCssModule } from 'angular2-loaders-css';
 
+import { LoginComponent } from './components/login/login.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { AuthenticationService } from './services/authentication.service';
+import { AlertService } from './services/alert.service';
+import { AuthGuard } from './services/auth.guard';
 
 
 @NgModule({
@@ -44,6 +51,8 @@ import { LoadersCssModule } from 'angular2-loaders-css';
     AgendaComponent,
     VerInformeComponent,
     FichaSidebarComponent,
+    LoginComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +64,18 @@ import { LoadersCssModule } from 'angular2-loaders-css';
     BrowserAnimationsModule,
     LoadersCssModule  
   ],
-  providers: [appRouters, FormService],
+  providers: [
+    AuthGuard,
+    appRouters,
+    FormService,
+    AuthenticationService,
+    AlertService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
