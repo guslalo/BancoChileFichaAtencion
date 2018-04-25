@@ -8,7 +8,7 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
  
     login(username: string, password: string): Observable<any>{
-        return this.http.post<any>('http://localhost:8000/hxc/api/get_auth_token/', { username: username, password: password })
+        return this.http.post<any>('https://rinnolab.cl/hxc/api/get_auth_token/', { username: username, password: password })
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
