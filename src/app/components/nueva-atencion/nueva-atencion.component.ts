@@ -6,6 +6,8 @@ import { Dynamic_Form } from '../../models/dynamic_form';
 import { Dynamic_Element } from '../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-nueva-atencion',
@@ -23,13 +25,19 @@ export class NuevaAtencionComponent implements OnInit {
   public loadingComplete = false;
   public isLoading = true ;
 
+
+
+
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
 
 
   }
+  
 
 
   ngOnInit() {
+
+
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe(
       
       data => {

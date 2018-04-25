@@ -54,6 +54,7 @@ import { AuthGuard } from './services/auth.guard';
     LoginComponent,
     AlertComponent,
   ],
+  
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
@@ -79,5 +80,4 @@ import { AuthGuard } from './services/auth.guard';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 
