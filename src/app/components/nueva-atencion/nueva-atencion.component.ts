@@ -29,39 +29,86 @@ export class NuevaAtencionComponent implements OnInit {
 
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
-
-
+ 
+   
   }
   
 
 
   ngOnInit() {
-
+   
 
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe(
       
       data => {
         this.isLoading = false;
         this.loadingComplete = true;
-
+      
         let stringToHtml = '';
         for(let form of data['results']){
           stringToHtml = HtmlTreeService.buildForm(form);
+          
         }
         
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
         //console.log(stringToHtml);
+        this.setTime(data['results']);
       },
       error => {
           console.log(<any>error);
       }
     );
+ 
+  
+  
   }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
+
+  //funcion para acceder al dom depues de mostrar data
+  setTime(data){
+    setTimeout(function(){
+      $(".switch").change(function(){
+        if(this == document.getElementById("nueva-switch-caso-social")){
+            $(this).toggleClass("checked");
+            $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-discapacidad")){
+          $(this).toggleClass("checked");
+          $(".switch.checked").click();
+          $('#nueva-btn-completar-discapacidad').prop("disabled", false);
+          $('#nueva-btn-completar-discapacidad').attr('href', '/acreditacion-discapacidad');
+          
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-derivacion")){
+          $(this).toggleClass("checked");
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-receta")){
+          $(this).toggleClass("checked");
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-licencia")){
+          $(this).toggleClass("checked");
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-orden")){
+          $(this).toggleClass("checked");
+          $(".switch.checked").click();
+        }
+      
+  
+      
+      
+      });
+      //.prop("readonly", true);
+  
+    },0);
+  }
+  
 
 }

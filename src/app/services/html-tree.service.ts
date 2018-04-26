@@ -1,5 +1,6 @@
 import { Dynamic_Form } from '../models/dynamic_form';
 import { Dynamic_Element } from '../models/dynamic_form';
+import { OnInit } from '@angular/core';
 
 export default class HtmlTreeService {
 
@@ -31,8 +32,11 @@ export default class HtmlTreeService {
     if(childs.default_value && childs.default_value!=""){
       child += childs.default_value;
     }
+   
     child += '</'+childs.element_type+'>';
     return child;
   }
+
+
 
 }

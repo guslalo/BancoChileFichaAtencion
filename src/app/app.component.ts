@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
   }
 
+
   ngOnInit() {
 
       $(".contenedorAccion").click(function(){
@@ -56,7 +57,11 @@ export class AppComponent implements OnInit {
                           
         }
       });
- 
+      
+
+
+
+      
   }
 
 }
