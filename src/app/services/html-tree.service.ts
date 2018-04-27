@@ -6,13 +6,13 @@ export default class HtmlTreeService {
 
   static buildForm(form: Dynamic_Form){
     let stringToHtml = '';
-    stringToHtml += '<form id="' + form.name + '"  (ngSubmit)="formPost()">';
+    stringToHtml += '<div>';
       
     for(let group of form.groups){
       stringToHtml += this.getChilds(group);
     }
 
-    stringToHtml += '</form>';
+    stringToHtml += '</div>';
     return stringToHtml;
   }
 
