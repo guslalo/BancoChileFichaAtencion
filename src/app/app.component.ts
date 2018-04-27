@@ -36,8 +36,7 @@ export class AppComponent implements OnInit {
           $(".boxMensajeria .list-group").stop().fadeToggle(1);
           $(".opcionOcultar").stop().fadeToggle(1);
           $(".oculto").stop().fadeToggle(1);
-            $(".boxMensajeria")
-            
+            $(".boxMensajeria") 
               .removeClass('expanded')
               .stop()
               .animate({width: '4%'}, 200);        
@@ -48,13 +47,11 @@ export class AppComponent implements OnInit {
             $(".boxMensajeria .list-group").stop().fadeToggle("slow");
             $(".opcionOcultar").stop().fadeToggle("slow");
             $(".oculto").stop().fadeToggle("slow");
-            
-            
+             
             $(".boxMensajeria")
               .addClass('expanded')
               .stop()
-              .animate({width: '30%'}, 200);
-                          
+              .animate({width: '30%'}, 200);                 
         }
       });
       

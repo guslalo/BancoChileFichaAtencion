@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { FormService } from '../../services/servicios.service';
 import HtmlTreeService from '../../services/html-tree.service';
 import { Dynamic_Form } from '../../models/dynamic_form';
 import { Dynamic_Element } from '../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+import { Post } from '../../models/form_post';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +23,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
-
+  form: any = {};
   
   public loading = false;
   public loadingComplete = false;
@@ -61,7 +65,8 @@ export class NuevaAtencionComponent implements OnInit {
       }
     );
  
-  
+
+
   
   }
 
@@ -69,9 +74,10 @@ export class NuevaAtencionComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  //funcion para acceder al dom depues de mostrar data
+  //funcion para acceder al dom despues de mostrar data
   setTime(data){
     setTimeout(function(){
+      //switch
       $(".switch").change(function(){
         if(this == document.getElementById("nueva-switch-caso-social")){
             $(this).toggleClass("checked");
@@ -80,10 +86,12 @@ export class NuevaAtencionComponent implements OnInit {
         if(this == document.getElementById("nueva-label-grupo-switch-discapacidad")){
           $(this).toggleClass("checked");
           $(".switch.checked").click();
-          $('#nueva-btn-completar-discapacidad').prop("disabled", false);
-          $('#nueva-btn-completar-discapacidad').attr('href', '/acreditacion-discapacidad');
+          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
           
+          $('#nueva-btn-completar-discapacidad').attr('href', '/acreditacion-discapacidad');
+          $(this).toggleClass("discapacidad-activo");
         }
+
         if(this == document.getElementById("nueva-label-grupo-switch-derivacion")){
           $(this).toggleClass("checked");
           $(".switch.checked").click();
@@ -101,14 +109,38 @@ export class NuevaAtencionComponent implements OnInit {
           $(".switch.checked").click();
         }
       
-  
+        $(".discapacidad-activo").on("click",function(){
+          $('#nueva-btn-completar-discapacidad').attr("disabled");
+        });
       
       
       });
-      //.prop("readonly", true);
-  
+
+      //this.subscription = this.FormsService.postFormulario('nueva-atencion').subscribe();
+
+      
+
     },0);
   }
-  
+
+
+
+
+  formPost() {
+    
+    this.loading = true;
+        
+        this.FormsService.formPost(this.form)
+            .subscribe(
+                data => {
+                    console.log(data);
+                },
+                error => {
+                  console.log(error)
+                    this.loading = false;
+                });
+  }
+
+
 
 }
