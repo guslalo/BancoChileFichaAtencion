@@ -23,7 +23,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
-  form: any = {};
+
   
   public loading = false;
   public loadingComplete = false;
@@ -36,12 +36,9 @@ export class NuevaAtencionComponent implements OnInit {
  
    
   }
-  
-
 
   ngOnInit() {
    
-
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe(
       
       data => {
@@ -65,9 +62,6 @@ export class NuevaAtencionComponent implements OnInit {
       }
     );
  
-
-
-  
   }
 
   ngOnDestroy(){
@@ -124,22 +118,21 @@ export class NuevaAtencionComponent implements OnInit {
   }
 
 
-
-
   formPost() {
     
+    let form: any = {};
     this.loading = true;
         
-        this.FormsService.formPost(this.form)
-            .subscribe(
-                data => {
-                    console.log(data);
-                },
-                error => {
-                  console.log(error)
-                    this.loading = false;
-                });
-  }
+        this.FormsService.formPost(form)
+      .subscribe(
+          data => {
+              console.log(data);
+          },
+          error => {
+            console.log(error)
+              this.loading = false;
+          });
+}
 
 
 
