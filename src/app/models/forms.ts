@@ -60,3 +60,8 @@ export interface Child {
     childs: Child[];
 }
 
+
+export class formPostElement {
+    value: string;
+}
+

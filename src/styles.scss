@@ -9,6 +9,12 @@ $dark   :#d6d8d9;
 
 
 @import "node_modules/loaders.css/src/loaders";
+
+#parrafo-caso {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
 .boxloader {
     text-align:center; 
     margin-top:20%;
@@ -16,7 +22,9 @@ $dark   :#d6d8d9;
 .loader .my-loader {
     background-color:#194d87;
 }
-
+#informe-textarea-observacion-jefatura {
+    width: 100%;
+}
 
 /* Estilos Globales*/
 body {

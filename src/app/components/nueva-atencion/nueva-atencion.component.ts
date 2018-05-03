@@ -3,7 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { FormService } from '../../services/servicios.service';
 import HtmlTreeService from '../../services/html-tree.service';
 import { Dynamic_Form } from '../../models/dynamic_form';
-import { Dynamic_Element } from '../../models/dynamic_form';
+import { Dynamic_Element, FormPostElement } from '../../models/dynamic_form';
+//import { formPostElement } from '../../models/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Post } from '../../models/form_post';
@@ -12,6 +13,7 @@ import 'rxjs/add/operator/map'
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { formPostElement } from '../../models/forms';
 
 @Component({
   selector: 'app-nueva-atencion',
@@ -23,18 +25,19 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
-
   
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
-
+  public formCapture: Array<FormPostElement>;
+  public formCaptureElement: Array<FormPostElement>;
 
 
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
  
-   
+    this.formCapture = new Array<FormPostElement>();
+    this.formCaptureElement = new Array<FormPostElement>();
   }
 
   ngOnInit() {
@@ -56,6 +59,7 @@ export class NuevaAtencionComponent implements OnInit {
         )
         //console.log(stringToHtml);
         this.setTime(data['results']);
+        this.capturarform();
       },
       error => {
           console.log(<any>error);
@@ -110,29 +114,39 @@ export class NuevaAtencionComponent implements OnInit {
       
       });
 
-      //this.subscription = this.FormsService.postFormulario('nueva-atencion').subscribe();
-
-      
-
+      //editar resumen
+      $("#btn-resumen").click(function(){
+        $("#parrafo-caso").prop("disabled",false).css("background","#e5f0f4").focus();
+      });
     },0);
   }
 
+  //capturar elemendos del form
+  capturarform(){
+    $(".fichaAtencion").each(function(){
+      if($(".fichaAtencion form").hasClass("ng-untouched")){
+        let elementForm = $(".fichaAtencion .form-control");
+          let formCapture = $(".fichaAtencion form");
+          console.log(formCapture);
+        }
+    });
+  }
 
+  
   formPost() {
-    
     let form: any = {};
     this.loading = true;
         
-        this.FormsService.formPost(form)
+      this.FormsService.formPost(form)
       .subscribe(
-          data => {
-              console.log(data);
-          },
-          error => {
-            console.log(error)
-              this.loading = false;
-          });
-}
+        data => {
+  
+        },
+        error => {
+          console.log(error)
+            this.loading = false;
+        });
+    }
 
 
 

@@ -47,6 +47,7 @@ export class Dynamic_Parameter{
     }
 }
 
+
 export class Option_Select{
     id: number;
     name: string;
@@ -55,3 +56,7 @@ export class Option_Select{
         this.name = name;
     }
 }
+export class FormPostElement {
+    value: string;
+}
+
