@@ -24,7 +24,7 @@ export class Dynamic_Element{
     default_value: string;
     value: string;
     order: number;
-    options: string;
+    options: Array<Option_Select>;;
     parameters: Array<Dynamic_Parameter>;
     childs: Array<Dynamic_Element>;
     constructor(element_type,id_element,default_value,order,options,parameters,childs) {
@@ -44,5 +44,14 @@ export class Dynamic_Parameter{
     constructor(key,value) {
         this.key = key;
         this.value = value;
+    }
+}
+
+export class Option_Select{
+    id: number;
+    name: string;
+    constructor(id,name) {
+        this.id = id;
+        this.name = name;
     }
 }

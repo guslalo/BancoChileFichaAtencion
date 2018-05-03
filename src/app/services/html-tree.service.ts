@@ -26,13 +26,22 @@ export default class HtmlTreeService {
       parametros += par.key + value ;
     }
     child += '<'+childs.element_type+ ' id="'+childs.id_element+'" '+ parametros +'>';
-    for(let son of childs.childs){
-      child += this.getChilds(son);
+    if(childs.element_type=="select"){
+      child += '<option value=""> -- Seleccione -- </option>';
+      for(let option of childs.options){
+        
+        child += '<option value="'+option.id+'">'+option.name+'</option>';
+      }
+    }else{
+      for(let son of childs.childs){
+        child += this.getChilds(son);
+      }
+  
+      if(childs.default_value && childs.default_value!=""){
+        child += childs.default_value;
+      }
     }
-    if(childs.default_value && childs.default_value!=""){
-      child += childs.default_value;
-    }
-   
+
     child += '</'+childs.element_type+'>';
     return child;
   }

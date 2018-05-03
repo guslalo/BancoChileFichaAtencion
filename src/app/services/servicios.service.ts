@@ -9,6 +9,7 @@ export class FormService {
 
   getFormulario(tipo: string): Observable<any>{
     return this.http.get('https://rinnolab.cl/assistance/api/forms/?dynamic_form='+tipo);
+    // return this.http.get('http://localhost:8000/assistance/api/forms/?dynamic_form='+tipo);
   }
 
  
