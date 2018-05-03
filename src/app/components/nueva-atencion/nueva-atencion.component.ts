@@ -4,16 +4,31 @@ import { FormService } from '../../services/servicios.service';
 import HtmlTreeService from '../../services/html-tree.service';
 import { Dynamic_Form } from '../../models/dynamic_form';
 import { Dynamic_Element, FormPostElement } from '../../models/dynamic_form';
-//import { formPostElement } from '../../models/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Post } from '../../models/form_post';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { formPostElement } from '../../models/forms';
+import { validateConfig } from '@angular/router/src/config';
+
+
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+
+const trabajadores =  [
+  {'name': 'Jorge Marquez', 'rut': '16654882-4'},
+  {'name': 'Luis Alfaro', 'rut': '32155458-5'},
+  {'name': 'Gustavo Rengifo', 'rut': '186548987-7'},
+  {'name': 'Axel Rose', 'rut': '9456789-2'}
+];
+
+
+
 
 @Component({
   selector: 'app-nueva-atencion',
@@ -22,13 +37,20 @@ import { formPostElement } from '../../models/forms';
   providers:[FormService]
 })
 
+
+
 export class NuevaAtencionComponent implements OnInit {
+
+ 
+
   MyForm: SafeHtml;
   subscription;
-  
+  public model: any;
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
+
+
   public formCapture: Array<FormPostElement>;
   public formCaptureElement: Array<FormPostElement>;
 
@@ -38,7 +60,17 @@ export class NuevaAtencionComponent implements OnInit {
  
     this.formCapture = new Array<FormPostElement>();
     this.formCaptureElement = new Array<FormPostElement>();
+
+    
   }
+
+  search = (text$: Observable<string>) =>
+  text$
+    .debounceTime(200)
+    .map(term => term === '' ? []
+      : trabajadores.filter(v => v.rut.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+
+    formatter = (x: {rut: string}) => x.rut;
 
   ngOnInit() {
    
@@ -65,8 +97,14 @@ export class NuevaAtencionComponent implements OnInit {
           console.log(<any>error);
       }
     );
+
+    
  
   }
+  
+
+
+
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -74,6 +112,7 @@ export class NuevaAtencionComponent implements OnInit {
 
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
+  
     setTimeout(function(){
       //switch
       $(".switch").change(function(){
@@ -113,34 +152,42 @@ export class NuevaAtencionComponent implements OnInit {
       
       
       });
-
       //editar resumen
       $("#btn-resumen").click(function(){
         $("#parrafo-caso").prop("disabled",false).css("background","#e5f0f4").focus();
       });
+
+      $(".fichaAtencion form *").change(function(){
+        let formCaptureElement = $(this).val();
+        console.log(formCaptureElement);
+      });
+
     },0);
   }
 
   //capturar elemendos del form
   capturarform(){
-    $(".fichaAtencion").each(function(){
+    $(".fichaAtencion form").each(function(){
       if($(".fichaAtencion form").hasClass("ng-untouched")){
-        let elementForm = $(".fichaAtencion .form-control");
           let formCapture = $(".fichaAtencion form");
-          console.log(formCapture);
+         console.log(formCapture);
+
+          /*for(let item of this.formCapture){
+            console.log(item);
+          }*/
         }
     });
   }
 
-  
+
   formPost() {
     let form: any = {};
     this.loading = true;
         
-      this.FormsService.formPost(form)
+      this.FormsService.formPost(this.formCaptureElement)
       .subscribe(
         data => {
-  
+          //this.formCaptureElement;
         },
         error => {
           console.log(error)
