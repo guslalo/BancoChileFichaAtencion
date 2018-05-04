@@ -22,7 +22,7 @@
             <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt"
   [inputFormatter]="formatter" placeholder="ingresa rut" />
             <ng-template #rt let-r="result" let-t="term">
-              {{ r.name}}
+              {{ r.first_name}} {{ r.last_name}}
             </ng-template>
           </div><!-- buscador rut-->
 

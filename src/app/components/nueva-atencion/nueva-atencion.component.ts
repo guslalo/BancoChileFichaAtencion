@@ -15,16 +15,12 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { formPostElement } from '../../models/forms';
 import { validateConfig } from '@angular/router/src/config';
 
-
-
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 
 const trabajadores =  [
-  {'name': 'Jorge Marquez', 'rut': '16654882-4'},
-  {'name': 'Luis Alfaro', 'rut': '32155458-5'},
-  {'name': 'Gustavo Rengifo', 'rut': '186548987-7'},
-  {'name': 'Axel Rose', 'rut': '9456789-2'}
+  {'id': 1, 'first_name': 'Jorge', 'last_name': 'Marquez', 'rut': '16654882-4'},
+  {'id': 2, 'first_name': 'Luis', 'last_name': 'Alfar0', 'rut': '16545462-4'}
 ];
 
 
@@ -37,11 +33,8 @@ const trabajadores =  [
   providers:[FormService]
 })
 
-
-
 export class NuevaAtencionComponent implements OnInit {
 
- 
 
   MyForm: SafeHtml;
   subscription;
@@ -51,15 +44,10 @@ export class NuevaAtencionComponent implements OnInit {
   public isLoading = true ;
 
 
-  public formCapture: Array<FormPostElement>;
   public formCaptureElement: Array<FormPostElement>;
-
-
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
  
-    this.formCapture = new Array<FormPostElement>();
-    this.formCaptureElement = new Array<FormPostElement>();
 
     
   }
@@ -73,9 +61,7 @@ export class NuevaAtencionComponent implements OnInit {
     formatter = (x: {rut: string}) => x.rut;
 
   ngOnInit() {
-   
-    this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe(
-      
+    this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe( 
       data => {
         this.isLoading = false;
         this.loadingComplete = true;
@@ -96,14 +82,11 @@ export class NuevaAtencionComponent implements OnInit {
       error => {
           console.log(<any>error);
       }
-    );
+    ); 
 
-    
  
   }
   
-
-
 
 
   ngOnDestroy(){

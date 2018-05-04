@@ -40,7 +40,8 @@ export class AcreditacionComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        console.log(stringToHtml);
+        //console.log(stringToHtml);
+        this.setTime(data);
       },
       error => {
           console.log(<any>error);
@@ -52,4 +53,16 @@ export class AcreditacionComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+
+  setTime(data){
+    setTimeout(function(){
+      //input-file
+      $(".custom-file-input").change(function(){
+         $(this).siblings("label").html($(this).val().replace(/^.*\\/, ""));
+      })
+
+    },0);
+  }
+
+  
 }

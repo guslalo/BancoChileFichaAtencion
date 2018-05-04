@@ -15,6 +15,9 @@ $dark   :#d6d8d9;
     padding: 10px;
     margin-bottom: 10px;
 }
+.custom-file-input + label {
+    overflow: hidden;
+}
 .boxloader {
     text-align:center; 
     margin-top:20%;

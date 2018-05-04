@@ -28,5 +28,23 @@ export class FormService {
   } /**/
 
 
+  trabajadores(id: string): Observable<any>{
+    return this.http.get<any>('https://rinnolab.cl/hxc/api/user/'+id)
+            .map(form => {
+             
+                if (id) {
+                    console.log(id)
+                    localStorage.setItem('currentForm', JSON.stringify(id));
+                }
+ 
+                return JSON.stringify(id);
+            });
+  } /**/
+
+
+
+
+
+
 
 }
