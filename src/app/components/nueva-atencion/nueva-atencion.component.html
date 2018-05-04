@@ -17,11 +17,10 @@
           </div>
         </div>
         <div class="row mt-4 mt-md-5">
+
            <!-- buscador rut-->
-          <div class="col-3 pr-0">
-            <input id="typeahead-template" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt"
-  [inputFormatter]="formatter" placeholder="ingresa rut" />
-            <button type="button" class="btn btn-primary">Aceptar</button>
+          <div class="col-2 pr-0">
+            <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" />
             <ng-template #rt let-r="result" let-t="term">
               {{ r.first_name}} {{ r.last_name}}
             </ng-template>
@@ -65,8 +64,12 @@
               <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
             </div><!-- loader -->
         
-            <form [innerHtml]="MyForm" (ngSubmit)="formPost()"></form>
-            
+            <!-- Rounded switch -->
+            <form (ngSubmit)="formPost()">
+              <div [innerHtml]="MyForm">
+          
+              </div>
+            </form>
           </div>
         </div>
 

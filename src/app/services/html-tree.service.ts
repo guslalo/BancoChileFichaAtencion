@@ -20,12 +20,11 @@ export default class HtmlTreeService {
     let child = '';
     let parametros = '';
     let value = '';
-    let validate = '<div>test</div>'
     for(let par of childs.parameters){
       value = par.value ? '="' + par.value + '"' : ' ';
       parametros += par.key + value ;
     }
-    child += '<'+childs.element_type+ ' id="'+childs.id_element+'" '+ parametros +'>';
+    child += '<'+childs.element_type+ ' id="'+childs.id_element+'" name="'+childs.id_element+'" '+ parametros +'>';
     if(childs.element_type=="select"){
       child += '<option value=""> -- Seleccione -- </option>';
       for(let option of childs.options){

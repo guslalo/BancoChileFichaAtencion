@@ -5,6 +5,7 @@ import HtmlTreeService from '../../services/html-tree.service';
 import { Dynamic_Form } from '../../models/dynamic_form';
 import { Dynamic_Element, FormPostElement } from '../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 import { Post } from '../../models/form_post';
 import { Observable } from 'rxjs/Observable';
@@ -15,15 +16,17 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { formPostElement } from '../../models/forms';
 import { validateConfig } from '@angular/router/src/config';
 
+import {of} from 'rxjs/observable/of';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-
-const trabajadores =  [
-  {'id': 1, 'first_name': 'Jorge', 'last_name': 'Marquez', 'rut': '16654882-4'},
-  {'id': 2, 'first_name': 'Luis', 'last_name': 'Alfar0', 'rut': '16545462-4'}
-];
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/merge';
 
 
+var trabajadores;
 
 
 @Component({
@@ -38,15 +41,20 @@ export class NuevaAtencionComponent implements OnInit {
 
   MyForm: SafeHtml;
   subscription;
-  public model: any;
+  model: any;
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
+  searching = false;
+  searchFailed = false;
+  hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
 
   public formCaptureElement: Array<FormPostElement>;
 
-  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
+
+
+  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
  
 
     
@@ -54,12 +62,16 @@ export class NuevaAtencionComponent implements OnInit {
 
   search = (text$: Observable<string>) =>
   text$
-    .debounceTime(200)
-    .map(term => term === '' ? []
-      : trabajadores.filter(v => v.rut.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+    .debounceTime(2000)
+    .distinctUntilChanged()
+    .do((text) => console.log(text))
+    .switchMap(term =>
+      this.FormsService.getEmployeesList(term)
+    )
+  ;
 
-    formatter = (x: {rut: string}) => x.rut;
-
+  formatter = (x: {rut: string}) => x.rut;
+  
   ngOnInit() {
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe( 
       data => {
@@ -77,16 +89,13 @@ export class NuevaAtencionComponent implements OnInit {
         )
         //console.log(stringToHtml);
         this.setTime(data['results']);
-        this.capturarform();
+        
       },
       error => {
           console.log(<any>error);
       }
     ); 
-
- 
   }
-  
 
 
   ngOnDestroy(){
@@ -150,34 +159,29 @@ export class NuevaAtencionComponent implements OnInit {
 
   //capturar elemendos del form
   capturarform(){
-    $(".fichaAtencion form").each(function(){
-      if($(".fichaAtencion form").hasClass("ng-untouched")){
-          let formCapture = $(".fichaAtencion form");
-         console.log(formCapture);
-
-          /*for(let item of this.formCapture){
-            console.log(item);
-          }*/
-        }
-    });
+    console.log($(".fichaAtencion form").serialize());
   }
 
 
   formPost() {
-    let form: any = {};
     this.loading = true;
-        
-      this.FormsService.formPost(this.formCaptureElement)
-      .subscribe(
-        data => {
-          //this.formCaptureElement;
-        },
-        error => {
-          console.log(error)
-            this.loading = false;
-        });
+    
+    let formulario = {
+      patient: 1,
+      attention_date: $("#fecha-atencion").val(),
+      attentionRequest: [],
+      elements: $(".fichaAtencion form").serializeArray(),
     }
 
-
+    this.FormsService.formPost(formulario).subscribe(
+      (res:Response) => {
+        this.router.navigate(['/acreditacion-discapacidad']);
+      },
+      error => {
+        console.log(error)
+        this.loading = false;
+      }
+    );
+  }
 
 }
