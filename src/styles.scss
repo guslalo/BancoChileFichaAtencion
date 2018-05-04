@@ -9,11 +9,19 @@ $dark   :#d6d8d9;
 
 
 @import "node_modules/loaders.css/src/loaders";
+.form-check.custom-control{
+    input{
+        margin-right: 5px;
+    }
+}
 
 #parrafo-caso {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+}
+.custom-file {
+    overflow: hidden;
 }
 .custom-file-input + label {
     overflow: hidden;

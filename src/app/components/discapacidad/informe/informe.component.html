@@ -93,9 +93,11 @@
               <div class="boxloader" *ngIf="isLoading">
                 <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
               </div><!-- loader -->
+              
               <div [innerHtml]="MyForm">
 
               </div>
+
                 <!--paso anterior siguiente-->
                 <div class="row prevnext">
                     <div class="col text-left">
@@ -233,7 +235,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div ngbDropdown>
-                      <button class="btn btn-outline-info btn-block mt-3 mb-3 mt-md mb-md" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
+                      <button class="btn btn-outline-info btn-block mt-md mb-md" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button><!--  mt-3 mb-3-->
                       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                         <button class="dropdown-item">
                           <div class="prioridad">
