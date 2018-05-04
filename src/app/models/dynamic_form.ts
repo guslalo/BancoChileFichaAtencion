@@ -56,7 +56,10 @@ export class Option_Select{
         this.name = name;
     }
 }
-export class FormPostElement {
-    value: string;
+export class Trabajador {
+    id: number;
+    first_name: string;
+    last_name: string;
+    rut:number;
 }
 

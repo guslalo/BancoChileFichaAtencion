@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { FormService } from '../../services/servicios.service';
 import HtmlTreeService from '../../services/html-tree.service';
 import { Dynamic_Form } from '../../models/dynamic_form';
-import { Dynamic_Element, FormPostElement } from '../../models/dynamic_form';
+import { Dynamic_Element, Trabajador } from '../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -42,6 +42,7 @@ export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
   model: any;
+
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
@@ -50,28 +51,26 @@ export class NuevaAtencionComponent implements OnInit {
   hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
 
-  public formCaptureElement: Array<FormPostElement>;
-
-
-
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
  
 
-    
   }
 
   search = (text$: Observable<string>) =>
   text$
-    .debounceTime(2000)
+    .debounceTime(500)
     .distinctUntilChanged()
     .do((text) => console.log(text))
     .switchMap(term =>
       this.FormsService.getEmployeesList(term)
-    )
-  ;
+     
+    );
 
   formatter = (x: {rut: string}) => x.rut;
-  
+  formatter2 = (x: {id: number}) => x.id;
+
+  public id:number;
+
   ngOnInit() {
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe( 
       data => {
@@ -95,8 +94,27 @@ export class NuevaAtencionComponent implements OnInit {
           console.log(<any>error);
       }
     ); 
+
+  
+   
+ 
   }
 
+  //obtener id trabajador seleccionado
+  obtenerId(idSeleccionado){
+    $('#ObservacionesTextArea').val(idSeleccionado.last_name);
+  }
+
+  trabajadorf(id){
+    this.subscription = this.FormsService.trabajadores(id).subscribe( 
+      data => {
+        console.log(data);
+      },
+      error => {
+          console.log(<any>error);
+      }
+    );
+  }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -151,16 +169,11 @@ export class NuevaAtencionComponent implements OnInit {
 
       $(".fichaAtencion form *").change(function(){
         let formCaptureElement = $(this).val();
-        console.log(formCaptureElement);
       });
 
     },0);
   }
 
-  //capturar elemendos del form
-  capturarform(){
-    console.log($(".fichaAtencion form").serialize());
-  }
 
 
   formPost() {

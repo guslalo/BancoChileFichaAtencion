@@ -19,16 +19,20 @@
         <div class="row mt-4 mt-md-5">
 
            <!-- buscador rut-->
-          <div class="col-2 pr-0">
-            <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" />
+          <div class="col-3 pr-0">
+            <input id="typeahead-template" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" />
+            <button class="btn btn-primary" (click)="obtenerId(model)">Aceptar</button>
             <ng-template #rt let-r="result" let-t="term">
               {{ r.first_name}} {{ r.last_name}}
             </ng-template>
           </div><!-- buscador rut-->
-
-          <div class="col-12 col-sm-12 col-md-6">
+          
+          <div class="col-12 col-sm-12 col-md-5">
             <h5>
-              <span class="align-middle">Nueva atención</span> - <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4)</span>
+              <span class="align-middle">Nueva atención</span> - 
+              <span class="font-weight-bold align-middle" *ngIf="model">
+                {{model['first_name']}} {{model['last_name']}} ({{model['rut']}})  
+              </span>
             </h5>
           </div>
           <div class="col-12 col-sm-12 col-md-3 text-right mt-4 mt-md-0">

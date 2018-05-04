@@ -10,31 +10,24 @@ export class FormService {
 
   getFormulario(tipo: string): Observable<any>{
     // return this.http.get('https://rinnolab.cl/assistance/api/forms/?dynamic_form='+tipo);
-    return this.http.get('http://localhost:8000/assistance/api/forms/?dynamic_form='+tipo);
+    return this.http.get('https://rinnolab.cl/assistance/api/forms/?dynamic_form='+tipo);
   }
 
   formPost(form): Observable<any>{
-    return this.http.post<any>('http://localhost:8000/assistance/api/attentions/',form);
+    return this.http.post<any>('https://rinnolab.cl/assistance/api/attentions/',form);
   }
 
   getEmployeesList(query: string): Observable<any>{
-    return this.http.get('http://localhost:8000/assistance/api/employeesList/?search_string=' + query)
+    return this.http.get('https://rinnolab.cl/assistance/api/employeesList/?search_string=' + query)
     .map((response: Response) => <any>response['results'])
     .do(data => console.log(data));
   }
 
-  trabajadores(id: string): Observable<any>{
-    return this.http.get<any>('https://rinnolab.cl/hxc/api/user/'+id)
-            .map(form => {
-             
-                if (id) {
-                    console.log(id)
-                    localStorage.setItem('currentForm', JSON.stringify(id));
-                }
- 
-                return JSON.stringify(id);
-            });
-  } /**/
+  trabajadores(id:number): Observable<any>{
+    return this.http.get('https://rinnolab.cl/assistance/api/employeesList/1')
+  }
+
+
 
 
 
