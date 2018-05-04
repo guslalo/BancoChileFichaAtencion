@@ -31,7 +31,7 @@
             <h5>
               <span class="align-middle">Nueva atención</span> - 
               <span class="font-weight-bold align-middle" *ngIf="model">
-                {{model['first_name']}} {{model['last_name']}} ({{model['rut']}})  
+                {{model['first_name']}} {{model['last_name']}} ({{model['rut']}} - {{model['check_digit']}} )  
               </span>
             </h5>
           </div>
@@ -81,100 +81,7 @@
 
     <!--sidebar  -->
     <div class="col-12 col-md sideRight">
-        <div class="ficha">
-            <h4 class="font-weight-bold">Ficha del trabajador</h4>
-            <hr>
-            <h5 class="mb-3">Información personal</h5>
-            <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Género</span>
-                            <p id="genero">-</p>
-                        </td>
-                        <td>
-                            <span>Tel celular</span>
-                            <p>-</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Fecha de nacimiento</span>
-                          <p>-</p>
-                        </td>
-                        <td>
-                            <span>Email</span>
-                            <p>-</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Previsión</span>
-                            <p>-</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <h5 class="mb-3">Cargas</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Nombre</span>
-                            <p>rut</p>
-                        </td>
-                        <td>
-                            <span>Nombre</span>
-                            <p>rut</p>
-                        </td>
-                      </tr>
-                    
-                      
-                    </tbody>
-                  </table>
-              </div>
-              <hr>
-              <h5 class="mb-3">Información Laboral</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Email</span>
-                            <p>{{emailTrabajo}}</p>
-                        </td>
-                        <td>
-                            <span>Departamento</span>
-                            <p>{{departamento}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Tel Oficina</span>
-                            <p>{{phone_office}}</p>
-                        </td>
-                        <td>
-                            <span>Cargo</span>
-                            <p>{{cargo}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Sucursal</span>
-                            <p>-</p>
-                        </td>
-                        <td>
-                            <span>Direccion Sucrusal</span>
-                            <p>-</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-          </div>
+        <app-ficha-sidebar></app-ficha-sidebar>
     </div><!--/sidebar  -->
      
   </div>

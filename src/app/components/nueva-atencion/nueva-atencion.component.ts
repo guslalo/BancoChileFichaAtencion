@@ -38,7 +38,7 @@ var trabajadores;
 
 export class NuevaAtencionComponent implements OnInit {
 
-
+  parentMessage = "message from parent";
   MyForm: SafeHtml;
   subscription;
   model: any;
@@ -73,8 +73,8 @@ export class NuevaAtencionComponent implements OnInit {
      
     );
 
-  formatter = (x: {rut: string}) => x.rut + '-' + '4';
-  formatter2 = (x: {id: number}) => x.id;
+  formatter = (x: {rut: string, check_digit:string}) => x.rut + '-' + x.check_digit;
+  formatter2 = (x: {check_digit: number}) => x.check_digit;
 
   public id:number;
 
