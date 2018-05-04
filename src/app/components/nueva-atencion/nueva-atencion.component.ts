@@ -42,6 +42,12 @@ export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
   model: any;
+  trabajador: Array<Trabajador>;
+
+  emailTrabajo: string;
+  departamento: string;
+  cargo: string;
+  phone_office: string;
 
   public loading = false;
   public loadingComplete = false;
@@ -53,20 +59,21 @@ export class NuevaAtencionComponent implements OnInit {
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
  
-
+    this.trabajador = new Array<Trabajador>();
+    //this.obtenerId(1);
   }
 
   search = (text$: Observable<string>) =>
   text$
     .debounceTime(500)
     .distinctUntilChanged()
-    .do((text) => console.log(text))
+    .do((text) => console.log())
     .switchMap(term =>
       this.FormsService.getEmployeesList(term)
      
     );
 
-  formatter = (x: {rut: string}) => x.rut;
+  formatter = (x: {rut: string}) => x.rut + '-' + '4';
   formatter2 = (x: {id: number}) => x.id;
 
   public id:number;
@@ -86,7 +93,7 @@ export class NuevaAtencionComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        //console.log(stringToHtml);
+    
         this.setTime(data['results']);
         
       },
@@ -95,20 +102,21 @@ export class NuevaAtencionComponent implements OnInit {
       }
     ); 
 
-  
-   
- 
+    
   }
 
   //obtener id trabajador seleccionado
   obtenerId(idSeleccionado){
-    $('#ObservacionesTextArea').val(idSeleccionado.last_name);
-  }
-
-  trabajadorf(id){
-    this.subscription = this.FormsService.trabajadores(id).subscribe( 
+    console.log(idSeleccionado.id)
+    this.subscription = this.FormsService.trabajadoresInfo(idSeleccionado.id).subscribe( 
       data => {
-        console.log(data);
+        //this.trabajador.push(data);
+        //console.log(this.trabajador);
+        this.emailTrabajo = data['results'][0].email_office
+        this.departamento = data['results'][0].department
+        this.cargo = data['results'][0].position
+        this.phone_office = data['results'][0].phone_office
+    
       },
       error => {
           console.log(<any>error);

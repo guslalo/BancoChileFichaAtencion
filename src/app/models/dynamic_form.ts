@@ -61,5 +61,11 @@ export class Trabajador {
     first_name: string;
     last_name: string;
     rut:number;
+    check_digit:number;
 }
 
+/*
+    email_office: string;
+    phone_office: number;
+    department: string;
+    position: string;*/
