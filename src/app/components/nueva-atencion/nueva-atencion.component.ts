@@ -25,9 +25,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/merge';
 
-
 var trabajadores;
-
 
 @Component({
   selector: 'app-nueva-atencion',
@@ -61,6 +59,7 @@ export class NuevaAtencionComponent implements OnInit {
  
     this.trabajador = new Array<Trabajador>();
     //this.obtenerId(1);
+   
   }
 
   search = (text$: Observable<string>) =>
@@ -101,8 +100,11 @@ export class NuevaAtencionComponent implements OnInit {
           console.log(<any>error);
       }
     ); 
-
-    
+   /// $("app-header").show(); 
+    /*
+    $(".boxCuerpo").removeClass("full"); 
+    $("app-header").add();  
+    $(".boxMensajeria").add();*/
   }
 
   //obtener id trabajador seleccionado

@@ -1,13 +1,14 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Login</h2>
+<div id="login" class="login d-flex justify-content-center">
+
   <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <h2>Login</h2>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-          <label for="username">Username</label>
+          <label for="username">Usuario</label>
           <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
           <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-          <label for="password">Password</label>
+          <label for="password">Contraseña</label>
           <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
           <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
       </div>

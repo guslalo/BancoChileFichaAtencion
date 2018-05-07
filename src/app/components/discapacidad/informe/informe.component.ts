@@ -7,6 +7,7 @@ import { Dynamic_Element } from '../../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class InformeComponent implements OnInit {
 
   //modal
   closeResult: string;
-  constructor(private modalService: NgbModal, private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
+  constructor(private modalService: NgbModal, private router: Router, private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
 
 
    //this.switch = new Array<switchForm>();
@@ -80,4 +81,26 @@ export class InformeComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+
+
+  formPost() {
+    this.loading = true;
+    
+    let formulario = {
+      patient: 1,
+      attention_date: $("#ficha-atencion").val(),
+      attentionRequest: [],
+      elements: $("form#informeForm").serializeArray(),
+    }
+
+    this.FormsService.formPost(formulario).subscribe(
+      (res:Response) => {
+       // this.router.navigate(['/informe-discapacidad']);
+      },
+      error => {
+        console.log(error)
+        this.loading = false;
+      }
+    );
+  }
 }

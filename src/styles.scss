@@ -14,6 +14,19 @@ $dark   :#d6d8d9;
         margin-right: 5px;
     }
 }
+.full{
+    width: 100% !important;
+}
+#login{
+  width: 100%;
+  > form {
+      width: 350px;
+      text-align: center;
+      label{
+          text-align: left;
+      }
+  }
+}
 .buscadorinput {
     display:inline-block;
     min-width: 113px;

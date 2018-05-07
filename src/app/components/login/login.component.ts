@@ -26,6 +26,14 @@ export class LoginComponent implements OnInit {
  
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        //$("app-header").hide(); 
+        $("div").each(function(){
+            if($("div").hasClass("login")){
+                //$(".boxCuerpo").addClass("full"); 
+                //$("app-header").hide();  
+                //$(".boxMensajeria").remove();
+            }
+        })
     }
  
     login() {

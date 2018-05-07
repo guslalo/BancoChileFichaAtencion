@@ -5,6 +5,7 @@ import HtmlTreeService from '../../../services/html-tree.service';
 import { Dynamic_Form } from '../../../models/dynamic_form';
 import { Dynamic_Element } from '../../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acreditacion',
@@ -21,7 +22,7 @@ export class AcreditacionComponent implements OnInit {
   public loadingComplete = false;
   public isLoading = true ;
 
-  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
+  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
 
   }
 
@@ -53,7 +54,6 @@ export class AcreditacionComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-
   setTime(data){
     setTimeout(function(){
       //input-file
@@ -64,5 +64,24 @@ export class AcreditacionComponent implements OnInit {
     },0);
   }
 
-  
+  formPost() {
+    this.loading = true;
+    
+    let formulario = {
+      patient: 1,
+      attention_date: $("#ficha-atencion").val(),
+      attentionRequest: [],
+      elements: $("form#acreditacionForm").serializeArray(),
+    }
+
+    this.FormsService.formPost(formulario).subscribe(
+      (res:Response) => {
+        this.router.navigate(['/informe-discapacidad']);
+      },
+      error => {
+        console.log(error)
+        this.loading = false;
+      }
+    );
+  }
 }

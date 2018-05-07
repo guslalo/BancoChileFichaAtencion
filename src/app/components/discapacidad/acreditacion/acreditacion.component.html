@@ -86,19 +86,23 @@
           <div class="boxloader" *ngIf="isLoading">
             <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
           </div><!-- loader -->
-          <div [innerHtml]="MyForm">
+          <form id="acreditacionForm" (ngSubmit)="formPost()">
+            <div [innerHtml]="MyForm">
+        
+            </div>
             
-          </div>
-          <div class="form-row">
-            <div class="form-group col-12 col-md-4">
-              <div class="col text-right">
-                <button class="btn btn-info text-truncate btnMobile" routerLink="/informe-discapacidad"  type="button">
-                  <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
-                  Continuar informe de discapacidad
-                </button>
+            <div class="form-row">
+              <div class="form-group col-12 col-md-4">
+                <div class="col text-right">
+                  <button class="btn btn-info text-truncate btnMobile"  type="submit">
+                    <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
+                    Continuar informe de discapacidad
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
+         
         </div>
       </div><!-- /contenido-->
     </div>
