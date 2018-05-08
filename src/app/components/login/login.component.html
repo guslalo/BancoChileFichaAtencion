@@ -1,6 +1,6 @@
 
 <div id="login" class="login d-flex justify-content-center" >
-  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" ngNativeValidate>
     <img src="assets/img/bancodechile.svg">
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
           <label for="username">Usuario</label>

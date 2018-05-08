@@ -94,7 +94,7 @@
                 <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
               </div><!-- loader -->
               
-              <form id="informeForm" (ngSubmit)="formPost()">
+              <form id="informeForm" (ngSubmit)="formPost()" ngNativeValidate>
                 <div [innerHtml]="MyForm">
             
                 </div>

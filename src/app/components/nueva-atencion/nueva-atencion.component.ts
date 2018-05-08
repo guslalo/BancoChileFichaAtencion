@@ -101,7 +101,9 @@ export class NuevaAtencionComponent implements OnInit {
           this.workingInformation = datos;
           localStorage.setItem('workingInformation', JSON.stringify(datos));
         } 
-        $("form *").prop("disabled",false);      
+
+        $("form *").prop("disabled",false);    
+          
       },
       error => {
         console.log(<any>error);
