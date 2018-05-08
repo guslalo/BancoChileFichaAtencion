@@ -39,6 +39,7 @@ export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
   model: any;
+  model2: any = {};
   employee: Array<any>;
 
   workingInformation: JSON;
@@ -50,8 +51,8 @@ export class NuevaAtencionComponent implements OnInit {
   searchFailed = false;
   hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
-
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
+
   }
 
   search = (text$: Observable<string>) =>
@@ -63,9 +64,7 @@ export class NuevaAtencionComponent implements OnInit {
       this.FormsService.getEmployeesList(term)
      
     );
-
   formatter = (x: {rut: string, check_digit:string}) => x.rut + '-' + x.check_digit;
-  formatter2 = (x: {check_digit: number}) => x.check_digit;
 
   public id:number;
 
@@ -80,22 +79,17 @@ export class NuevaAtencionComponent implements OnInit {
       
         let stringToHtml = '';
         for(let form of data['results']){
-          stringToHtml = HtmlTreeService.buildForm(form);
-          
+          stringToHtml = HtmlTreeService.buildForm(form);  
         }
-        
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-    
-        this.setTime(data['results']);
-        
+        this.setTime(data['results']);       
       },
       error => {
-          console.log(<any>error);
+         console.log(<any>error);
       }
     ); 
-
   }
 
   // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
@@ -106,11 +100,11 @@ export class NuevaAtencionComponent implements OnInit {
         for(let datos of data['results']){
           this.workingInformation = datos;
           localStorage.setItem('workingInformation', JSON.stringify(datos));
-        }
-        
+        } 
+        $("form *").prop("disabled",false);      
       },
       error => {
-          console.log(<any>error);
+        console.log(<any>error);
       }
     );
 
@@ -123,7 +117,7 @@ export class NuevaAtencionComponent implements OnInit {
         }
       },
       error => {
-          console.log(<any>error);
+        console.log(<any>error);
       }
     );
   }
@@ -162,7 +156,6 @@ export class NuevaAtencionComponent implements OnInit {
         $(".discapacidad-activo").on("click",function(){
           $('#nueva-btn-completar-discapacidad').attr("disabled");
         });
-      
       });
 
       //editar resumen
@@ -178,7 +171,7 @@ export class NuevaAtencionComponent implements OnInit {
   }
 
 
-
+  //form post general
   formPost() {
     this.loading = true;
     
@@ -200,5 +193,25 @@ export class NuevaAtencionComponent implements OnInit {
       }
     );
   }
+
+  //guardar y cerrar
+  guardarCerrar() {
+    let formulario = {
+      patient: this.employee['id'],
+      attention_date: $("#fecha-atencion").val(),
+      attentionRequest: [],
+      elements: $(".fichaAtencion form").serializeArray(),
+    }
+    this.FormsService.formPost(formulario).subscribe(
+      (res:Response) => {
+        this.router.navigate(['/']);
+      },
+      error => {
+        console.log(error)
+        this.loading = false;
+      }
+    );
+  }
+
 
 }

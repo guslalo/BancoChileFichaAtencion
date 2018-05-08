@@ -10,7 +10,7 @@
             </button>
           </div>
           <div class="col">
-              <button type="button" class="btn btn-success float-right btnMobile ">
+              <button type="button" class="btn btn-success float-right btnMobile" (click)="guardarCerrar()">
                 <i class="material-icons align-top">save</i>
                 Guardar y cerrar
               </button>
@@ -20,11 +20,12 @@
 
            <!-- buscador rut-->
           <div class="col-3 pr-0">
-            <input id="typeahead-template" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" />
-            <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>
-            <ng-template #rt let-r="result" let-t="term">
-              {{ r.first_name}} {{ r.last_name}}
-            </ng-template>
+              <input id="typeahead-template" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut"/>
+              <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>
+              <ng-template #rt let-r="result" let-t="term">
+                {{ r.first_name}} {{ r.last_name}}
+              </ng-template>
+               <form #f="ngForm"> </form>
           </div><!-- buscador rut-->
           
           <div class="col-12 col-sm-12 col-md-5">
@@ -70,6 +71,7 @@
         
             <!-- Rounded switch -->
             <form (ngSubmit)="formPost()">
+           
               <div [innerHtml]="MyForm">
           
               </div>

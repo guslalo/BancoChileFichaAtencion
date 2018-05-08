@@ -20,13 +20,3 @@ export class HeaderComponent implements OnInit {
 
 
 }
-/*
-.toggle(function() {
-  $(this).animate({ 
-    // style change
-  }, 500);
-  },
-  function() {
-  $(this).animate({ 
-    // style change back
-  }, 500);*/
