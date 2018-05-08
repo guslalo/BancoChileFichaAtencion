@@ -6,6 +6,7 @@ import { Dynamic_Form } from '../../../models/dynamic_form';
 import { Dynamic_Element } from '../../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-acreditacion',
@@ -23,8 +24,13 @@ export class AcreditacionComponent implements OnInit {
   public isLoading = true ;
 
   workingInformation: JSON;
-  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
+  
+  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router, private _location: Location) {
 
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   ngOnInit() {

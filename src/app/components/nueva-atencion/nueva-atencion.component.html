@@ -10,7 +10,7 @@
             </button>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-success float-right btnMobile" (click)="guardarCerrar()">
+            <button type="button" class="btn btn-success float-right btnMobile" (click)="formPost('/')" disabled>
               <i class="material-icons align-top">save</i>
               Guardar y cerrar
             </button>
@@ -69,10 +69,14 @@
             <div class="boxloader" *ngIf="isLoading">
               <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
             </div><!-- loader -->
-            <!--form-->
-            <form class="formNuevaAtencion" (ngSubmit)="formPost()" ngNativeValidate>
-              <div [innerHtml]="MyForm"></div>
-            </form><!--form-->
+        
+            <!-- Rounded switch -->
+            <form class="formNuevaAtencion" (ngSubmit)="formPost('/acreditacion-discapacidad')" ngNativeValidate>
+           
+              <div [innerHtml]="MyForm">
+          
+              </div>
+            </form>
           </div>
         </div>
      </div> <!-- /contenido-->
