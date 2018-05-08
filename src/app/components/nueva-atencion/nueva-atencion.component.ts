@@ -39,7 +39,6 @@ export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
   model: any;
-  model2: any = {};
   employee: Array<any>;
 
   workingInformation: JSON;
@@ -101,9 +100,7 @@ export class NuevaAtencionComponent implements OnInit {
           this.workingInformation = datos;
           localStorage.setItem('workingInformation', JSON.stringify(datos));
         } 
-
-        $("form *").prop("disabled",false);    
-          
+        $("form *").prop("disabled",false);     
       },
       error => {
         console.log(<any>error);
