@@ -3,3 +3,50 @@
         width: 100% !important;
     }*/
 }
+.boxMensajeria{
+    width:4%;
+    //min-width: 45px;
+    overflow: hidden;
+    
+    .opciones {
+        position: relative;
+        margin-top: 10px;
+        .boxAcciones {
+            position: absolute;
+            top:5px;
+            right: 0px;
+        }
+    }
+    .list-group {
+        display:none;
+        max-height: 595px;
+        overflow: hidden;
+        overflow-y:scroll;
+        margin-bottom: 15px;
+        li {
+           // cursor: pointer;
+        }
+    }
+    
+    .boxBoton{
+        height: 55px;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        width: 58px;
+        display:inline-block;
+        i {
+            line-height:55px;
+            width: 100%;
+            cursor: pointer;
+            color:#063A74;
+        }
+        .badge {
+            position: absolute;
+            right: 13px;
+            top: 9px;
+            border-radius: 2.25rem;
+            font-weight: normal;
+        }
+    } 
+}

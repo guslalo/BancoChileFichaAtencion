@@ -29,6 +29,7 @@ const router: Routes = [
     { path: 'ver-informe', data: { title: 'Ver informe' },component: VerInformeComponent },
     { path: 'ficha-trabajador', data: { title: 'Ficha trabajador' },component: FichaComponent },
     { path: 'login', component: LoginComponent },
+   
     /*
     { path: 'notas', component: NotasComponent },
     { path: 'capsulas', component: CapsulasComponent },
@@ -48,8 +49,8 @@ const router: Routes = [
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
+    
   ];
 
   export const appRouters: any[] = [];
   export const routing: ModuleWithProviders = RouterModule.forRoot(router);
-  

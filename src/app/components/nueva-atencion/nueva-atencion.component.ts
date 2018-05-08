@@ -31,7 +31,8 @@ var trabajadores;
   selector: 'app-nueva-atencion',
   templateUrl: './nueva-atencion.component.html',
   styleUrls: ['./nueva-atencion.component.scss'],
-  providers:[FormService]
+  providers:[FormService],
+  encapsulation: ViewEncapsulation.Emulated
 })
 
 export class NuevaAtencionComponent implements OnInit {
@@ -94,11 +95,7 @@ export class NuevaAtencionComponent implements OnInit {
           console.log(<any>error);
       }
     ); 
-   /// $("app-header").show(); 
-    /*
-    $(".boxCuerpo").removeClass("full"); 
-    $("app-header").add();  
-    $(".boxMensajeria").add();*/
+
   }
 
   // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
@@ -142,13 +139,29 @@ export class NuevaAtencionComponent implements OnInit {
       //switch
       $(".switch").change(function(){
         $(this).toggleClass("checked");
-        $(this).click();
-
-        if ($(this).val()){
-          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
-        }else{
-          $('#nueva-btn-completar-discapacidad').attr("disabled");
+        if(this == document.getElementById("nueva-switch-caso-social")){
+          $(".switch.checked").click();
         }
+        if(this == document.getElementById("nueva-label-grupo-switch-discapacidad")){
+          $(".switch.checked").click();
+          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
+          $(this).toggleClass("discapacidad-activo");
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-derivacion")){
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-receta")){
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-licencia")){
+          $(".switch.checked").click();
+        }
+        if(this == document.getElementById("nueva-label-grupo-switch-orden")){
+          $(".switch.checked").click();
+        }
+        $(".discapacidad-activo").on("click",function(){
+          $('#nueva-btn-completar-discapacidad').attr("disabled");
+        });
       
       });
 

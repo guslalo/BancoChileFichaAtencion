@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
  
 import { AuthenticationService } from '../../services/authentication.service';
@@ -6,14 +6,18 @@ import { AlertService } from '../../services/alert.service';
  
 @Component({
     moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['./login.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
  
+ //encapsulation: ViewEncapsulation.Emulated,
 export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
- 
+    //this._ref.destroy(); 
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -29,9 +33,9 @@ export class LoginComponent implements OnInit {
         //$("app-header").hide(); 
         $("div").each(function(){
             if($("div").hasClass("login")){
-                //$(".boxCuerpo").addClass("full"); 
-                //$("app-header").hide();  
-                //$(".boxMensajeria").remove();
+              /*  $(".boxCuerpo").addClass("full"); 
+                $("app-header").hide();  
+                $(".boxMensajeria").remove();*/
             }
         })
     }
@@ -49,5 +53,8 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+    OnDestroy(){
+        //this.HeaderComponent:OnDestroy;
     }
 }

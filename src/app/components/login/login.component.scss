@@ -1,0 +1,39 @@
+
+.boxMensajeria {
+    display: none;
+}
+.full{
+    width: 100%;
+    background: #194d87 !important;
+}
+#login{
+  /*width: 100%;
+  margin-top: 15%;*/
+    width: 100%;
+    margin-top:0%;
+    position: absolute;
+    left: 0px;
+    z-index: 99;
+    top: 0px;
+    background: #194d87;
+    height: 100%;
+  label {
+      width: 100%;
+      text-align: left;
+      color: #fff;
+  }
+  > form {
+      width: 350px;
+      text-align: center;
+      height:350px;
+      margin-top: 15%;
+      //display: flex !important;
+      * {   
+        /*flex-shrink: 0;
+        flex-grow: 1;*/
+      }
+      label{
+          text-align: left;
+      }
+  }
+}
