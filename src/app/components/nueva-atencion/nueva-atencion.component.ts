@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { FormService } from '../../services/servicios.service';
 import HtmlTreeService from '../../services/html-tree.service';
@@ -35,17 +35,12 @@ var trabajadores;
 })
 
 export class NuevaAtencionComponent implements OnInit {
-
-  parentMessage = "message from parent";
   MyForm: SafeHtml;
   subscription;
   model: any;
-  trabajador: Array<Trabajador>;
+  employee: Array<any>;
 
-  emailTrabajo: string;
-  departamento: string;
-  cargo: string;
-  phone_office: string;
+  workingInformation: JSON;
 
   public loading = false;
   public loadingComplete = false;
@@ -56,15 +51,11 @@ export class NuevaAtencionComponent implements OnInit {
 
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
- 
-    this.trabajador = new Array<Trabajador>();
-    //this.obtenerId(1);
-   
   }
 
   search = (text$: Observable<string>) =>
   text$
-    .debounceTime(500)
+    .debounceTime(200)
     .distinctUntilChanged()
     .do((text) => console.log())
     .switchMap(term =>
@@ -78,6 +69,9 @@ export class NuevaAtencionComponent implements OnInit {
   public id:number;
 
   ngOnInit() {
+    if (localStorage.getItem("workingInformation")) {
+      this.workingInformation = JSON.parse(localStorage.getItem("workingInformation"));
+    }
     this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe( 
       data => {
         this.isLoading = false;
@@ -107,18 +101,29 @@ export class NuevaAtencionComponent implements OnInit {
     $(".boxMensajeria").add();*/
   }
 
-  //obtener id trabajador seleccionado
-  obtenerId(idSeleccionado){
-    console.log(idSeleccionado.id)
-    this.subscription = this.FormsService.trabajadoresInfo(idSeleccionado.id).subscribe( 
+  // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
+  cargarDatos(currentEmployee){
+    this.employee = currentEmployee;
+    this.subscription = this.FormsService.trabajadoresInfo(currentEmployee.id).subscribe( 
       data => {
-        //this.trabajador.push(data);
-        //console.log(this.trabajador);
-        this.emailTrabajo = data['results'][0].email_office
-        this.departamento = data['results'][0].department
-        this.cargo = data['results'][0].position
-        this.phone_office = data['results'][0].phone_office
-    
+        for(let datos of data['results']){
+          this.workingInformation = datos;
+          localStorage.setItem('workingInformation', JSON.stringify(datos));
+        }
+        
+      },
+      error => {
+          console.log(<any>error);
+      }
+    );
+
+    this.subscription = this.FormsService.getElementsValues(currentEmployee.id).subscribe( 
+      data => {
+        let element
+        for(let son of data){
+          element = document.getElementById(son.attribute['id_element'])
+          element.value = son.value
+        }
       },
       error => {
           console.log(<any>error);
@@ -136,42 +141,17 @@ export class NuevaAtencionComponent implements OnInit {
     setTimeout(function(){
       //switch
       $(".switch").change(function(){
-        if(this == document.getElementById("nueva-switch-caso-social")){
-            $(this).toggleClass("checked");
-            $(".switch.checked").click();
-        }
-        if(this == document.getElementById("nueva-label-grupo-switch-discapacidad")){
-          $(this).toggleClass("checked");
-          $(".switch.checked").click();
-          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
-          
-          $('#nueva-btn-completar-discapacidad').attr('href', '/acreditacion-discapacidad');
-          $(this).toggleClass("discapacidad-activo");
-        }
+        $(this).toggleClass("checked");
+        $(this).click();
 
-        if(this == document.getElementById("nueva-label-grupo-switch-derivacion")){
-          $(this).toggleClass("checked");
-          $(".switch.checked").click();
-        }
-        if(this == document.getElementById("nueva-label-grupo-switch-receta")){
-          $(this).toggleClass("checked");
-          $(".switch.checked").click();
-        }
-        if(this == document.getElementById("nueva-label-grupo-switch-licencia")){
-          $(this).toggleClass("checked");
-          $(".switch.checked").click();
-        }
-        if(this == document.getElementById("nueva-label-grupo-switch-orden")){
-          $(this).toggleClass("checked");
-          $(".switch.checked").click();
-        }
-      
-        $(".discapacidad-activo").on("click",function(){
+        if ($(this).val()){
+          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
+        }else{
           $('#nueva-btn-completar-discapacidad').attr("disabled");
-        });
-      
+        }
       
       });
+
       //editar resumen
       $("#btn-resumen").click(function(){
         $("#parrafo-caso").prop("disabled",false).css("background","#e5f0f4").focus();
@@ -190,7 +170,7 @@ export class NuevaAtencionComponent implements OnInit {
     this.loading = true;
     
     let formulario = {
-      patient: 1,
+      patient: this.employee['id'],
       attention_date: $("#fecha-atencion").val(),
       attentionRequest: [],
       elements: $(".fichaAtencion form").serializeArray(),
@@ -198,6 +178,7 @@ export class NuevaAtencionComponent implements OnInit {
 
     this.FormsService.formPost(formulario).subscribe(
       (res:Response) => {
+        // localStorage.setItem('medicalAttention', JSON.stringify(res));
         this.router.navigate(['/acreditacion-discapacidad']);
       },
       error => {

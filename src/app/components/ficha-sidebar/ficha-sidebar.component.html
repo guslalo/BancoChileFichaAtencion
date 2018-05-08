@@ -8,27 +8,27 @@
                   <tr>
                     <td>
                         <span>Género</span>
-                        <p id="genero">-</p>
+                        <p *ngIf="workingInformation">{{workingInformation.professional.genre}}</p>
                     </td>
                     <td>
                         <span>Tel celular</span>
-                        <p>-</p>
+                        <p *ngIf="workingInformation">{{workingInformation.professional.phone_number ? workingInformation.professional.phone_number : "--"}}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <span>Fecha de nacimiento</span>
-                      <p>-</p>
+                      <p *ngIf="workingInformation">{{workingInformation.professional.birthdate ? workingInformation.professional.birthdate : "--"}}</p>
                     </td>
                     <td>
                         <span>Email</span>
-                        <p>-</p>
+                        <p *ngIf="workingInformation">{{workingInformation.professional.email ? workingInformation.professional.email : "--"}}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                         <span>Previsión</span>
-                        <p>-</p>
+                        <p *ngIf="workingInformation">{{workingInformation.prevision ? workingInformation.prevision : "--"}}</p>
                     </td>
                   </tr>
                 </tbody>
@@ -41,14 +41,22 @@
                   <tr>
                     <td>
                         <span>Nombre</span>
-                        <p>rut</p>
                     </td>
                     <td>
-                        <span>Nombre</span>
-                        <p>rut</p>
+                        <span>RUT</span>
                     </td>
                   </tr>
-                
+                  <tr *ngIf="workingInformation">
+                        <ng-template ngFor let-burden [ngForOf]="workingInformation.burdens">
+                            <td>
+                                <p>{{burden.name}}</p>
+                            </td>
+                            <td>
+                                <p>{{burden.rut}}</p>
+                            </td>
+                        </ng-template>
+                    
+                  </tr>
                   
                 </tbody>
               </table>
@@ -61,32 +69,40 @@
                   <tr>
                     <td>
                         <span>Email</span>
-                        <p>{{emailTrabajo}}</p>
+                        <p *ngIf="workingInformation">{{workingInformation.email_office ? workingInformation.email_office : "--"}}</p>
                     </td>
                     <td>
                         <span>Departamento</span>
-                        <p>{{departamento}}</p>
+                        <p *ngIf="workingInformation">{{workingInformation.department ? workingInformation.email_office : "--"}}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                         <span>Tel Oficina</span>
-                        <p>{{phone_office}}</p>
+                        <p *ngIf="workingInformation">{{workingInformation.phone_office ? workingInformation.phone_office : "--"}}</p>
                     </td>
                     <td>
                         <span>Cargo</span>
-                        <p>{{cargo}}</p>
+                        <p *ngIf="workingInformation">{{workingInformation.position ? workingInformation.position : "--"}}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                         <span>Sucursal</span>
-                        <p>-</p>
                     </td>
                     <td>
                         <span>Direccion Sucrusal</span>
-                        <p>-</p>
                     </td>
+                  </tr>
+                  <tr *ngIf="workingInformation">
+                    <ng-template ngFor let-sub [ngForOf]="workingInformation.subsidiary">
+                        <td>
+                            <p>{{sub.name}}</p>
+                        </td>
+                        <td>
+                            {{sub.address}}
+                        </td>
+                    </ng-template>
                   </tr>
                 </tbody>
               </table>

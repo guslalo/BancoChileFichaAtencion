@@ -22,11 +22,15 @@ export class AcreditacionComponent implements OnInit {
   public loadingComplete = false;
   public isLoading = true ;
 
+  workingInformation: JSON;
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
 
   }
 
   ngOnInit() {
+    if (localStorage.getItem("workingInformation")) {
+      this.workingInformation = JSON.parse(localStorage.getItem("workingInformation"));
+    }
     this.subscription = this.FormsService.getFormulario('acreditacion-discapacidad').subscribe(
       
       data => {
@@ -41,7 +45,6 @@ export class AcreditacionComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        //console.log(stringToHtml);
         this.setTime(data);
       },
       error => {

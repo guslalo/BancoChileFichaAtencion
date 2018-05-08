@@ -21,7 +21,7 @@
            <!-- buscador rut-->
           <div class="col-3 pr-0">
             <input id="typeahead-template" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" />
-            <button class="btn btn-primary" (click)="obtenerId(model)">Aceptar</button>
+            <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>
             <ng-template #rt let-r="result" let-t="term">
               {{ r.first_name}} {{ r.last_name}}
             </ng-template>
@@ -81,7 +81,9 @@
 
     <!--sidebar  -->
     <div class="col-12 col-md sideRight">
-        <app-ficha-sidebar></app-ficha-sidebar>
+        <app-ficha-sidebar 
+          [workingInformation]="workingInformation">
+        </app-ficha-sidebar>
     </div><!--/sidebar  -->
      
   </div>
