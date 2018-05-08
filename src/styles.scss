@@ -215,6 +215,9 @@ switch {
     width: auto;
     margin-right: 0px;
     float: right;
+    .dropdown-toggle::after {
+        display:none;
+    }
     p {
         float: left;
         width:auto;
@@ -678,6 +681,12 @@ table {
     display: inline-block;
     width: 100%;
 }
+.cont {
+    background: #255993;
+    margin-top: 20px;
+    padding: 20px;
+}
+
  ngb-accordion {
      .card-header{
          a {
@@ -844,8 +853,9 @@ form{/*
   }  /**/
 }
 
-
-
+.help-block {
+    color: #ffffff;
+}
 
 
 

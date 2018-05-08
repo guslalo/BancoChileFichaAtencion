@@ -69,17 +69,12 @@
             <div class="boxloader" *ngIf="isLoading">
               <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
             </div><!-- loader -->
-        
-            <!-- Rounded switch -->
+            <!--form-->
             <form class="formNuevaAtencion" (ngSubmit)="formPost()" ngNativeValidate>
-           
-              <div [innerHtml]="MyForm">
-          
-              </div>
-            </form>
+              <div [innerHtml]="MyForm"></div>
+            </form><!--form-->
           </div>
         </div>
-
      </div> <!-- /contenido-->
 
     <!--sidebar  -->
