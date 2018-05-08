@@ -52,6 +52,7 @@ export class NuevaAtencionComponent implements OnInit {
 
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
+
   }
 
   search = (text$: Observable<string>) =>
@@ -64,6 +65,7 @@ export class NuevaAtencionComponent implements OnInit {
      
     );
   formatter = (x: {rut: string, check_digit:string}) => x.rut + '-' + x.check_digit;
+  
 
   public id:number;
 
@@ -108,7 +110,7 @@ export class NuevaAtencionComponent implements OnInit {
           this.workingInformation = datos;
           localStorage.setItem('workingInformation', JSON.stringify(datos));
         } 
-        $("form *").prop("disabled",false);     
+        $("form.formNuevaAtencion *").prop("disabled",false);       
       },
       error => {
           console.log(<any>error);
