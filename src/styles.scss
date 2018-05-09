@@ -711,6 +711,11 @@ table {
          margin-bottom: 0px;
      }
  }
+
+ .dropdown-item {
+     cursor: pointer;
+ }
+ 
  .listDoc {
      padding: 0px;
      li{
