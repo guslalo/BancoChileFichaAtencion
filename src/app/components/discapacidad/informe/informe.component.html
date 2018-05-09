@@ -121,102 +121,11 @@
        </div> <!-- /contenido-->
 
        <!--sidebar  -->
-       <div class="col-12 col-md sideRight">
-          <div class="ficha">
-            <h4 class="font-weight-bold">Ficha del trabajador</h4>
-            <hr>
-            <h5 class="mb-3">Información personal</h5>
-            <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Género</span>
-                            <p>Masculino</p>
-                        </td>
-                        <td>
-                            <span>Tel celular</span>
-                            <p>(+569) 78598358</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Fecha de nacimiento</span>
-                          <p>8 Febrero de 1986</p>
-                        </td>
-                        <td>
-                            <span>Email</span>
-                            <p>r.ramirez@gmail.com</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Previsión</span>
-                            <p>Isapre Colmena</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <h5 class="mb-3">Cargas</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Hijo - Daniel Ramírez</span>
-                            <p>(20.259.987-7)</p>
-                        </td>
-                        <td>
-                            <span>Cónyugue - Patricia Jara</span>
-                            <p>(14.259.987-7)</p>
-                        </td>
-                      </tr>
-                    
-                      
-                    </tbody>
-                  </table>
-              </div>
-              <hr>
-              <h5 class="mb-3">Información Laboral</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Email</span>
-                            <p>ramirez@bancochile.cl</p>
-                        </td>
-                        <td>
-                            <span>Departamento</span>
-                            <p>Marketing Empresas</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Tel Oficina</span>
-                            <p>(+562) 25687878</p>
-                        </td>
-                        <td>
-                            <span>Cargo</span>
-                            <p>Jefe Marketing</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Sucursal</span>
-                            <p>Estado</p>
-                        </td>
-                        <td>
-                            <span>Direccion Sucrusal</span>
-                            <p>Estado 123, santiago.</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-          </div>
-       </div><!--/sidebar  -->
+    <div class="col-12 col-md sideRight">
+        <app-ficha-sidebar 
+          [workingInformation]="workingInformation">
+        </app-ficha-sidebar>
+    </div><!--/sidebar  -->
     </div>
   </div>
   

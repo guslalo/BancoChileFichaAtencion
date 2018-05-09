@@ -23,6 +23,7 @@ export class InformeComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
 
+  workingInformation: JSON;
   
   public loading = false;
   public loadingComplete = false;
@@ -56,6 +57,10 @@ export class InformeComponent implements OnInit {
 
   
   ngOnInit() {
+    if (localStorage.getItem("workingInformation")) {
+      this.workingInformation = JSON.parse(localStorage.getItem("workingInformation"));
+    }
+    
     this.subscription = this.FormsService.getFormulario('informe-discapacidad').subscribe(
       
       data => {
@@ -81,21 +86,28 @@ export class InformeComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-
-
-  formPost() {
+  formPost(url) {
     this.loading = true;
-    
+    let employee: JSON;
+    employee = JSON.parse(localStorage.getItem("employee"));
     let formulario = {
-      patient: 1,
-      attention_date: $("#ficha-atencion").val(),
+      patient: employee['id'],
+      attention_date: $("#fecha-atencion").val(),
       attentionRequest: [],
-      elements: $("form#informeForm").serializeArray(),
+      elements: $(".fichaAtencion form").serializeArray(),
+      files: []
     }
 
     this.FormsService.formPost(formulario).subscribe(
-      (res:Response) => {
-       // this.router.navigate(['/informe-discapacidad']);
+      (res) => {
+        if(url == '/'){
+          localStorage.removeItem('medicalAttention');
+          localStorage.removeItem("workingInformation");
+          localStorage.removeItem("employee");
+        }else{
+          localStorage.setItem('medicalAttention', JSON.stringify(res));
+        }
+        this.router.navigate([url]);
       },
       error => {
         console.log(error)

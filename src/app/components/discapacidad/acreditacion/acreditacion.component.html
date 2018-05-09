@@ -75,9 +75,9 @@
           <div class="boxloader" *ngIf="isLoading">
             <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
           </div><!-- loader -->
-          <form id="acreditacionForm" (ngSubmit)="formPost()" ngNativeValidate>
-            <div [innerHtml]="MyForm"> </div>
-        
+          <form id="acreditacionForm" (ngSubmit)="formPost('/informe-discapacidad')" ngNativeValidate>
+            <div [innerHtml]="MyForm">
+            </div>
             <div class="form-row">
               <div class="form-group col-12 col-md-4">
                 <div class="col text-right">

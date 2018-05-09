@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { FormService } from '../../../services/servicios.service';
 import HtmlTreeService from '../../../services/html-tree.service';
@@ -15,6 +16,7 @@ import {Location} from '@angular/common';
   providers:[FormService]
 })
 
+
 export class AcreditacionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
@@ -22,9 +24,11 @@ export class AcreditacionComponent implements OnInit {
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
-
+  public files:Array<any>
   workingInformation: JSON;
   
+  @ViewChild('fileInput') fileInput: ElementRef;
+
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router, private _location: Location) {
 
   }
@@ -51,13 +55,18 @@ export class AcreditacionComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        this.setTime();
+        this.setTime(data);
+        if (localStorage.getItem("medicalAttention")) {
+          let medicalAttention: JSON;
+          medicalAttention = JSON.parse(localStorage.getItem("medicalAttention"));
+          this.loadValuesForm(medicalAttention['patient']);
+        }
       },
       error => {
           console.log(<any>error);
       }
     );
- 
+    
   }
 
 
@@ -66,33 +75,82 @@ export class AcreditacionComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  setTime(){
+  loadValuesForm(id){
+    this.subscription = this.FormsService.getElementsValues(id).subscribe( 
+      data => {
+        let element
+        for(let son of data){
+          element = document.getElementById(son.attribute['id_element'])
+          element.value = son.value
+        }
+      },
+      error => {
+          console.log(<any>error);
+      }
+    );
+  }
+
+  setTime(data){
     setTimeout(function(){
       //input-file
       $(".custom-file-input").change(function(){
          $(this).siblings("label").html($(this).val().replace(/^.*\\/, ""));
       })
 
-      $(".input-group-text").click(function(){
-        $("#fila4-group1-dp").click();
+      $("input[type='file']").change(function(event){
+        
+        let reader = new FileReader();
+        let file_n = {}
+        if(event.target['files'] && event.target['files'].length > 0) {
+          let file = event.target['files'][0];
+          reader.readAsDataURL(file);
+          reader.onload = (res) => {
+            var a = [];
+            if(localStorage.getItem('files')){
+              a = JSON.parse(localStorage.getItem('files'));
+            }
+            file_n = {
+              id_element: this.id,
+              filename: file.name,
+              filetype: file.type,
+              value: reader.result.split(',')[1]
+            }
+            a.push(file_n);
+            console.log(a)
+            localStorage.setItem('files', JSON.stringify(a));
+          };
+        }
       })
 
     },0);
   }
 
-  formPost() {
+  formPost(url) {
     this.loading = true;
-    
+    let employee: JSON;
+    employee = JSON.parse(localStorage.getItem("employee"));
+
     let formulario = {
-      patient: 1,
-      attention_date: $("#ficha-atencion").val(),
+      patient: employee['id'],
+      attention_date: false,
       attentionRequest: [],
-      elements: $("form#acreditacionForm").serializeArray(),
+      elements: $("#acreditacionForm").serializeArray(),
+      files: this.files = JSON.parse(localStorage.getItem('files'))
     }
 
     this.FormsService.formPost(formulario).subscribe(
-      (res:Response) => {
-        this.router.navigate(['/informe-discapacidad']);
+      (res) => {
+        console.log(res)
+        localStorage.removeItem("files");
+        if(url == '/'){
+          localStorage.removeItem('medicalAttention');
+          localStorage.removeItem("workingInformation");
+          localStorage.removeItem("employee");
+          localStorage.removeItem("files");
+        }else{
+          localStorage.setItem('medicalAttention', JSON.stringify(res));
+        }
+        this.router.navigate([url]);
       },
       error => {
         console.log(error)

@@ -39,7 +39,6 @@ export class NuevaAtencionComponent implements OnInit {
   MyForm: SafeHtml;
   subscription;
   model: any;
-  employee: Array<any>;
 
   workingInformation: JSON;
 
@@ -103,7 +102,7 @@ export class NuevaAtencionComponent implements OnInit {
 
   // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
   cargarDatos(currentEmployee){
-    this.employee = currentEmployee;
+    localStorage.setItem('employee', JSON.stringify(currentEmployee));
     this.subscription = this.FormsService.trabajadoresInfo(currentEmployee.id).subscribe( 
       data => {
         for(let datos of data['results']){
@@ -167,18 +166,22 @@ export class NuevaAtencionComponent implements OnInit {
 
   formPost(url) {
     this.loading = true;
-    
+    let employee: JSON;
+    employee = JSON.parse(localStorage.getItem("employee"));
     let formulario = {
-      patient: this.employee['id'],
+      patient: employee['id'],
       attention_date: $("#fecha-atencion").val(),
       attentionRequest: [],
       elements: $(".fichaAtencion form").serializeArray(),
+      files: []
     }
 
     this.FormsService.formPost(formulario).subscribe(
       (res) => {
         if(url == '/'){
-          localStorage.clear();
+          localStorage.removeItem('medicalAttention');
+          localStorage.removeItem("workingInformation");
+          localStorage.removeItem("employee");
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }
