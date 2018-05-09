@@ -379,11 +379,7 @@ $ColorDAzul:#5A9AD1;
   
 }
 .boxCuerpo .container-fluid.cuerpo {
-    -webkit-animation: fadein 0.75s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 0.75s; /* Firefox < 16 */
-     -ms-animation: fadein 0.75s; /* Internet Explorer */
-      -o-animation: fadein 0.75s; /* Opera < 12.1 */
-         animation: fadein 0.75s;
+  
 }
 
 @keyframes fadein {
