@@ -7,8 +7,11 @@ import { Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class MensajeriaComponent implements OnInit {
+  public isCollapsed:boolean;
+  constructor() { 
 
-  constructor() { }
+   this.isCollapsed = false;
+  }
 
   ngOnInit() {
   }

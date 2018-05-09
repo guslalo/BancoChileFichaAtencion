@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mensajeria-detalle.component.scss']
 })
 export class MensajeriaDetalleComponent implements OnInit {
-
+  public isCollapsed = false;
   constructor() { }
 
   ngOnInit() {

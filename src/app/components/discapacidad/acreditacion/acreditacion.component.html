@@ -5,7 +5,7 @@
       <!-- navegacion y guardar -->
       <div class="row">
         <div class="col-12 col-md-2  mb-3 mb-md-0">
-          <button type="button" class="btn btn-outline-secondary btnMobile" (click)="goBack()"> <!--btn-link -->
+          <button type="button" class="btn btn-outline-secondary btnMobile"> <!--btn-link -->
             <i class="material-icons align-top">clear</i> Cancelar
           </button>  
         </div>
@@ -73,10 +73,8 @@
             <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
           </div><!-- loader -->
           <form id="acreditacionForm" (ngSubmit)="formPost()" ngNativeValidate>
-            <div [innerHtml]="MyForm">
+            <div [innerHtml]="MyForm"> </div>
         
-            </div>
-            
             <div class="form-row">
               <div class="form-group col-12 col-md-4">
                 <div class="col text-right">

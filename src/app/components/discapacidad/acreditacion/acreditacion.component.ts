@@ -51,24 +51,33 @@ export class AcreditacionComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        this.setTime(data);
+        this.setTime();
       },
       error => {
           console.log(<any>error);
       }
     );
+ 
   }
+
+
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 
-  setTime(data){
+  setTime(){
     setTimeout(function(){
       //input-file
       $(".custom-file-input").change(function(){
          $(this).siblings("label").html($(this).val().replace(/^.*\\/, ""));
       })
+
+      $("#fila4-group1-dp-append").on("click",function(){
+        $("#fila4-group1-inputgroup input").click();
+      });
+
+    
 
     },0);
   }
@@ -93,4 +102,7 @@ export class AcreditacionComponent implements OnInit {
       }
     );
   }
+
+
+ 
 }
