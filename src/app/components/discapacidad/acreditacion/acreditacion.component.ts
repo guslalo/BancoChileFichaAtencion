@@ -73,11 +73,9 @@ export class AcreditacionComponent implements OnInit {
          $(this).siblings("label").html($(this).val().replace(/^.*\\/, ""));
       })
 
-      $("#fila4-group1-dp-append").on("click",function(){
-        $("#fila4-group1-inputgroup input").click();
-      });
-
-    
+      $(".input-group-text").click(function(){
+        $("#fila4-group1-dp").click();
+      })
 
     },0);
   }

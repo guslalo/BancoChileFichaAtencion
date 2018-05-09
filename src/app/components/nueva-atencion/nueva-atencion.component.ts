@@ -52,7 +52,7 @@ export class NuevaAtencionComponent implements OnInit {
 
 
   constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
-
+    
   }
 
   search = (text$: Observable<string>) =>
