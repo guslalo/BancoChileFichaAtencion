@@ -15,8 +15,12 @@
     left: 0px;
     z-index: 99;
     top: 0px;
-    background: #194d87;
     height: 100%;
+    background: rgb(15,72,130); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgb(15,72,130) 0%, rgb(6,58,116) 100%); 
+    background: -webkit-linear-gradient(-45deg, rgb(15,72,130) 0%,rgb(6,58,116) 100%); 
+    background: linear-gradient(135deg, rgb(15,72,130) 0%,rgb(6,58,116) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4882', endColorstr='#063a74',GradientType=1 ); 
   label {
       width: 100%;
       text-align: left;
@@ -26,8 +30,11 @@
       width: 350px;
       text-align: center;
       height:350px;
-      margin-top: 15%;
-      //display: flex !important;
+      margin-top: 13%;
+      .cont {
+        -webkit-box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.05);
+        box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.05);
+      }
       * {   
         /*flex-shrink: 0;
         flex-grow: 1;*/
@@ -36,4 +43,41 @@
           text-align: left;
       }
   }
+}
+
+#login form {
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
