@@ -32,9 +32,15 @@
           <div class="col-12 col-sm-12 col-md">
             <h5>
               <span class="align-middle">Nueva atención</span> - 
-              <span class="font-weight-bold align-middle" *ngIf="model">
-                {{model['first_name']}} {{model['last_name']}} ({{model['rut']}} - {{model['check_digit']}} )  
-              </span>
+              <span class="font-weight-bold align-middle" *ngIf="model; else templateName">
+                {{model['first_name']}} {{model['last_name']}} ({{model['rut']}}-{{model['check_digit']}} )  
+              </span>     
+              <ng-template #templateName>
+                <span class="font-weight-bold align-middle uppercaseFirst">
+                  {{workingInformation.professional.first_name}} {{workingInformation.professional.last_name}} 
+                  ({{workingInformation.professional.rut}}-{{workingInformation.professional.check_digit}} )
+                </span>
+              </ng-template>
             </h5>
           </div>
          
