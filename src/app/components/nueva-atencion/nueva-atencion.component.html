@@ -5,8 +5,8 @@
      <div class="col-12 col-md-8 contenidoRight">
         <div class="row">
           <div class="col-12 col-md-9">
-            <button type="button" class="btn btn-outline-secondary btnMobile  mb-3 mb-md-0">
-              <i class="material-icons align-top">clear</i> Cancelar
+            <button type="button" class="btn btn-outline-secondary btnMobile  mb-3 mb-md-0" routerLink="/">
+              <i class="material-icons align-top">clear</i> Cerrar
             </button>
           </div>
           <div class="col">
@@ -74,9 +74,8 @@
 
     <!--sidebar  -->
     <div class="col-12 col-md sideRight">
-        <app-ficha-sidebar 
-          [workingInformation]="workingInformation">
-        </app-ficha-sidebar>
+      <app-ficha-sidebar [workingInformation]="workingInformation">
+      </app-ficha-sidebar>
     </div><!--/sidebar  -->
      
   </div>

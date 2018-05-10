@@ -5,16 +5,11 @@
           <!-- navegacion y guardar -->
           <div class="row">
               <div class="col-12 col-md-2">
-                <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md"> <!--btn-link -->
-                  <i class="material-icons align-top">clear</i> Cancelar
+                <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md" routerLink="/nueva-atencion"> <!--btn-link -->
+                  <i class="material-icons align-top">chevron_left</i> Volver
                 </button>  
               </div>
-              <div class="col-12 col-md-4">
-                  <button type="button" class="btn btn-outline-secondary btn-block mb-3 mb-md"  routerLink="/nueva-atencion">
-                    <i class="material-icons align-top">chevron_left</i> 
-                    Volver al formulario general
-                  </button>
-              </div>
+          
               <div class="col">
                   <button type="button" class="btn btn-success float-right btnMobile">
                     <i class="material-icons align-top">save</i>
@@ -30,19 +25,6 @@
                   </span>
                 </h4>
                 <p>Formulario de caso discapacidad</p>
-              </div>
-              <div class="col-12 col-md-3">
-                  <div ngbDropdown class="d-inline-block btnMobile">
-                    <button class="btn btn-outline-secondary btnMobile" id="dropdownBasic1" ngbDropdownToggle>
-                      <i class="material-icons align-top">share</i>
-                      Opciones informe
-                    </button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button class="dropdown-item" routerLink="/ver-informe">Ver Informe</button>
-                      <button class="dropdown-item">Mensajería</button>
-                      <button class="dropdown-item">Descargar</button>
-                    </div>
-                  </div>
               </div>
           </div>
           <!-- pasos generales -->
@@ -76,14 +58,9 @@
             </div>
           </div><!-- pasos generales -->
           <!-- titulos -->
-          <div class="row mt-4">
+          <div class="row mt-3 mb-1">
             <div class="col">
-              <h5 class="font-weight-semi-bold">Informe de discapacidad</h5>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col">
-              <h6 class="font-weight-semi-bold">1- Diagnóstico</h6>
+              <h6 class="font-weight-semi-bold">Diagnóstico</h6>
             </div>
           </div><!-- titulos -->
   

@@ -5,15 +5,9 @@
       <!-- navegacion y guardar -->
       <div class="row">
         <div class="col-12 col-md-2  mb-3 mb-md-0">
-          <button type="button" class="btn btn-outline-secondary btnMobile"> <!--btn-link -->
-            <i class="material-icons align-top">clear</i> Cancelar
+          <button type="button" class="btn btn-outline-secondary btnMobile" (click)="backClicked()"> <!--btn-link -->
+            <i class="material-icons align-top">chevron_left</i> Volver
           </button>  
-        </div>
-        <div class="col-12 col-md-4">
-          <button type="button" class="btn btn-outline-secondary btn-block mb-3 mb-md-0"  (click)="backClicked()">
-            <i class="material-icons align-top">chevron_left</i> 
-            Volver al formulario general
-          </button>
         </div>
         <div class="col">
           <button type="button" class="btn btn-success float-right btnMobile">
@@ -80,7 +74,7 @@
             </div>
             <div class="form-row">
               <div class="form-group col-12 col-md-4">
-                <div class="col text-right">
+                <div class="col text-right pl-0">
                   <button class="btn btn-info text-truncate btnMobile"  type="submit">
                     <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
                     Continuar informe de discapacidad
