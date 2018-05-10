@@ -143,17 +143,15 @@ export class NuevaAtencionComponent implements OnInit {
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
     setTimeout(function(){
-      //switch
-      $(".switch").change(function(){
+      //switch /*
+      $("#fila6 .switch").change(function(){
         $(this).toggleClass("checked");
         $(".switch.checked").click();
-
         if ($(".switch.checked").is(":checked")){
           $('#nueva-btn-completar-discapacidad').prop("disabled",false);
         }else{
           $('#nueva-btn-completar-discapacidad').attr("disabled");
-        }
-          
+        }    
       });
 
       //editar resumen

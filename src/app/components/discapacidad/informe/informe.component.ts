@@ -38,11 +38,15 @@ export class InformeComponent implements OnInit {
  
    }
   open(content) {
+    
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
+  
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      
     });
+    this.setTime();
   }
 
   private getDismissReason(reason: any): string {
@@ -81,6 +85,13 @@ export class InformeComponent implements OnInit {
           console.log(<any>error);
       }
     );
+
+    $(".prioridad").on("click",function(){
+      alert("test");
+    });
+    this.setTime();
+
+    
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -115,4 +126,17 @@ export class InformeComponent implements OnInit {
       }
     );
   }
+
+
+  setTime(){
+    setTimeout(function(){
+      $(".dropdown-item").on("click",function(){
+        var replaced = $(this).text();
+        console.log(replaced);
+        $("#prioriodad").text("replaced");
+      });
+    },0);
+  }
+
+
 }

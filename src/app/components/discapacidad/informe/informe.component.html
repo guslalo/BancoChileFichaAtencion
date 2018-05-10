@@ -145,38 +145,16 @@
                     <input type="text" class="form-control" id="inputPassword" placeholder="">
                 </div>
                 <div class="col-sm-2">
-                    <div ngbDropdown>
-                      <button class="btn btn-outline-info btn-block mt-md mb-md" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button><!--  mt-3 mb-3-->
-                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad amarillo"></div>
-                          </div>
-                          Moderada
-                        </button>
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad verde"></div>
-                          </div>
-                          Baja
-                        </button>
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad rojo"></div>
-                          </div>
-                          Alta
-                        </button>
-                      </div>
-                    </div>
+                    <select class="custom-select">
+                        <option selected> Prioridad</option>
+                        <option value="1">Moderada</option>
+                        <option value="2">Baja</option>
+                        <option value="3">Alta</option>
+                      </select>
                   </div>
                   <div class="col-sm-3">
                     <div class="input-group">
-                        <input class="form-control" placeholder="Fecha vencimiento" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                        <div class="input-group-append">
-                          <button class="input-group-text " (click)="d.toggle()" type="button">
-                            <i class="material-icons">date_range</i>
-                          </button> 
-                        </div>
+                        <input class="form-control" placeholder="Fecha vencimiento" type="date">
                       </div> 
                 </div>
             </div>
