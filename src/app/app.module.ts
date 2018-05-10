@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpHeaders } from "@angular/common/http";
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { appRouters, routing } from "./app.routing";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -63,7 +64,8 @@ import { AuthGuard } from './services/auth.guard';
     HttpClientModule,
     BootstrapSwitchModule.forRoot(),
     BrowserAnimationsModule,
-    LoadersCssModule  
+    LoadersCssModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     AuthGuard,

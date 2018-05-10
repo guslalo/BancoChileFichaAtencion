@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/map'
 
- const url = 'https://rinnolab.cl'
-//const url = 'http://localhost:8000'
+// const url = 'https://rinnolab.cl'
+const url = 'http://localhost:8000'
 
 @Injectable()
 export class FormService {
@@ -21,6 +21,11 @@ export class FormService {
 
   getEmployeesList(query: string): Observable<any>{
     return this.http.get(url+'/assistance/api/employeesList/?search_string=' + query)
+    .map((response: Response) => <any>response['results'])
+  }
+
+  getManagerList(): Observable<any>{
+    return this.http.get(url+'/assistance/api/managerList/')
     .map((response: Response) => <any>response['results'])
   }
 

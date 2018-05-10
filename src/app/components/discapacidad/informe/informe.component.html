@@ -20,11 +20,13 @@
           <div class="row mt-5">
               <div class="col-12 col-md-9">
                 <h4>
-                  <span class="align-middle">Nueva atención</span> - <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4) 
-                    <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
-                  </span>
+                    <span class="align-middle">Formulario de discapacidad</span> - 
+                    <span class="font-weight-bold align-middle ">
+                      <span class="uppercaseFirst" *ngIf="workingInformation">{{workingInformation.professional.first_name}} {{workingInformation.professional.last_name}} 
+                      ({{workingInformation.professional.rut}}-{{workingInformation.professional.check_digit}} )</span>
+                      <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
+                    </span>
                 </h4>
-                <p>Formulario de caso discapacidad</p>
               </div>
           </div>
           <!-- pasos generales -->
@@ -71,7 +73,7 @@
                 <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
               </div><!-- loader -->
               
-              <form id="informeForm" (ngSubmit)="formPost()" ngNativeValidate>
+              <form id="informeForm" (ngSubmit)="formPost('/informe-discapacidad',content)" ngNativeValidate>
                 <div [innerHtml]="MyForm">
             
                 </div>
@@ -83,7 +85,7 @@
                     </button>  
                   </div>
                   <div class="col text-right">
-                      <button class="btn btn-info text-truncate btnMobile"  type="button" (click)="open(content)">
+                      <button class="btn btn-info text-truncate btnMobile"  type="submit">
                         <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
                         Solicitar revisión al gestor
                       </button>
@@ -110,7 +112,7 @@
   <ng-template #content let-c="close" let-d="dismiss" >
       <div class="modal-header">
         <h4 class="modal-title">Solicitud de revisión</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -119,7 +121,15 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-1 col-form-label">Para</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                    <!--input type="text" class="form-control" id="inputPassword" placeholder=""-->
+                    <ng-multiselect-dropdown 
+                        [ngModelOptions]="{standalone: true}"
+                        [placeholder]="placeholder"
+                        [data]="dropdownList"
+                        [(ngModel)]="selectedItems"
+                        [settings]="dropdownSettings"
+                    >
+                    </ng-multiselect-dropdown>
                 </div>
                 <div class="col-sm-2">
                     <select class="custom-select">
@@ -146,7 +156,7 @@
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck5">
                         <label class="custom-control-label" for="customCheck5">
-                          Invitar a Jorge a ver <span class="font-weight-semi-bold">informe de discapacidad Rodrigo Ramirez</span>
+                          Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
                         </label>
                       </div>
                 </div>
@@ -197,7 +207,7 @@
         <button type="button" class="btn btn-outline-dark btnMobile" (click)="c('Close click')">
           Cancelar
         </button>
-        <button type="button" class="btn btn-success btnMobile" (click)="c('Close click')" routerLink="/respuesta-gestor-discapacidad">
+        <button type="button" class="btn btn-success btnMobile" (click)="enviarSolicitudGestor()" routerLink="/respuesta-gestor-discapacidad">
           Enviar <i class="material-icons align-middle">send</i>
         </button>
       </div>
