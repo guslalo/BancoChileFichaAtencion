@@ -17,8 +17,7 @@ import { Router } from '@angular/router';
   providers:[FormService]
 })
 export class InformeComponent implements OnInit {
-    
-  //colapsable antecedentes
+  
   public isCollapsed = true;
   MyForm: SafeHtml;
   subscription;
@@ -29,38 +28,31 @@ export class InformeComponent implements OnInit {
   public loadingComplete = false;
   public isLoading = true ;
 
-  //modal
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  placeholder = 'Seleccionar Gestor(es)';
+
   closeResult: string;
   constructor(private modalService: NgbModal, private router: Router, private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
-
-
-   //this.switch = new Array<switchForm>();
- 
-   }
-  open(content) {
-    
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-  
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      
-    });
-    this.setTime();
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+  enviarSolicitudGestor() {
+    console.log("Perfecto!!!!")
   }
 
-  
   ngOnInit() {
+    this.FormsService.getManagerList().subscribe(data => this.dropdownList = data);
+    this.dropdownSettings = {
+        singleSelection: false,
+        idField: 'id',
+        textField: 'full_name',
+        selectAllText: 'Seleccionar Todos',
+        unSelectAllText: 'Deseleccionar Todos',
+        itemsShowLimit: 3,
+        allowSearchFilter: true,
+        searchPlaceholderText: 'Introduzca nombre o apellido para buscar'
+    };
     if (localStorage.getItem("workingInformation")) {
       this.workingInformation = JSON.parse(localStorage.getItem("workingInformation"));
     }
@@ -93,19 +85,20 @@ export class InformeComponent implements OnInit {
 
     
   }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 
-  formPost(url) {
+  formPost(url,content) {
     this.loading = true;
     let employee: JSON;
     employee = JSON.parse(localStorage.getItem("employee"));
     let formulario = {
       patient: employee['id'],
-      attention_date: $("#fecha-atencion").val(),
+      attention_date: false,
       attentionRequest: [],
-      elements: $(".fichaAtencion form").serializeArray(),
+      elements: $("#informeForm").serializeArray(),
       files: []
     }
 
@@ -118,13 +111,15 @@ export class InformeComponent implements OnInit {
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }
-        this.router.navigate([url]);
+        this.modalService.open(content)
       },
       error => {
         console.log(error)
         this.loading = false;
       }
     );
+
+    
   }
 
 
