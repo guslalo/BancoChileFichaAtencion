@@ -2,6 +2,7 @@
   <div class="row"> 
      <!--contenido  -->
      <div class="col-12 col-md-8 contenidoRight">
+        <!--guardar y cerrar-->
         <div class="row">
           <div class="col-12 col-md-9">
             <button type="button" class="btn btn-outline-secondary btnMobile  mb-3 mb-md-0" routerLink="/">
@@ -14,19 +15,20 @@
               Guardar y cerrar
             </button>
           </div>
-        </div>
+        </div><!--/guardar y cerrar-->
+        
+        <!--titulo user rut-->
         <div class="row mt-4 mt-md-5">
            <!-- buscador rut-->
           <div class="col-3 pr-0">
-              <form name="buscarTrabajador" ngNativeValidate>
-                <input id="typeahead-template" [ngModelOptions]="{standalone: true}" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" required/>
-                <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>
-                <ng-template #rt let-r="result" let-t="term">
-                  {{ r.first_name}} {{ r.last_name}}
-                </ng-template>
-              </form>
-          </div><!--/buscador rut-->
-          
+            <form name="buscarTrabajador" ngNativeValidate>
+              <input id="typeahead-template" [ngModelOptions]="{standalone: true}" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" required/>
+              <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>
+              <ng-template #rt let-r="result" let-t="term">
+                {{ r.first_name}} {{ r.last_name}}
+              </ng-template>
+            </form>
+          </div><!--/buscador rut-->     
           <div class="col-12 col-sm-12 col-md">
             <h4>
               <span class="align-middle">Nueva atención</span> - 
@@ -40,8 +42,8 @@
                 </span>
               </ng-template>
             </h4>
-          </div>  
-        </div>
+          </div>
+        </div><!--/titulo user rut--> 
 
         <div class="row mt-4">
           <div class="col">
