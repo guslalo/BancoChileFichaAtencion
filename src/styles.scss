@@ -368,12 +368,8 @@ $ColorDAzul:#5A9AD1;
     }
 
 }
-.prevnext {
-   
-}
-.btn-primary {
-    //background: red;
-}
+
+
 .cuerpo {
     padding-top: 30px;
   
@@ -873,15 +869,24 @@ table {
     outline: 0;
     box-shadow: none;
 }
-/*
-:required {
-    background: red;
-  }*/
- 
-form{/*
-  input:valid, textarea:valid, select:valid{
-    @extend .valid;
-  }*/
+
+#informe-row-acordion {
+    .form-check{
+        padding-left:7px;
+    }
+}
+
+.previsualizarAntecedentes {
+    cursor: pointer;
+}
+
+#informe-text-seleccion-beneficios{
+    margin-bottom: 12px;
+    margin-top: 10px;
+    @extend .font-weight-semi-bold;
+}
+form{
+
   #parrafo-caso:valid {
     @extend .noRequired;
   }

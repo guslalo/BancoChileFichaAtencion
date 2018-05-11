@@ -36,12 +36,11 @@ var trabajadores;
 })
 
 export class NuevaAtencionComponent implements OnInit {
+  
   MyForm: SafeHtml;
   subscription;
   model: any;
-
   workingInformation: JSON;
-
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
@@ -60,11 +59,9 @@ export class NuevaAtencionComponent implements OnInit {
     .distinctUntilChanged()
     .do((text) => console.log())
     .switchMap(term =>
-      this.FormsService.getEmployeesList(term)
-     
+      this.FormsService.getEmployeesList(term)  
     );
   formatter = (x: {rut: string, check_digit:string}) => x.rut + '-' + x.check_digit;
-  
 
   public id:number;
 
@@ -94,10 +91,9 @@ export class NuevaAtencionComponent implements OnInit {
         }
       },
       error => {
-          console.log(<any>error);
+        console.log(<any>error);
       }
-    );
-    
+    );   
   }
 
   // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
@@ -112,17 +108,13 @@ export class NuevaAtencionComponent implements OnInit {
         $("form.formNuevaAtencion *").prop("disabled",false);  
         $("#nueva-btn-completar-discapacidad").attr("disabled", 'disabled');
         $("#fila8 input").attr("disabled", 'disabled');  
-        $(".btnAceptar").attr("disabled", 'disabled'); 
-            
+        $(".btnAceptar").attr("disabled", 'disabled');           
       },
       error => {
           console.log(<any>error);
       }
     );
-
-    this.loadValuesForm(currentEmployee.id)
-
-    
+    this.loadValuesForm(currentEmployee.id)  
   }
 
   loadValuesForm(id){
@@ -146,8 +138,7 @@ export class NuevaAtencionComponent implements OnInit {
 
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
-    setTimeout(function(){
-    
+    setTimeout(function(){  
       $(".switch").change(function(){
         //toggle class checked general
         $(this).toggleClass("checked");    

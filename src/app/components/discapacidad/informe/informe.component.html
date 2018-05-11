@@ -4,32 +4,31 @@
        <div class="col-12 col-md-8 contenidoRight">
           <!-- navegacion y guardar -->
           <div class="row">
-              <div class="col-12 col-md-2">
-                <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md" routerLink="/nueva-atencion"> <!--btn-link -->
-                  <i class="material-icons align-top">chevron_left</i> Volver
-                </button>  
-              </div>
-          
-              <div class="col">
-                  <button type="button" class="btn btn-success float-right btnMobile">
-                    <i class="material-icons align-top">save</i>
-                    Guardar y cerrar
-                  </button>
-              </div>
-            </div><!-- /navegacion y guardar -->
-          <div class="row mt-5">
-              <div class="col-12 col-md-9">
-                <h4>
-                    <span class="align-middle">Formulario de discapacidad</span> - 
-                    <span class="font-weight-bold align-middle ">
-                      <span class="uppercaseFirst" *ngIf="workingInformation">{{workingInformation.professional.first_name}} {{workingInformation.professional.last_name}} 
-                      ({{workingInformation.professional.rut}}-{{workingInformation.professional.check_digit}} )</span>
-                      <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
-                    </span>
-                </h4>
-              </div>
+            <div class="col-12 col-md-2">
+              <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md" routerLink="/acreditacion-discapacidad">
+                <i class="material-icons align-top">chevron_left</i> Volver
+              </button>  
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-success float-right btnMobile">
+                <i class="material-icons align-top">save</i>
+                Guardar y cerrar
+              </button>
+            </div>
+          </div><!--/navegacion y guardar -->
+          <div class="row mt-2 mb-3 mb-md-3">
+            <div class="col-12 col-md-12">
+              <h4>
+                <span class="align-middle">Formulario de discapacidad</span> - 
+                <span class="font-weight-bold align-middle ">
+                  <span class="uppercaseFirst" *ngIf="workingInformation">{{workingInformation.professional.first_name}} {{workingInformation.professional.last_name}} 
+                  ({{workingInformation.professional.rut}}-{{workingInformation.professional.check_digit}} )</span>
+                  <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
+                </span>
+              </h4>
+            </div>
           </div>
-          <!-- pasos generales -->
+          <!--pasos generales -->
           <div class="row pasos">
             <div class="col-12 col-md pr-md-0 mt-4 mt-md-0">
               <div class="pasoCompleto">
@@ -58,135 +57,128 @@
                 </div>
               </div>
             </div>
-          </div><!-- pasos generales -->
+          </div><!--/pasos generales -->
           <!-- titulos -->
           <div class="row mt-3 mb-1">
             <div class="col">
               <h6 class="font-weight-semi-bold">Diagnóstico</h6>
             </div>
-          </div><!-- titulos -->
+          </div><!--/titulos -->
   
           <div class="row">
             <div class="col">
-              <!-- loader -->
+              <!--loader -->
               <div class="boxloader" *ngIf="isLoading">
                 <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
               </div><!-- loader -->
               
               <form id="informeForm" (ngSubmit)="formPost(content)" ngNativeValidate>
                 <div [innerHtml]="MyForm">
-            
-                </div>
-                 <!--paso anterior siguiente-->
-                 <div class="row prevnext">
-                  <div class="col text-left">
-                    <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md" routerLink="/acreditacion-discapacidad"> <!--btn-link -->
-                      <i class="material-icons align-middle">chevron_left</i> paso anterior
-                    </button>  
-                  </div>
+                </div><!--/dinamyc form-->
+                <!--paso anterior siguiente-->
+                <div class="row prevnext">
                   <div class="col text-right">
-                      <button class="btn btn-info text-truncate btnMobile"  type="submit">
-                        <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
-                        Solicitar revisión al gestor
-                      </button>
+                    <button class="btn btn-info text-truncate btnMobile"  type="submit">
+                      <i class="material-icons icono coloresDiscapcidad  align-middle">accessible</i>
+                      Solicitar revisión al gestor
+                    </button>
                   </div>
-              </div><!--/paso anterior siguiente-->
-              </form>
-
-               
+                </div><!--/paso anterior siguiente-->
+              </form><!--/form-->  
             </div>
-          </div>
-  
-       </div> <!-- /contenido-->
-
-       <!--sidebar  -->
-    <div class="col-12 col-md sideRight">
-        <app-ficha-sidebar 
-          [workingInformation]="workingInformation">
-        </app-ficha-sidebar>
-    </div><!--/sidebar  -->
+          </div> 
+       </div> <!--/contenido-->
+      <!--sidebar  -->
+      <div class="col-12 col-md sideRight">
+          <app-ficha-sidebar 
+            [workingInformation]="workingInformation">
+          </app-ficha-sidebar>
+      </div><!--/sidebar  -->
     </div>
   </div>
   
-  <!--modal  -->
-  <ng-template #content let-c="close" let-d="dismiss" >
-      <div class="modal-header">
-        <h4 class="modal-title">Solicitud de revisión</h4>
-        <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form id="modalForm" (ngSubmit)="modalPost('/respuesta-gestor-discapacidad')" ngNativeValidate>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-1 col-form-label">Para</label>
-                <div class="col-sm-6">
-                    <!--input type="text" class="form-control" id="inputPassword" placeholder=""-->
-                    <ng-multiselect-dropdown 
-                        [ngModelOptions]="{standalone: true}"
-                        [placeholder]="placeholder"
-                        [data]="dropdownList"
-                        [(ngModel)]="selectedItems"
-                        [settings]="dropdownSettings"
-                    >
-                    </ng-multiselect-dropdown>
-                </div>
-                <div class="col-sm-2">
-                    <select name="prioridad" id="prioridad" class="custom-select">
-                        <option selected> Prioridad</option>
-                        <option value="1">Moderada</option>
-                        <option value="2">Baja</option>
-                        <option value="3">Alta</option>
-                      </select>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="input-group">
-                        <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
-                      </div> 
-                </div>
+  <!--modal-->
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Solicitud de revisión</h4>
+      <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--modal body-->
+    <div class="modal-body">
+      <!--form modal-->
+      <form validate>
+        <div class="form-group row">
+          <label for="para" class="col-1 col-form-label">Para</label>
+          <div class="col-sm-11">
+            <ng-multiselect-dropdown
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="placeholder"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
+              [settings]="dropdownSettings"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="prioridad" class="col-12 col-md-1 col-form-label">Prioridad</label>
+          <div class="col-sm-3" id="">
+            <select class="custom-select" name="prioridad" id="prioridad">
+              <option selected> -- Seleccione -- </option>
+              <option value="1">Alta</option>
+              <option value="2">Media</option>
+              <option value="3">Baja</option>
+            </select>
+          </div>
+          <label for="fecha_vencimiento" class="col-12 col-md-3 col-form-label">Fecha de vencimiento</label>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
+            </div> 
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="asunto" class="col-1 col-form-label">Asunto</label>
+          <div class="col-sm-11">
+            <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Ingresar asunto">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-sm-8">
+            <div class="custom-control">
+              <input type="checkbox" name="invitacion_ver" id="invitacion_ver">
+              <label class="custom-control-label" for="invitacion_ver">
+                Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
+              </label>
             </div>
-            <div class="form-group row">
-              <label for="asunto" class="col-1 col-form-label">Asunto</label>
-              <div class="col-sm-11">
-                <input type="text" class="form-control" name="asunto" id="asunto" placeholder="">
+          </div>
+          <div class="col-12 col-sm-4 previsualizarAntecedentes">
+            <p class="text-right" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              Previsualizar antecedentes 
+              <i class="material-icons align-middle">keyboard_arrow_down</i>
+            </p>
+          </div>
+          <div class="col-12">
+            <div class="previsualizar" [ngbCollapse]="isCollapsed">
+              <div class="card">
+                <div class="card-body">
+                  resumen
+                </div>
               </div>
             </div>
-            <div class="form-row">
-                <div class="col-sm-8">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="invitacion_ver" id="invitacion_ver" class="custom-control-input" id="customCheck5">
-                        <label class="custom-control-label" for="customCheck5">
-                          Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
-                        </label>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <p  (click)="isCollapsed = !isCollapsed"
-                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Previsualizar antecedentes 
-                      <i class="material-icons align-middle">keyboard_arrow_down</i>
-                    </p>
-                </div>
-                <div class="col-12">
-                  <div class="previsualizar" [ngbCollapse]="isCollapsed">
-                    <div class="card">
-                      <div class="card-body">
-                        You can collapse this card by clicking Toggle
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            
-                
-            </div>
-            <div class="form-group row">
-              <!--información requerida -->
-              <div class="col-md-3">
-                <p>Información requerida</p>
-              </div>
-              <div class="col-md-9">
-                <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
-              </div><!--/información requerida -->
-            </div>
+          </div>       
+        </div>
+        <div class="form-group row">
+          <!--información requerida -->
+          <div class="col-md-3">
+            <p>Información requerida</p>
+          </div>
+          <div class="col-md-9">
+            <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
+          </div><!--/información requerida -->
+        </div>
 
             <div class="form-group row">
               <div class="col-12">
