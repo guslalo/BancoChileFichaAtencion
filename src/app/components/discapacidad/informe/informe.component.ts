@@ -6,7 +6,7 @@ import { Dynamic_Form } from '../../../models/dynamic_form';
 import { Dynamic_Element } from '../../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 
@@ -33,12 +33,25 @@ export class InformeComponent implements OnInit {
   dropdownSettings = {};
   placeholder = 'Seleccionar Gestor(es)';
 
-  closeResult: string;
   constructor(private modalService: NgbModal, private router: Router, private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer) {
   }
 
-  enviarSolicitudGestor() {
-    console.log("Perfecto!!!!")
+  handleFileInput(event) {
+        
+    let reader = new FileReader();
+    let file_n = {}
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = (res) => {
+        file_n = {
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        }
+        localStorage.setItem('reporte', JSON.stringify(file_n));
+      };
+    }
   }
 
   ngOnInit() {
@@ -71,7 +84,6 @@ export class InformeComponent implements OnInit {
         this.MyForm = this.sanitizer.bypassSecurityTrustHtml(
           stringToHtml
         )
-        //console.log(stringToHtml);
       },
       error => {
           console.log(<any>error);
@@ -91,8 +103,6 @@ export class InformeComponent implements OnInit {
   }
 
   modalPost(url) {
-    console.log($("#informeForm").serializeArray())
-    console.log($("#modalForm").serializeArray())
 
     this.loading = true;
     let employee: JSON;
@@ -105,6 +115,7 @@ export class InformeComponent implements OnInit {
       invitacion_ver: $("#invitacion_ver").val(),
       informacion_requerida: $("#informacion_requerida").val(),
       mensaje: $("#mensaje").val(),
+      reporte: JSON.parse(localStorage.getItem('reporte'))
     }
     let formulario = {
       patient: employee['id'],
@@ -120,10 +131,13 @@ export class InformeComponent implements OnInit {
           localStorage.removeItem('medicalAttention');
           localStorage.removeItem("workingInformation");
           localStorage.removeItem("employee");
+          localStorage.removeItem("files");
+          localStorage.removeItem("reporte");
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }
-        
+        $( ".modal.fade.show,.modal-backdrop.fade.show" ).remove();
+        this.router.navigate([url]);
       },
       error => {
         console.log(error)

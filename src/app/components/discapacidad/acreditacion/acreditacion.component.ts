@@ -116,7 +116,6 @@ export class AcreditacionComponent implements OnInit {
               value: reader.result.split(',')[1]
             }
             a.push(file_n);
-            console.log(a)
             localStorage.setItem('files', JSON.stringify(a));
           };
         }
@@ -140,13 +139,13 @@ export class AcreditacionComponent implements OnInit {
 
     this.FormsService.formPost(formulario).subscribe(
       (res) => {
-        console.log(res)
         localStorage.removeItem("files");
         if(url == '/'){
           localStorage.removeItem('medicalAttention');
           localStorage.removeItem("workingInformation");
           localStorage.removeItem("employee");
           localStorage.removeItem("files");
+          localStorage.removeItem("reporte");
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }

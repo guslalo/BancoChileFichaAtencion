@@ -186,6 +186,8 @@ export class NuevaAtencionComponent implements OnInit {
           localStorage.removeItem('medicalAttention');
           localStorage.removeItem("workingInformation");
           localStorage.removeItem("employee");
+          localStorage.removeItem("files");
+          localStorage.removeItem("reporte");
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }
