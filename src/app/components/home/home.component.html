@@ -75,7 +75,7 @@
             </div>
             <p>Total de casos acreditados</p>
           </li><!--/casos acreditados-->
-          
+
           <!--Acreditación pendiente-->
           <li class="list-group-item coloresDiscapcidad gris">  
             <div class="divSeparador">
@@ -173,8 +173,8 @@
           <th scope="col">Próximo Seguimiento</th>
         </tr>
       </thead>
-      <tbody *ngFor="let dato of atenciones">
-        <tr>
+      <tbody>
+        <tr *ngFor="let dato of atenciones">
           <th scope="row">{{dato.fecha}}</th>
           <td *ngFor="let trabajador of dato.trabajador">
             {{trabajador.name}}
