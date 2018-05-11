@@ -16,7 +16,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { formPostElement } from '../../models/forms';
 import { validateConfig } from '@angular/router/src/config';
 
-import {of} from 'rxjs/observable/of';
+import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -108,7 +108,8 @@ export class NuevaAtencionComponent implements OnInit {
         $("form.formNuevaAtencion *").prop("disabled",false);  
         $("#nueva-btn-completar-discapacidad").attr("disabled", 'disabled');
         $("#fila8 input").attr("disabled", 'disabled');  
-        $(".btnAceptar").attr("disabled", 'disabled');           
+        $(".btnAceptar").attr("disabled", 'disabled');
+        $("#parrafo-caso").attr("disabled", 'disabled');            
       },
       error => {
           console.log(<any>error);

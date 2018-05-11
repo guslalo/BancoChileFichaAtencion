@@ -6,14 +6,8 @@
           <div class="row">
               <div class="col-12 col-md-2">
                 <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md"> <!--btn-link -->
-                  <i class="material-icons align-top">clear</i> Cancelar
+                  <i class="material-icons align-top">chevron_left</i> Volver
                 </button>  
-              </div>
-              <div class="col-12 col-md-4">
-                  <button type="button" class="btn btn-outline-secondary btn-block mb-3 mb-md"  routerLink="/nueva-atencion">
-                    <i class="material-icons align-top">chevron_left</i> 
-                    Volver al formulario general
-                  </button>
               </div>
               <div class="col">
                   <button type="button" class="btn btn-success float-right btnMobile mb-3 mb-md">
@@ -22,15 +16,13 @@
                   </button>
               </div>
             </div><!-- /navegacion y guardar -->
-          <div class="row mt-5">
+          <div class="row mt-4 mb-3 mb-md-3">
               <div class="col-12 col-md-9">
                 <h4>
                   <span class="align-middle">Nueva atención</span> - <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4) 
                     <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
-                  </span>
-                  
+                  </span> 
                 </h4>
-                <p>Formulario de caso discapacidad</p>
               </div>
               <div class="col-12 col-md-3">
                   <div ngbDropdown class="d-inline-block btnMobile ">
@@ -90,12 +82,13 @@
               <form>
                 <div class="alert alert-secondary" role="alert">
                     <h4 class="alert-heading">Resumen del caso</h4>
-                    <p>Tu solicitud de respuesta fue enviada al gestor <span class="font-weight-semi-bold">Jorge Guzmán</span> el 7 de Febrero.
-                      <button type="button" class="btn btn-success ml-0 ml--md-4  btnMobile" routerLink="/detalle-mensaje">
-                        ir a la solictud
-                      </button>
-                    </p>
-                   
+                  
+                    <div class="alert alert-success" role="alert">
+                      <p>Tu solicitud de respuesta fue enviada al gestor(es) el 7 de Febrero.</p>
+                    </div>
+                    <button type="button" class="btn btn-success ml-0 ml--md-4  btnMobile" routerLink="/detalle-mensaje">
+                      ir a la solictud
+                    </button>
                     <hr>
                     <div class="row">
                     <div class="col-sm-2">
@@ -155,119 +148,16 @@
                    
                 </div>
               </form>
-                <!--paso ant
-                  erior siguiente-->
-                <div class="row prevnext">
-                    <div class="col text-left">
-                      <button type="button" class="btn btn-outline-secondary btnMobile" routerLink="/acreditacion-discapacidad"> <!--btn-link -->
-                        <i class="material-icons align-middle">chevron_left</i> paso anterior
-                      </button>  
-            
-                    </div>
-               
-                </div><!--/paso anterior siguiente-->
             </div>
           </div>
   
        </div> <!-- /contenido-->
 
        <!--sidebar  -->
-       <div class="col-12 col-md sideRight">
-          <div class="ficha">
-            <h4 class="font-weight-bold">Ficha del trabajador</h4>
-            <hr>
-            <h5 class="mb-3">Información personal</h5>
-            <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Género</span>
-                            <p>Masculino</p>
-                        </td>
-                        <td>
-                            <span>Tel celular</span>
-                            <p>(+569) 78598358</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span>Fecha de nacimiento</span>
-                          <p>8 Febrero de 1986</p>
-                        </td>
-                        <td>
-                            <span>Email</span>
-                            <p>r.ramirez@gmail.com</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Previsión</span>
-                            <p>Isapre Colmena</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <h5 class="mb-3">Cargas</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Hijo - Daniel Ramírez</span>
-                            <p>(20.259.987-7)</p>
-                        </td>
-                        <td>
-                            <span>Cónyugue - Patricia Jara</span>
-                            <p>(14.259.987-7)</p>
-                        </td>
-                      </tr>
-                    
-                      
-                    </tbody>
-                  </table>
-              </div>
-              <hr>
-              <h5 class="mb-3">Información Laboral</h5>
-              <div class="table-responsive-sm ">
-                <table class="table borderless">
-                    <tbody>
-                      <tr>
-                        <td>
-                            <span>Email</span>
-                            <p>ramirez@bancochile.cl</p>
-                        </td>
-                        <td>
-                            <span>Departamento</span>
-                            <p>Marketing Empresas</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Tel Oficina</span>
-                            <p>(+562) 25687878</p>
-                        </td>
-                        <td>
-                            <span>Cargo</span>
-                            <p>Jefe Marketing</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <span>Sucursal</span>
-                            <p>Estado</p>
-                        </td>
-                        <td>
-                            <span>Direccion Sucrusal</span>
-                            <p>Estado 123, santiago.</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-          </div>
-       </div><!--/sidebar  -->
+      <div class="col-12 col-md sideRight">
+        <app-ficha-sidebar [workingInformation]="workingInformation">
+        </app-ficha-sidebar>
+      </div><!--/sidebar  -->
     </div>
   </div>
   
