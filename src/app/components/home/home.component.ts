@@ -73,9 +73,9 @@ export class HomeComponent implements OnInit {
         }
       ]
     },
- ];
+  ];
 
- //solicitudes
+  //solicitudes
   solicitudes = [
     {
       respuestas:10,
