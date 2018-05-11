@@ -77,12 +77,6 @@ export class InformeComponent implements OnInit {
           console.log(<any>error);
       }
     );
-
-    $(".prioridad").on("click",function(){
-      alert("test");
-    });
-    this.setTime();
-
     
   }
 
@@ -90,14 +84,32 @@ export class InformeComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  formPost(url,content) {
+  formPost(content) {
+    
+    this.modalService.open(content)
+    
+  }
+
+  modalPost(url) {
+    console.log($("#informeForm").serializeArray())
+    console.log($("#modalForm").serializeArray())
+
     this.loading = true;
     let employee: JSON;
     employee = JSON.parse(localStorage.getItem("employee"));
+    let attentionRequest = {
+      gerentes: this.selectedItems,
+      prioridad: $("#prioridad").val(),
+      fecha_vencimiento: $("#fecha_vencimiento").val(),
+      asunto: $("#asunto").val(),
+      invitacion_ver: $("#invitacion_ver").val(),
+      informacion_requerida: $("#informacion_requerida").val(),
+      mensaje: $("#mensaje").val(),
+    }
     let formulario = {
       patient: employee['id'],
       attention_date: false,
-      attentionRequest: [],
+      attentionRequest: [attentionRequest],
       elements: $("#informeForm").serializeArray(),
       files: []
     }
@@ -111,7 +123,7 @@ export class InformeComponent implements OnInit {
         }else{
           localStorage.setItem('medicalAttention', JSON.stringify(res));
         }
-        this.modalService.open(content)
+        
       },
       error => {
         console.log(error)
@@ -121,17 +133,5 @@ export class InformeComponent implements OnInit {
 
     
   }
-
-
-  setTime(){
-    setTimeout(function(){
-      $(".dropdown-item").on("click",function(){
-        var replaced = $(this).text();
-        console.log(replaced);
-        $("#prioriodad").text("replaced");
-      });
-    },0);
-  }
-
 
 }

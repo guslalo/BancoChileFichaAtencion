@@ -73,7 +73,7 @@
                 <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
               </div><!-- loader -->
               
-              <form id="informeForm" (ngSubmit)="formPost('/informe-discapacidad',content)" ngNativeValidate>
+              <form id="informeForm" (ngSubmit)="formPost(content)" ngNativeValidate>
                 <div [innerHtml]="MyForm">
             
                 </div>
@@ -117,7 +117,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <form>
+          <form id="modalForm" (ngSubmit)="modalPost('/respuesta-gestor-discapacidad')" ngNativeValidate>
             <div class="form-group row">
                 <label for="staticEmail" class="col-1 col-form-label">Para</label>
                 <div class="col-sm-6">
@@ -132,7 +132,7 @@
                     </ng-multiselect-dropdown>
                 </div>
                 <div class="col-sm-2">
-                    <select class="custom-select">
+                    <select name="prioridad" id="prioridad" class="custom-select">
                         <option selected> Prioridad</option>
                         <option value="1">Moderada</option>
                         <option value="2">Baja</option>
@@ -141,20 +141,20 @@
                   </div>
                   <div class="col-sm-3">
                     <div class="input-group">
-                        <input class="form-control" placeholder="Fecha vencimiento" type="date">
+                        <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
                       </div> 
                 </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-1 col-form-label">Asunto</label>
+              <label for="asunto" class="col-1 col-form-label">Asunto</label>
               <div class="col-sm-11">
-                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                <input type="text" class="form-control" name="asunto" id="asunto" placeholder="">
               </div>
             </div>
             <div class="form-row">
                 <div class="col-sm-8">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck5">
+                        <input type="checkbox" name="invitacion_ver" id="invitacion_ver" class="custom-control-input" id="customCheck5">
                         <label class="custom-control-label" for="customCheck5">
                           Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
                         </label>
@@ -184,31 +184,32 @@
                 <p>Información requerida</p>
               </div>
               <div class="col-md-9">
-                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
               </div><!--/información requerida -->
             </div>
 
             <div class="form-group row">
               <div class="col-12">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                <textarea class="form-control" name="mensaje" id="mensaje" rows="6"></textarea>
                </div>
             </div>
             <div class="form-group row">
               <div class="col-md-12">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                  <input type="file" class="custom-file-input" id="file" name="file" lang="es">
                   <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
                 </div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark btnMobile" (click)="c('Close click')">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-success btnMobile">
+                Enviar <i class="material-icons align-middle">send</i>
+              </button>
+            </div>
           </form>  
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark btnMobile" (click)="c('Close click')">
-          Cancelar
-        </button>
-        <button type="button" class="btn btn-success btnMobile" (click)="enviarSolicitudGestor()" routerLink="/respuesta-gestor-discapacidad">
-          Enviar <i class="material-icons align-middle">send</i>
-        </button>
-      </div>
+      
     </ng-template><!--modal  -->
