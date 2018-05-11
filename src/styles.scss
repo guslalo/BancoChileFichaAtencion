@@ -88,12 +88,7 @@ html, body, .wrapGeneral, app-root {
 .wrapMensaje {
     height: 90vh;
 }
-.escribirBox {
-    // position: relative;
-    .escribir{
-       // position: absolute;
-    }
-}
+
 .wrapMensaje {
     display: flex;
     flex-direction: column;
@@ -372,9 +367,6 @@ $ColorDAzul:#5A9AD1;
 
 .cuerpo {
     padding-top: 30px;
-  
-}
-.boxCuerpo .container-fluid.cuerpo {
   
 }
 
