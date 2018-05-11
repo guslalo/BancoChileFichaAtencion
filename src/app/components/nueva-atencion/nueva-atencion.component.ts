@@ -109,7 +109,9 @@ export class NuevaAtencionComponent implements OnInit {
           this.workingInformation = datos;
           localStorage.setItem('workingInformation', JSON.stringify(datos));
         } 
-        $("form.formNuevaAtencion *").prop("disabled",false);       
+        $("form.formNuevaAtencion *").prop("disabled",false);  
+        $("#nueva-btn-completar-discapacidad").attr("disabled", 'disabled');
+        $("#fila8 input").attr("disabled", 'disabled');      
       },
       error => {
           console.log(<any>error);
@@ -143,22 +145,30 @@ export class NuevaAtencionComponent implements OnInit {
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
     setTimeout(function(){
-      //switch /*
-      $("#fila6 .switch").change(function(){
-        $(this).toggleClass("checked");
-        $(".switch.checked").click();
-        if ($(".switch.checked").is(":checked")){
+    
+      $(".switch").change(function(){
+        //toggle checked general
+        $(this).toggleClass("checked");    
+        //caso discapacidad
+        if($("#discapacidad-inline input").is(":checked")){
           $('#nueva-btn-completar-discapacidad').prop("disabled",false);
+          $("#caso-social-inline .switch.checked").click()
         }else{
-          $('#nueva-btn-completar-discapacidad').attr("disabled");
-        }    
-      });
-
+          $('#nueva-btn-completar-discapacidad').attr("disabled", 'disabled');    
+        }
+        //caso social
+        if($("#caso-social-inline input").is(":checked")){
+          $("#discapacidad-inline .switch.checked").click();
+          $("#fila8 input").prop("disabled", false);  
+        }else{
+          $("#fila8 .switch.checked").click();
+          $("#fila8 input").attr("disabled", 'disabled');
+        }
+      }); 
       //editar resumen
       $("#btn-resumen").click(function(){
         $("#parrafo-caso").prop("disabled",false).css("background","#e5f0f4").focus();
       });
-
     },0);
   }
 
