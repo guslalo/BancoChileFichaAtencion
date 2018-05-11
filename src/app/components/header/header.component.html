@@ -1,49 +1,50 @@
 <header class="container-fluid">
     <div class="row">
         <div class="col-5 col-md-2 align-self-center">
-          
-            <!--logo-->
-            <div class="logo"><img routerLink="/" src="assets/img/bancodechile.svg"></div><!--logo-->    
+          <!--logo-->
+          <div class="logo">
+            <img routerLink="/" src="assets/img/bancodechile.svg">
+          </div><!--logo-->    
         </div>
         <div class="col-7 col-md-5  align-self-center">
           <!--form buscador-->
           <form>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Busca atenciones o trabajadores..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary btn-gris" type="button">Buscar</button>
-                </div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Busca atenciones o trabajadores..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary btn-gris" type="button">Buscar</button>
               </div>
+            </div>
           </form><!--/form buscador-->
         </div>
         <div class="col d-none d-md-block d-lg-block d-xl-block">
           <!--wraperPerfil-->
           <div class="wraperPerfil">
-              <!--agenda-->
-              <div class="border-right boxAgenda">
-                <a routerLink="/agenda">
-                  <i class="material-icons">date_range</i>
-                  <p>Mi Agenda</p>
-                </a>    
-              </div><!--agenda-->
-              <!--perfil-->
-              <div ngbDropdown placement="bottom" class="boxperfil">
-                  <div ngbDropdownToggle>
-                    <div class="boxImgPerfil" >
-                      <div class="imgPerfil rounded-circle" >
-                          <img  src="assets/img/perfil.jpeg">
-                      </div>
-                    </div>
-                    <div class="boxTextos">
-                      <p class="name">José Gallardo</p>
-                      <p class="cargo">Asistente social</p>
-                      <i class="material-icons">expand_more</i>
+            <!--agenda-->
+            <div class="border-right boxAgenda">
+              <a routerLink="/agenda">
+                <i class="material-icons">date_range</i>
+                <p>Mi Agenda</p>
+              </a>    
+            </div><!--agenda-->
+            <!--perfil-->
+            <div ngbDropdown placement="bottom" class="boxperfil">
+                <div ngbDropdownToggle>
+                  <div class="boxImgPerfil" >
+                    <div class="imgPerfil rounded-circle" >
+                        <img  src="assets/img/perfil.jpeg">
                     </div>
                   </div>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-                    <button  routerLink="/login" class="dropdown-item">Cerrar sesión</button>
+                  <div class="boxTextos">
+                    <p class="name">José Gallardo</p>
+                    <p class="cargo">Asistente social</p>
+                    <i class="material-icons">expand_more</i>
                   </div>
-              </div><!--/perfil-->     
+                </div>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                  <button  routerLink="/login" class="dropdown-item">Cerrar sesión</button>
+                </div>
+            </div><!--/perfil-->     
           </div><!--/wraperPerfil-->
         </div>
       </div>
