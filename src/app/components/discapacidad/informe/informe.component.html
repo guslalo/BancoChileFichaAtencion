@@ -109,91 +109,91 @@
     <div class="modal-body">
       <!--form modal-->
       <form id="acreditacionForm" (ngSubmit)="modalPost('/respuesta-gestor-discapacidad')" ngNativeValidate>
-        <div class="form-group row">
-          <label for="para" class="col-1 col-form-label">Para</label>
-          <div class="col-sm-11">
-            <ng-multiselect-dropdown
-              [ngModelOptions]="{standalone: true}"
-              [placeholder]="placeholder"
-              [data]="dropdownList"
-              [(ngModel)]="selectedItems"
-              [settings]="dropdownSettings"
-            >
-            </ng-multiselect-dropdown>
+          <div class="form-group row">
+            <label for="para" class="col-1 col-form-label">Para</label>
+            <div class="col-sm-11">
+              <ng-multiselect-dropdown
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="placeholder"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                [settings]="dropdownSettings"
+              >
+              </ng-multiselect-dropdown>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="prioridad" class="col-12 col-md-1 col-form-label">Prioridad</label>
-          <div class="col-sm-3" id="">
-            <select class="custom-select" name="prioridad" id="prioridad">
-              <option selected> -- Seleccione -- </option>
-              <option value="1">Alta</option>
-              <option value="2">Media</option>
-              <option value="3">Baja</option>
-            </select>
+          <div class="form-group row">
+            <label for="prioridad" class="col-12 col-md-1 col-form-label">Prioridad</label>
+            <div class="col-sm-3" id="">
+              <select class="custom-select" name="prioridad" id="prioridad">
+                <option selected> -- Seleccione -- </option>
+                <option value="1">Alta</option>
+                <option value="2">Media</option>
+                <option value="3">Baja</option>
+              </select>
+            </div>
+            <label for="fecha_vencimiento" class="col-12 col-md-3 col-form-label">Fecha de vencimiento</label>
+            <div class="col-sm-5">
+              <div class="input-group">
+                <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
+              </div> 
+            </div>
           </div>
-          <label for="fecha_vencimiento" class="col-12 col-md-3 col-form-label">Fecha de vencimiento</label>
-          <div class="col-sm-5">
-            <div class="input-group">
-              <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
-            </div> 
+          <div class="form-group row">
+            <label for="asunto" class="col-1 col-form-label">Asunto</label>
+            <div class="col-sm-11">
+              <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Ingresar asunto">
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="asunto" class="col-1 col-form-label">Asunto</label>
-          <div class="col-sm-11">
-            <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Ingresar asunto">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-sm-8">          
-            <input type="checkbox" name="invitacion_ver" id="invitacion_ver">
-            <label for="invitacion_ver">
-              Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
-            </label>
-          </div>
-          <div class="col-12 col-sm-4 previsualizarAntecedentes">
-            <p class="text-right" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-              Previsualizar antecedentes 
-              <i class="material-icons align-middle">keyboard_arrow_down</i>
-            </p>
-          </div>
-          <!--colapsable-->
-          <div class="col-12">
-            <div class="previsualizar" [ngbCollapse]="isCollapsed">
-              <div class="card">
-                <div class="card-body">
-                  resumen
+          <div class="form-row">
+            <div class="col-sm-8">          
+              <input type="checkbox" name="invitacion_ver" id="invitacion_ver">
+              <label for="invitacion_ver">
+                Invitar a ver <span class="font-weight-semi-bold">informe de discapacidad</span>
+              </label>
+            </div>
+            <div class="col-12 col-sm-4 previsualizarAntecedentes">
+              <p class="text-right" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                Previsualizar antecedentes 
+                <i class="material-icons align-middle">keyboard_arrow_down</i>
+              </p>
+            </div>
+            <!--colapsable-->
+            <div class="col-12">
+              <div class="previsualizar" [ngbCollapse]="isCollapsed">
+                <div class="card">
+                  <div class="card-body">
+                    resumen
+                  </div>
                 </div>
               </div>
-            </div>
-          </div><!--/colapsable-->      
-        </div>
-        <div class="form-group row">
-          <!--información requerida -->
-          <div class="col-md-3">
-            <p>Información requerida</p>
+            </div><!--/colapsable-->      
           </div>
-          <div class="col-md-9">
-            <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
-          </div><!--/información requerida -->
-        </div>
 
-            <div class="form-group row">
-              <div class="col-12">
-                <textarea class="form-control" name="mensaje" id="mensaje" rows="6"></textarea>
-               </div>
+          <div class="form-group row">
+            <!--información requerida -->
+            <div class="col-md-3">
+              <p>Información requerida</p>
             </div>
-            <div class="form-group row">
-              <div class="col-md-12">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="file" name="file" lang="es" (change)="handleFileInput($event)">
-                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                </div>
+            <div class="col-md-9">
+              <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
+            </div><!--/información requerida -->
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <textarea class="form-control" name="mensaje" id="mensaje" rows="6"></textarea>
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file" name="file" lang="es" (change)="handleFileInput($event)">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
               </div>
             </div>
           </div>
-        </div>
         <!--modal-footer-->
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark btnMobile" (click)="c('Close click')">
