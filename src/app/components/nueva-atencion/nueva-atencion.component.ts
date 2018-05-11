@@ -111,7 +111,9 @@ export class NuevaAtencionComponent implements OnInit {
         } 
         $("form.formNuevaAtencion *").prop("disabled",false);  
         $("#nueva-btn-completar-discapacidad").attr("disabled", 'disabled');
-        $("#fila8 input").attr("disabled", 'disabled');      
+        $("#fila8 input").attr("disabled", 'disabled');  
+        $(".btnAceptar").attr("disabled", 'disabled'); 
+            
       },
       error => {
           console.log(<any>error);
@@ -147,7 +149,7 @@ export class NuevaAtencionComponent implements OnInit {
     setTimeout(function(){
     
       $(".switch").change(function(){
-        //toggle checked general
+        //toggle class checked general
         $(this).toggleClass("checked");    
         //caso discapacidad
         if($("#discapacidad-inline input").is(":checked")){
@@ -159,10 +161,12 @@ export class NuevaAtencionComponent implements OnInit {
         //caso social
         if($("#caso-social-inline input").is(":checked")){
           $("#discapacidad-inline .switch.checked").click();
-          $("#fila8 input").prop("disabled", false);  
+          $("#fila8 input").prop("disabled", false);
+          $(".btnAceptar").prop("disabled",false);  
         }else{
           $("#fila8 .switch.checked").click();
           $("#fila8 input").attr("disabled", 'disabled');
+          $(".btnAceptar").attr("disabled",'disabled');  
         }
       }); 
       //editar resumen

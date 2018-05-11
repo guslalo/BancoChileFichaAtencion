@@ -26,7 +26,7 @@
                   {{ r.first_name}} {{ r.last_name}}
                 </ng-template>
               </form>
-          </div><!-- buscador rut-->
+          </div><!--/buscador rut-->
           
           <div class="col-12 col-sm-12 col-md">
             <h4>
@@ -61,16 +61,25 @@
             <!-- loader -->
             <div class="boxloader" *ngIf="isLoading">
               <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
-            </div><!-- loader -->
-        
+            </div><!--/loader -->
             <!-- form-->
             <form class="formNuevaAtencion" (ngSubmit)="formPost('/acreditacion-discapacidad')" ngNativeValidate>
-              <div [innerHtml]="MyForm"> 
-              </div>
-            </form><!-- form-->
+              <!--dinamyc form-->
+              <div [innerHtml]="MyForm">
+              </div><!--/dinamyc form-->
+              <!--btn aceptar-->
+              <div class="row">
+                <div class="col-12">
+                  <button class="btn btn-success float-right btnMobile btnAceptar" type="submit" disabled>
+                    <i class="material-icons align-top">done</i>
+                    Aceptar
+                  </button>
+                </div>
+              </div><!--/btn aceptar-->   
+            </form><!--/form-->
           </div>
         </div>
-     </div> <!-- /contenido-->
+     </div><!--/contenido-->
 
     <!--sidebar  -->
     <div class="col-12 col-md sideRight">
