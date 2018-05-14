@@ -32,47 +32,7 @@ export class HomeComponent implements OnInit {
           plazo:"3"
         }
       ]
-    },
-    {
-      id:2,
-      fecha: "15 Mar",
-      trabajador: [
-        {
-          name:"Gustavo",
-          rut:"16681060-4"
-        }
-      ],
-      tipoCaso:"icon",
-      areaConsulta:"Area 2",
-      motivoConsulta:"Motivo 4",
-      resumenCaso:"Texto Resumen 2",
-      proxSeguimiento:[
-        {
-          fecha:"30 Mar",
-          plazo:"13"
-        }
-      ]
-    },
-    {
-      id:3,
-      fecha: "18 Mar",
-      trabajador: [
-        {
-          name:"Felipe",
-          rut:"18681060-4"
-        }
-      ],
-      tipoCaso:"icon",
-      areaConsulta:"Area 2",
-      motivoConsulta:"Motivo 4",
-      resumenCaso:"Texto Resumen 2",
-      proxSeguimiento:[
-        {
-          fecha:"18 Mar",
-          plazo:"9"
-        }
-      ]
-    },
+    }
   ];
 
   //solicitudes
