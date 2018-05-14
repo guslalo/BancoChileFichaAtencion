@@ -106,16 +106,13 @@ export class InformeComponent implements OnInit {
   setTime(){
     setTimeout(function(){  
       $(".switch").change(function(){
-        //caso discapacidad
-        if($("#informe-jefatura-conoce-discapacidad input").is(":checked")){
-          $('#informe-textarea-observacion-jefatura').prop("disabled",false);
-          $('#informe-grupo-observacion-jefatura').slideDown("fast");    
-        }else{
-          $('#informe-grupo-observacion-jefatura').slideUp("fast");
-          $('#informe-textarea-observacion-jefatura').attr("disabled","disabled");
+        $(this).toggleClass("checked");  
+        $(this).parent().find(".padreTextarea").slideToggle("fast"); 
+        $(this).parent().find(".padreTextarea textarea").prop("disabled",false);
+        if(!$(this).hasClass("checked")){     
+          $(this).parent().find(".padreTextarea textarea").attr("disabled","disabled");
         }
       }); 
-   
     },0);
   }
 

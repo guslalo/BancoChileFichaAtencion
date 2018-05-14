@@ -931,3 +931,21 @@ form{
         }
     }
 }
+
+#acreditacionForm {
+    .selectFile {
+        margin-bottom: 10px;
+    }
+    .custom-file {
+       // margin-top: 10px;
+    }
+}
+#informeForm {
+    .padreTextarea {
+        display:none;
+    }
+    textarea {
+        width: 100%;
+        /*display:none;*/
+    }
+}
