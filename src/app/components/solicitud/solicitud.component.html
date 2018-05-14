@@ -1,0 +1,173 @@
+<div class="fichaAtencion">
+    <div class="row">
+       <!--contenido  -->
+       <div class="col-8 contenidoRight">
+         
+          <div class="row">
+            <div class="col-9">
+                <button type="button" class="btn btn-outline-secondary">
+                  <i class="material-icons align-top">clear</i> Cancelar
+                </button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success float-right">
+                  <i class="material-icons align-top">save</i>
+                  Guardar y cerrar
+                </button>
+            </div>
+          </div>
+          <div class="row mt-5">
+              <div class="col-12 col-sm-12  col-md-9">
+                <h4>
+                  <span class="align-middle">Nueva atención</span> - <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4) 
+                    <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
+                  </span>
+                </h4>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 text-right">
+                  <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-secondary text-truncate" id="dropdownBasic1" ngbDropdownToggle>
+                      <i class="material-icons align-top">share</i>
+                      Compartir informe
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">Mensajería</button>
+                      <button class="dropdown-item">Email</button>
+                      <button class="dropdown-item">Descargar</button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row my-4">
+            <div class="col-12">
+              <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                 
+                <ngb-panel>
+                    <ng-template ngbPanelTitle>
+                        <span>informe discapacidad <i class="material-icons">keyboard_arrow_down</i></span>
+                      </ng-template>
+                  <ng-template ngbPanelContent>
+                    <p>Se acredita que se encuentra inscrito en el programa, presentando la documentación que respalda esta condicion, el trabajador:</p>
+                    <ul class="list-unstyled">
+                      <li>Nombre: <span class="font-weight-bold">Rodrigo Jorge Ramirez</span></li>
+                      <li>Rut: <span class="font-weight-bold">13.987.125-8</span></li>
+                      <li>Cargo: <span class="font-weight-bold">Jefe Marketing Empresas</span></li>
+                    </ul>
+                    <ul class="list-unstyled">
+                      <li>Jefatura en conocimiento de diagnostico: <span class="font-weight-bold">No</span></li>
+                      <li>Jefatura en conocimiento de la discapacidad: <span class="font-weight-bold">Si, en Observación</span></li>
+                    </ul>
+                    <p>Requiere permisos especiales por controles/tratamiento médico: el trabajador requiere <span class="font-weight-bold">10 dias al año</span></p>
+                    <p>Requiere cambio de cargo:<span class="font-weight-bold">Sí, observaciones de cambio de cargo.</span></p>
+                    <p>Comentarios/observaciones: Trabajador de [ diagnostico ], [ tipo dificultad ], [Observaciones gestion ].</p>
+                    <p>Registra [% discapacidad ], acredita a través de [ tipo de acreditacion ]</p>
+                    <p>Atentamente,</p>
+                    <p><span class="font-weight-bold">Paulina Gallardo</span></p>
+                    <p>Asistencia Social-Programa Orienta</p>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+          </div>
+       
+  
+       </div> <!-- /contenido-->
+       <!--sidebar  -->
+       <div class="col sideRight">
+          <div class="ficha">
+            <h4 class="font-weight-bold">Ficha del trabajador</h4>
+            <hr>
+            <h5 class="mb-3">Información personal</h5>
+            <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Género</span>
+                            <p>Masculino</p>
+                        </td>
+                        <td>
+                            <span>Tel celular</span>
+                            <p>(+569) 78598358</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>Fecha de nacimiento</span>
+                          <p>8 Febrero de 1986</p>
+                        </td>
+                        <td>
+                            <span>Email</span>
+                            <p>r.ramirez@gmail.com</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Previsión</span>
+                            <p>Isapre Colmena</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <h5 class="mb-3">Cargas</h5>
+              <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Hijo - Daniel Ramírez</span>
+                            <p>(20.259.987-7)</p>
+                        </td>
+                        <td>
+                            <span>Cónyugue - Patricia Jara</span>
+                            <p>(14.259.987-7)</p>
+                        </td>
+                      </tr>
+                    
+                      
+                    </tbody>
+                  </table>
+              </div>
+              <hr>
+              <h5 class="mb-3">Información Laboral</h5>
+              <div class="table-responsive-sm ">
+                <table class="table borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                            <span>Email</span>
+                            <p>ramirez@bancochile.cl</p>
+                        </td>
+                        <td>
+                            <span>Departamento</span>
+                            <p>Marketing Empresas</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Tel Oficina</span>
+                            <p>(+562) 25687878</p>
+                        </td>
+                        <td>
+                            <span>Cargo</span>
+                            <p>Jefe Marketing</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <span>Sucursal</span>
+                            <p>Estado</p>
+                        </td>
+                        <td>
+                            <span>Direccion Sucrusal</span>
+                            <p>Estado 123, santiago.</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+       </div><!--/sidebar  -->
+    </div>
+  </div>

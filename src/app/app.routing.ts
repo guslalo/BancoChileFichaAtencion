@@ -16,6 +16,8 @@ import { FichaComponent } from './components/ficha/ficha.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 
+import { SolicitudComponent } from './components/solicitud/solicitud.component';
+
 const router: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     // { path: '', data: { title: 'Heroes List' },component: HomeComponent },
@@ -29,6 +31,7 @@ const router: Routes = [
     { path: 'ver-informe', data: { title: 'Ver informe' },component: VerInformeComponent },
     { path: 'ficha-trabajador', data: { title: 'Ficha trabajador' },component: FichaComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'solicitud', component: SolicitudComponent },
    
     /*
     { path: 'notas', component: NotasComponent },

@@ -34,6 +34,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { AuthenticationService } from './services/authentication.service';
 import { AlertService } from './services/alert.service';
 import { AuthGuard } from './services/auth.guard';
+import { SolicitudComponent } from './components/solicitud/solicitud.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { AuthGuard } from './services/auth.guard';
     FichaSidebarComponent,
     LoginComponent,
     AlertComponent,
+    SolicitudComponent,
   ],
   
   imports: [
