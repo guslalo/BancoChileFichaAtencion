@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-11">
                       <p class="font-weight-semi-bold">Informe discapacidad</p>
-                      <p class="uppercaseFirst font-weight-semi-bold">- {{medical_attention.patient.first_name}} {{medical_attention.patient.last_name}}</p>
+                      <p class="uppercaseFirst font-weight-semi-bold" *ngIf="attention_request">- {{medical_attention.patient.first_name}} {{medical_attention.patient.last_name}}</p>
                       <p class="creador">Paulins Gallardo - 7 Feb 2018</p>
                     </div>
                   </a>
