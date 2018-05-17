@@ -210,6 +210,40 @@ switch {
 .contenidoRight {
     padding-bottom: 60px;
 }
+
+.boxGestor {
+    /*background: #f4f4f4;*/
+    /*border-bottom: 1px dashed rgb(196, 196, 196);*/
+    margin-bottom:5px;
+}
+.borderDashed{
+    border-bottom: 1px dashed rgb(196, 196, 196);
+}
+.informeDoc {
+    margin-top: 5px;
+   
+    a {
+        display: inline-flex;
+    }
+    border: 1px dashed rgb(196, 196, 196);
+    p {
+        margin-bottom: 1px;
+        line-break:14px;
+        font-size: 13px !important;
+        display: inline-block;
+    }
+    i {
+        background: #f2f2f2;
+        color: #999999;
+        padding: 2px;
+        margin-top:9px;
+    }
+    .creador{
+        font-size: 12px;
+        color: rgb(136, 136, 136);
+
+    }
+}
 .boxperfil {
     width: auto;
     margin-right: 0px;
@@ -242,6 +276,8 @@ switch {
             position: relative;
             bottom:-2px;
             font-size: 15px;
+            margin-bottom: 5px;
+            text-align: left;
         }
         .cargo{
             font-size: 13.5px;
@@ -263,7 +299,9 @@ switch {
     margin-top: 11px;
 }
 
-
+.mensajeFooter {
+    padding-top: 20px;
+}
 .boxCuerpo {
     background: #FAFAFA;
     width:96%; 
@@ -371,6 +409,8 @@ $ColorDAzul:#5A9AD1;
     padding-top: 30px;
   
 }
+
+
 
 @keyframes fadein {
     from { opacity: 0; }
