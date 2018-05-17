@@ -210,7 +210,6 @@ switch {
 .contenidoRight {
     padding-bottom: 60px;
 }
-
 .boxGestor {
     /*background: #f4f4f4;*/
     /*border-bottom: 1px dashed rgb(196, 196, 196);*/
@@ -218,6 +217,10 @@ switch {
 }
 .borderDashed{
     border-bottom: 1px dashed rgb(196, 196, 196);
+}
+
+.label.ml-0.mr-3 {
+    width: 220px;
 }
 .informeDoc {
     margin-top: 5px;
