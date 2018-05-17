@@ -5,8 +5,8 @@ import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/map'
 
  
-// const url = 'https://rinnolab.cl'
-const url = 'http://localhost:8000'
+const url = 'https://rinnolab.cl'
+// const url = 'http://localhost:8000'
 
 @Injectable()
 export class FormService {
