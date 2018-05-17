@@ -59,7 +59,7 @@ export class AcreditacionComponent implements OnInit {
         if (localStorage.getItem("medicalAttention")) {
           let medicalAttention: JSON;
           medicalAttention = JSON.parse(localStorage.getItem("medicalAttention"));
-          this.loadValuesForm(medicalAttention['patient']);
+          this.loadValuesForm(medicalAttention['patient']['id']);
         }
       },
       error => {
@@ -81,7 +81,9 @@ export class AcreditacionComponent implements OnInit {
         let element
         for(let son of data){
           element = document.getElementById(son.attribute['id_element'])
-          element.value = son.value
+          if(son.value && son.value != "" && element ){
+            element.value = son.value
+          }
         }
       },
       error => {
