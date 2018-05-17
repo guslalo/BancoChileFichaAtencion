@@ -36,6 +36,7 @@ import { AlertService } from './services/alert.service';
 import { AuthGuard } from './services/auth.guard';
 import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { DifferenceDateBtwTodayPipe } from './services/difference.pipe';
+import { SafeHtmlPipe } from './services/safe-html.pipe';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { DifferenceDateBtwTodayPipe } from './services/difference.pipe';
     AlertComponent,
     SolicitudComponent,
     DifferenceDateBtwTodayPipe,
+    SafeHtmlPipe
   ],
   
   imports: [
