@@ -24,6 +24,9 @@ export class MensajeriaDetalleComponent implements OnInit {
       this.medical_attention = this.attention_request['medical_attention']
       this.message = inboxManager['message']
     });
+
+  
+
   }
 
   setClass(priority:JSON) {

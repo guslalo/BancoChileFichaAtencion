@@ -150,7 +150,7 @@ export class NuevaAtencionComponent implements OnInit {
         //caso discapacidad
         if($("#discapacidad-inline input").is(":checked")){
           $('#nueva-btn-completar-discapacidad').prop("disabled",false);
-          $("#caso-social-inline .switch.checked").click()
+          $("#caso-social-inline .switch.checked").click();
         }else{
           $('#nueva-btn-completar-discapacidad').attr("disabled", 'disabled');    
         }

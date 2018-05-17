@@ -85,11 +85,15 @@
         <div class="mensajePropio default">
             <p class="text-right">{{message.who_said}}</p>
             <div class="card border-info  mb-3">
-                <div class="card-header" style="display:none">Header</div>
+                <!--asunto-->
+                <div class="card-header">
+                  <h5>Asunto: {{ message.subject }}</h5>
+                </div><!--/asunto-->
+                <!--cuerpo mensaje-->
                 <div class="card-body">
-                  <h5 class="card-title" style="display:none">Light card title</h5>
-                  <p class="card-text">{{ message.subject }}. {{message.body}}.</p>
-                </div>
+                  <h5>Mensaje:</h5>
+                  <p class="card-text">{{message.body}}</p>
+                </div><!--/cuerpo mensaje-->
                 <div class="card-footer bg-transparent border-secondary " *ngIf="attention_request.watch_invitation">
                   <div class="row">
                     <div class="col-1">
@@ -129,19 +133,24 @@
   <!-- mensajeFooter-->
   <div class="mensajeFooter">
     <!-- escribir mensaje -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <input type="text" placeholder="Asunto del mensaje" class="form-control">
+      </div>
+    </div>
     <div class="row">
-        <div class="col">
-          <div class="escribir">
-            <textarea class="form-control" placeholder="Escribir un mensaje aquí" rows="6" #nuevoMensaje></textarea>
-          </div>  
-        </div>
+      <div class="col">
+        <div class="escribir">
+          <textarea class="form-control" placeholder="Escribir un mensaje aquí" rows="6" #nuevoMensaje></textarea>
+        </div>  
+      </div>
     </div> <!-- /escribir mensaje -->
 
     <div class="row mt-4 mb-4">
         <div class="col-md-3">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+            <label class="custom-file-label" for="customFileLang">Seleccionar archivo adicional</label>
           </div>
         </div>
         <div class="col-md-9 text-right">
