@@ -69,12 +69,12 @@
                   <div class="row">
                     <div class="col-sm-4">
                       <div class="mb-3 mb-md">
-                          <h5>Prioridad: <span [ngClass]="setClass()"> {{ priority.name }} </span></h5>
+                          <h5 *ngIf="priority">Prioridad: <span [ngClass]="setClass()"> {{ priority.name }} </span></h5>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="mb-3 mb-md">
-                          <h5>Vence: {{attention_request.expire_date | date: 'dd-MM-yyyy'}}</h5>
+                          <h5 *ngIf="attention_request">Vence: {{attention_request.expire_date | date: 'dd-MM-yyyy'}}</h5>
                       </div>
                     </div>
                   </div>
