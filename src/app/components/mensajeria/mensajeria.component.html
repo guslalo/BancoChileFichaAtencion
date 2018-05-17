@@ -26,10 +26,6 @@
     <ul class="list-group ">
         <ng-template ngFor let-message [ngForOf]="inboxManager">
             <li class="list-group-item list-group-item-action">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck15">
-                    <label class="custom-control-label" for="customCheck15">Check this custom checkbox</label>
-                </div>
                 <a (click)="detalleMensaje(message)" routerLinkActive="active">
                 <div class="col ml15">
                     <div class="prioridad">

@@ -32,7 +32,7 @@
           <div class="col-12 col-sm-12 col-md">
             <h4>
               <span class="align-middle">Nueva atención</span> - 
-              <span class="font-weight-bold align-middle" *ngIf="model; else templateName">
+              <span class="font-weight-bold align-middle uppercaseFirst" *ngIf="model; else templateName">
                 {{model['first_name']}} {{model['last_name']}} ({{model['rut']}}-{{model['check_digit']}})  
               </span>     
               <ng-template #templateName>
