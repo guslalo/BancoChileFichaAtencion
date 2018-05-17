@@ -218,6 +218,11 @@ switch {
 .borderDashed{
     border-bottom: 1px dashed rgb(196, 196, 196);
 }
+.contenidoMensajeria{
+    ul li {
+        cursor: pointer;
+    }
+}
 
 .label.ml-0.mr-3 {
     width: 220px;
