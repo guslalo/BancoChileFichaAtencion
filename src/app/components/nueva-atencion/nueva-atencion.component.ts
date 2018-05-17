@@ -125,10 +125,11 @@ export class NuevaAtencionComponent implements OnInit {
     this.subscription = this.FormsService.getElementsValues(id).subscribe( 
       data => {
         let element
-        console.log(data)
         for(let son of data){
           element = document.getElementById(son.attribute['id_element'])
-          element.value = son.value
+          if(son.value && son.value != "" && element ){
+            element.value = son.value
+          }
         }
       },
       error => {
