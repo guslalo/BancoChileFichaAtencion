@@ -2,8 +2,7 @@
   <div class="mensajeHead"> 
     <div class="row">
       <div class="col-md-8">
-        <h4>Informe de discapacidad Rodrigo Ramirez (13.697.957-7)</h4>
-        <span>Paulina Gallardo y Jorge Guzman</span>
+        <h4>Informe de discapacidad {{medical_attention.patient.first_name}} {{medical_attention.patient.last_name}} ({{medical_attention.patient.rut}}-{{medical_attention.patient.check_digit}})</h4>
       </div>
       <div class="col-md-4 text-right">
         <button type="button" class="btn btn-success ml-4" routerLink="/detalle-mensaje">
@@ -21,86 +20,48 @@
                 <div class="row">
                   <div class="col-12">
                     <span>Trabajador relacionado</span>
-                    <p class="font-weight-semi-bold">Rodrigo Ramirez (17.265.598-7)</p>
+                    <p class="font-weight-semi-bold">{{medical_attention.patient.first_name}} {{medical_attention.patient.last_name}} ({{medical_attention.patient.rut}}-{{medical_attention.patient.check_digit}})</p>
                   </div>
                   <div class="col-12">
                     <span>Atención relacionada</span>
-                    <p class="font-weight-semi-bold">Atención 7 de enero 2018</p>
+                    <p class="font-weight-semi-bold">Atención {{medical_attention.attention_date | date: 'dd-MM-yyyy'}}</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
                       <span>Asignado a</span>
                   </div>
-                  <div class="col-12">
-                      <div  class="boxperfil text-right">
-                        <div class="boxImgPerfil">
-                          <div class="imgPerfil rounded-circle">
-                              <img src="assets/img/perfil.jpeg">
+                  <ng-template ngFor let-man [ngForOf]="attention_request.manager">
+                    <div class="col-12">
+                        <div  class="boxperfil text-right">
+                          <div class="boxImgPerfil">
+                            <div class="imgPerfil rounded-circle">
+                                <img src="assets/img/perfil.jpeg">
+                            </div>
+                          </div>
+                          <div  class="boxTextos">
+                            <p class="name">{{man.professional.first_name}} {{man.professional.last_name}}</p>
+                            <p  class="cargo">{{man.position}}</p>
                           </div>
                         </div>
-                        <div  class="boxTextos">
-                          <p class="name">José Gallardo</p>
-                          <p  class="cargo">Asistente social</p>
-                        </div>
-                      </div>
-                  </div>
+                    </div>
+                  </ng-template>
                 </div>
                 <div class="row">
-                  <div class="col-12">
-                      <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->
+                  <!--div class="col-12">
+                      <button type="button" class="btn btn-outline-secondary">
                         Sumar personas
                      </button>  
+                  </div-->
+                  <div class="col-12">
+                    <div class="mb-3 mb-md">
+                        <p>Prioridad: <span [ngClass]="setClass(attention_request.priority)"> {{ attention_request.priority.name }} </span></p>
+                    </div>
                   </div>
                   <div class="col-12">
-                      <div ngbDropdown>
-                          <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
-                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad amarillo"></div>
-                              </div>
-                              Moderada
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad verde"></div>
-                              </div>
-                              Baja
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad rojo"></div>
-                              </div>
-                              Alta
-                            </button>
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col-12">
-                      <div ngbDropdown>
-                          <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Vence</button>
-                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad amarillo"></div>
-                              </div>
-                              Moderada
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad verde"></div>
-                              </div>
-                              Baja
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad rojo"></div>
-                              </div>
-                              Alta
-                            </button>
-                          </div>
-                        </div>
+                    <div class="mb-3 mb-md">
+                        <p>Vence: {{attention_request.expire_date | date: 'dd-MM-yyyy'}}</p>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -118,24 +79,24 @@
     <hr>
   </div>
 
-  <div class="mensajeCuerpo">  <div class="row">
+  <div class="mensajeCuerpo">  
+    <div class="row">
       <div class="col-12">
-        
         <div class="mensajePropio default">
-            <p class="text-right">Tú</p>
+            <p class="text-right">{{message.who_said}}</p>
             <div class="card border-info  mb-3">
                 <div class="card-header" style="display:none">Header</div>
                 <div class="card-body">
                   <h5 class="card-title" style="display:none">Light card title</h5>
-                  <p class="card-text">Hola jorge! necesito que evalúes el caso de Rodrio para el Lune. Quiero saber si es factible cambiar el cargo del trabajador asi como otorigar algunos dias de permiso asuntos medicos.</p>
+                  <p class="card-text">{{ message.subject }}. {{message.body}}.</p>
                 </div>
-                <div class="card-footer bg-transparent border-secondary ">
+                <div class="card-footer bg-transparent border-secondary " *ngIf="attention_request.watch_invitation">
                   <div class="row">
                     <div class="col-1">
                         <i class="material-icons">description</i>
                     </div>
                     <div class="col-10">
-                        <p>Invitaste a Jorge a ver el Informe de discapacidad de <span class="font-weight-semi-bold">Rodrigo Ramirez</span></p>
+                        <p >Invitaste a Jorge a ver el Informe de discapacidad de <span class="font-weight-semi-bold">Rodrigo Ramirez</span></p>
                         <button type="button" class="btn btn-outline-secondary"> <!--btn-link -->
                            Factibilidad dias de permiso
                         </button>
@@ -148,17 +109,18 @@
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
         </div>
-        <div class="mensajeRecibido">
-            <p class="text-left">Jorge Guzman</p>
-            <div class="card border-info  mb-3">
-                <div class="card-body">
-                  <p class="card-text">Hola jorge! necesito que evalúes el caso de Rodrio para el Lune. Quiero saber si es factible cambiar el cargo del trabajador asi como otorigar algunos dias de permiso asuntos medicos.</p>
-                </div>
-       
+        <ng-template ngFor let-child [ngForOf]="message.childs_msg">
+          <div [ngClass]="(child.sender===message.sender)?'mensajePropio default':'mensajeRecibido'">
+              <p class="text-left">{{child.who_said}}</p>
+              <div class="card border-info  mb-3">
+                  <div class="card-body">
+                    <p class="card-text">{{ child.subject }}. {{child.body}}.</p>
+                  </div>
               </div>
-        </div>
+          </div>
+        </ng-template>
       </div>
   </div>
 </div>
@@ -170,7 +132,7 @@
     <div class="row">
         <div class="col">
           <div class="escribir">
-            <textarea class="form-control" placeholder="Escribir un mensaje aquí" rows="6"></textarea>
+            <textarea class="form-control" placeholder="Escribir un mensaje aquí" rows="6" #nuevoMensaje></textarea>
           </div>  
         </div>
     </div> <!-- /escribir mensaje -->
@@ -183,7 +145,7 @@
           </div>
         </div>
         <div class="col-md-9 text-right">
-            <button type="button" class="btn btn-success"> <!--btn-link -->
+            <button type="button" class="btn btn-success" (click)="sendMessage(nuevoMensaje.value,message)"> <!--btn-link -->
               <i class="material-icons align-top">send</i> Enviar
             </button>  
         </div>

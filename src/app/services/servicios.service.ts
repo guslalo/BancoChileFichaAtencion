@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/map'
 
-const url = 'https://rinnolab.cl'
-//const url = 'http://localhost:8000'
+// const url = 'https://rinnolab.cl'
+const url = 'http://localhost:8000'
 
 @Injectable()
 export class FormService {
@@ -37,6 +37,17 @@ export class FormService {
     return this.http.get(url+'/assistance/api/elementsValues/?patient=' + pk)
     .map((response: Response) => <any>response)
   }
+
+  getRequestMedical(MedicalAttention): Observable<any>{
+    return this.http.get(url+'/assistance/api/attentionRequest/'+MedicalAttention+'/')
+    .map((response: Response) => <any>response)
+  }
+
+  getMessages(): Observable<any>{
+    return this.http.get(url+'/assistance/api/inboxManagerAssistance/')
+    .map((response: Response) => <any>response)
+  }
+
 
 
 

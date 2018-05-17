@@ -32,109 +32,30 @@
   </div><!--opciones--> 
   
     <ul class="list-group ">
-        <li class="list-group-item list-group-item-action">
-            
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck15">
-                <label class="custom-control-label" for="customCheck15">Check this custom checkbox</label>
-            </div>
-            <a routerLink="/detalle-mensaje" routerLinkActive="active">
-            <div class="col ml15">
-                <div class="prioridad">
-                    <div class="colorPrioridad amarillo"></div>
-                    <span class="badge badge-warning">1 Vence mañana</span>
-                    <div class="hora">16:50</div>
+        <ng-template ngFor let-message [ngForOf]="inboxManager">
+            <li class="list-group-item list-group-item-action">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck15">
+                    <label class="custom-control-label" for="customCheck15">Check this custom checkbox</label>
                 </div>
-                <div class="mensaje">
-                    <p class="titulo">Informe de discapacidad Rodrigo Ramirez (13.282.158-3)</p>
-                    <p class="user">Tú dijiste</p>
-                    <div class="texto ">
-                        <p class="text-truncate">Hola Jorge" necesito evalúes el caso de Rodrigo para el Lunes.</p>
-                    </div>                            
+                <a (click)="detalleMensaje(message)" routerLinkActive="active">
+                <div class="col ml15">
+                    <div class="prioridad">
+                        <div class="colorPrioridad amarillo"></div>
+                        <span [ngClass]="setClass(message.content_object.attention_request.priority)">{{message.content_object.attention_request.expire_date | differenceDateBtwToday}}</span>
+                        <div class="hora">16:50</div>
+                    </div>
+                    <div class="mensaje">
+                        <p class="titulo">{{message.message.short_subject}}</p>
+                        <p class="user">{{message.message.who_said}}</p>
+                        <div class="texto ">
+                            <p class="text-truncate">{{message.message.short_body}}</p>
+                        </div>                            
+                    </div>
                 </div>
-            </div>
-            </a>  
-        </li>
-        <li class="list-group-item list-group-item-action">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck14">
-                <label class="custom-control-label" for="customCheck14">Check this custom checkbox</label>
-            </div>
-            <div class="col ml15">
-                <div class="prioridad">
-                    <div class="colorPrioridad amarillo"></div>
-                    <span class="badge badge-warning">1 Vence mañana</span>
-                    <div class="hora">16:50</div>
-                </div>
-                <div class="mensaje">
-                    <p class="titulo">Informe de discapacidad Rodrigo Ramirez (13.282.158-3)</p>
-                    <p class="user">Tú dijiste</p>
-                    <div class="texto ">
-                        <p class="text-truncate">Hola Jorge" necesito evalúes el caso de Rodrigo para el Lunes.</p>
-                    </div>                            
-                </div>
-            </div>  
-        </li>
-        <li class="list-group-item list-group-item-action">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck13">
-                <label class="custom-control-label" for="customCheck13">Check this custom checkbox</label>
-            </div>
-            <div class="col ml15">
-                <div class="prioridad">
-                    <div class="colorPrioridad amarillo"></div>
-                    <span class="badge badge-warning">1 Vence mañana</span>
-                    <div class="hora">16:50</div>
-                </div>
-                <div class="mensaje">
-                    <p class="titulo">Informe de discapacidad Rodrigo Ramirez (13.282.158-3)</p>
-                    <p class="user">Tú dijiste</p>
-                    <div class="texto ">
-                        <p class="text-truncate">Hola Jorge" necesito evalúes el caso de Rodrigo para el Lunes.</p>
-                    </div>                            
-                </div>
-            </div>  
-        </li>
-        <li class="list-group-item list-group-item-action">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck12">
-                <label class="custom-control-label" for="customCheck12">Check this custom checkbox</label>
-            </div>
-            <div class="col ml15">
-                <div class="prioridad">
-                    <div class="colorPrioridad amarillo"></div>
-                    <span class="badge badge-warning">1 Vence mañana</span>
-                    <div class="hora">16:50</div>
-                </div>
-                <div class="mensaje">
-                    <p class="titulo">Informe de discapacidad Rodrigo Ramirez (13.282.158-3)</p>
-                    <p class="user">Tú dijiste</p>
-                    <div class="texto ">
-                        <p class="text-truncate">Hola Jorge" necesito evalúes el caso de Rodrigo para el Lunes.</p>
-                    </div>                            
-                </div>
-            </div>  
-        </li>
-        <li class="list-group-item list-group-item-action">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck11">
-                <label class="custom-control-label" for="customCheck11">Check this custom checkbox</label>
-            </div>
-            <div class="col ml15">
-                <div class="prioridad">
-                    <div class="colorPrioridad amarillo"></div>
-                    <span class="badge badge-warning">1 Vence mañana</span>
-                    <div class="hora">16:50</div>
-                </div>
-                <div class="mensaje">
-                    <p class="titulo">Informe de discapacidad Rodrigo Ramirez (13.282.158-3)</p>
-                    <p class="user">Tú dijiste</p>
-                    <div class="texto ">
-                        <p class="text-truncate">Hola Jorge" necesito evalúes el caso de Rodrigo para el Lunes.</p>
-                    </div>                            
-                </div>
-            </div>  
-        </li>
+                </a>  
+            </li>
+        </ng-template>
     </ul>
     <div class="col oculto">
         <button type="button" class="btn btn-primary btn-block ">

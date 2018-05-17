@@ -20,7 +20,11 @@ export default class HtmlTreeService {
     let child = '';
     let parametros = '';
     let value = '';
+    let checkbox = false;
     for(let par of childs.parameters){
+      if(par.value === "checkbox"){
+        checkbox = true;
+      }
       value = par.value ? '="' + par.value + '"' : ' ';
       parametros += par.key + value ;
     }
@@ -37,7 +41,9 @@ export default class HtmlTreeService {
       }
   
       if(childs.default_value && childs.default_value!=""){
-        child += childs.default_value;
+        if(!checkbox){
+          child += childs.default_value;
+        }
       }
     }
 

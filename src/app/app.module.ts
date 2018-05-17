@@ -35,6 +35,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AlertService } from './services/alert.service';
 import { AuthGuard } from './services/auth.guard';
 import { SolicitudComponent } from './components/solicitud/solicitud.component';
+import { DifferenceDateBtwTodayPipe } from './services/difference.pipe';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
     LoginComponent,
     AlertComponent,
     SolicitudComponent,
+    DifferenceDateBtwTodayPipe,
   ],
   
   imports: [

@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { formPostElement } from '../../models/forms';
+
 import { validateConfig } from '@angular/router/src/config';
 
 import { of } from 'rxjs/observable/of';
@@ -98,6 +98,7 @@ export class NuevaAtencionComponent implements OnInit {
 
   // Funcion para cargar toda la informacion del paciente seleccionado incluyendo los valores si ya tenia una atencion medica incompleta.
   cargarDatos(currentEmployee){
+    
     localStorage.setItem('employee', JSON.stringify(currentEmployee));
     this.subscription = this.FormsService.trabajadoresInfo(currentEmployee.id).subscribe( 
       data => {
@@ -115,10 +116,12 @@ export class NuevaAtencionComponent implements OnInit {
           console.log(<any>error);
       }
     );
-    this.loadValuesForm(currentEmployee.id)  
+    this.loadValuesForm(currentEmployee.id)
   }
 
   loadValuesForm(id){
+    $(".formNuevaAtencion").find(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio, .cargarDatos').val('');
+    $(".formNuevaAtencion").find(':checkbox, :radio').prop('checked', false);
     this.subscription = this.FormsService.getElementsValues(id).subscribe( 
       data => {
         let element
@@ -177,7 +180,7 @@ export class NuevaAtencionComponent implements OnInit {
       patient: employee['id'],
       attention_date: $("#fecha-atencion").val(),
       attentionRequest: [],
-      elements: $(".fichaAtencion form").serializeArray(),
+      elements: $(".formNuevaAtencion").serializeArray(),
       files: []
     }
 

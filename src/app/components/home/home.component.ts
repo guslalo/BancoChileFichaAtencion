@@ -122,7 +122,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+    localStorage.removeItem('medicalAttention');
+    localStorage.removeItem("workingInformation");
+    localStorage.removeItem("employee");
+    localStorage.removeItem("files");
+    localStorage.removeItem("reporte");
   }
 
 }

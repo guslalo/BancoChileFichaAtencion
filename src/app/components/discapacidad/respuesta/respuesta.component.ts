@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../../../services/servicios.service';
+import {Router, NavigationExtras} from "@angular/router";
 
 @Component({
   selector: 'app-respuesta',
@@ -9,62 +10,40 @@ import { FormService } from '../../../services/servicios.service';
 export class RespuestaComponent implements OnInit {
   workingInformation: JSON;
   subscription;
+  priority = {}
+  attention_request = {}
 
-
-  constructor(private FormsService: FormService) { }
+  constructor(private FormsService: FormService, private router: Router,) { }
 
   ngOnInit() {
+    let medicalAttention: JSON;
+    medicalAttention = JSON.parse(localStorage.getItem("medicalAttention"));
+    this.FormsService.getRequestMedical(medicalAttention['id']).subscribe(
+      data => {
+
+        this.attention_request = data
+        this.priority = data.priority
+      }
+    );
+
     if (localStorage.getItem("workingInformation")) {
       this.workingInformation = JSON.parse(localStorage.getItem("workingInformation"));
     }
-    
-    this.subscription = this.FormsService.getFormulario('nueva-atencion').subscribe( 
-      data => {
-        let stringToHtml = '';
-        if (localStorage.getItem("medicalAttention")) {
-          let medicalAttention: JSON;
-          medicalAttention = JSON.parse(localStorage.getItem("medicalAttention"));
-          this.loadValuesForm(medicalAttention['patient']);
-        }
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );   
+
   }
-loadValuesForm(id){
-    this.subscription = this.FormsService.getElementsValues(id).subscribe( 
-      data => {
-        let element
-        for(let son of data){
-          element = document.getElementById(son.attribute['id_element'])
-          element.value = son.value
-        }
-      },
-      error => {
-          console.log(<any>error);
-      }
-    );
+  
+  setClass() {
+    return this.priority['css_class'];
   }
-  cargarDatos(currentEmployee){
-    localStorage.setItem('employee', JSON.stringify(currentEmployee));
-    this.subscription = this.FormsService.trabajadoresInfo(currentEmployee.id).subscribe( 
-      data => {
-        for(let datos of data['results']){
-          this.workingInformation = datos;
-          localStorage.setItem('workingInformation', JSON.stringify(datos));
-        } 
-        $("form.formNuevaAtencion *").prop("disabled",false);  
-        $("#nueva-btn-completar-discapacidad").attr("disabled", 'disabled');
-        $("#fila8 input").attr("disabled", 'disabled');  
-        $(".btnAceptar").attr("disabled", 'disabled');
-        $("#parrafo-caso").attr("disabled", 'disabled');            
-      },
-      error => {
-          console.log(<any>error);
+
+  goToAttentionRequestDetail(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        attention_request: JSON.stringify(this.attention_request),
+        workingInformation: localStorage.getItem("workingInformation")
       }
-    );
-    this.loadValuesForm(currentEmployee.id)  
+    };
+    this.router.navigate(['/solicitud'], navigationExtras);
   }
 
 

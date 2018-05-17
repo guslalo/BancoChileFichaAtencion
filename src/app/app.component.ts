@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-
+      
       $(".contenedorAccion").click(function(){
         if($(".boxMensajeria").hasClass('expanded')){
           $(".contenedorAccion .cerrar").css("width","100%"); 

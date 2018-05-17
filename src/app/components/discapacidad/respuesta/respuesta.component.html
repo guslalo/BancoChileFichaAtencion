@@ -2,20 +2,6 @@
     <div class="row">
        <!--contenido  -->
        <div class="col-12 col-md-8 contenidoRight">
-          <!-- navegacion y guardar -->
-          <div class="row">
-              <div class="col-12 col-md-2">
-                <button type="button" class="btn btn-outline-secondary btnMobile mb-3 mb-md"> <!--btn-link -->
-                  <i class="material-icons align-top">chevron_left</i> Volver
-                </button>  
-              </div>
-              <div class="col">
-                  <button type="button" class="btn btn-success float-right btnMobile mb-3 mb-md">
-                    <i class="material-icons align-top">save</i>
-                    Guardar y cerrar
-                  </button>
-              </div>
-            </div><!-- /navegacion y guardar -->
           <div class="row mt-4 mb-3 mb-md-3">
             <div class="col-12 col-md">
               <h4>
@@ -26,18 +12,6 @@
                   <i class="material-icons icono coloresDiscapcidad azul rounded-circle align-middle">accessible</i>
                 </span>
               </h4>
-            </div>
-            <div class="col-12 col-md-3">
-              <div ngbDropdown class="d-inline-block btnMobile float-right">
-                <button class="btn btn-outline-secondary btnMobile" id="dropdownBasic1" ngbDropdownToggle>
-                  <i class="material-icons align-top">share</i>
-                  Compartir informe
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="dropdown-item">Mensajería</button>
-                  <button class="dropdown-item">Descargar</button>
-                </div>
-              </div>
             </div>
           </div>
           <!-- pasos generales -->
@@ -82,78 +56,31 @@
   
           <div class="row">
             <div class="col">
-              <form>
                 <div class="alert alert-secondary" role="alert">
-                    <h4 class="alert-heading">Resumen del caso</h4>
-                  
-                    <div class="alert alert-success" role="alert">
-                      <p>Tu solicitud de respuesta fue enviada al gestor(es) el 7 de Febrero.</p>
-                    </div>
-                    <button type="button" class="btn btn-success ml-0 ml--md-4  btnMobile" routerLink="/detalle-mensaje">
-                      ir a la solictud
-                    </button>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-2">
-                        <div ngbDropdown class="mb-3 mb-md">
-                          <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
-                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad amarillo"></div>
-                              </div>
-                              Moderada
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad verde"></div>
-                              </div>
-                              Baja
-                            </button>
-                            <button class="dropdown-item">
-                              <div class="prioridad">
-                                <div class="colorPrioridad rojo"></div>
-                              </div>
-                              Alta
-                            </button>
-                          </div>
-                        </div>
-                     
-                      </div>
-                      <div class="col-sm-4">
-                          <div ngbDropdown class="mb-3 mb-md">
-                              <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Vence mañana</button>
-                              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                <button class="dropdown-item">
-                              
-                                  Moderada
-                                </button>
-                                <button class="dropdown-item">
-                               
-                                  Baja
-                                </button>
-                                <button class="dropdown-item">
-                                  Alta
-                                </button>
-                              </div>
-                            </div>
-                      </div>
-                      <div class="col-sm-2">
-                          <p class="mb-0 text-right">
-                     
-                              <button class="btn btn-info btnMobile" type="button">
-                                  <i class="material-icons align-top">refresh</i>
-                                  Cambiar prioridad
-                              </button>
-                            </p>
+                  <h4 class="alert-heading">Resumen del caso</h4>
+                
+                  <div class="alert alert-success" role="alert">
+                    <p>Tu solicitud de respuesta fue enviada al gestor(es).</p>
+                  </div>
+                  <button type="button" class="btn btn-success ml-0 ml--md-4  btnMobile" (click)="goToAttentionRequestDetail()">
+                    ir a la solictud
+                  </button>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="mb-3 mb-md">
+                          <h5>Prioridad: <span [ngClass]="setClass()"> {{ priority.name }} </span></h5>
                       </div>
                     </div>
-                   
+                    <div class="col-sm-4">
+                      <div class="mb-3 mb-md">
+                          <h5>Vence: {{attention_request.expire_date | date: 'dd-MM-yyyy'}}</h5>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </form>
             </div>
           </div>
-  
        </div> <!-- /contenido-->
 
        <!--sidebar  -->
@@ -163,120 +90,3 @@
       </div><!--/sidebar  -->
     </div>
   </div>
-  
-  <!--modal  -->
-  <ng-template #content let-c="close" let-d="dismiss" >
-      <div class="modal-header">
-        <h4 class="modal-title">Solicitud de revisión</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-1 col-form-label">Para</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="inputPassword" placeholder="">
-                </div>
-                <div class="col-sm-2">
-                    <div ngbDropdown>
-                      <button class="btn btn-outline-info btn-block" id="dropdownBasic1" ngbDropdownToggle>Prioridad</button>
-                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad amarillo"></div>
-                          </div>
-                          Moderada
-                        </button>
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad verde"></div>
-                          </div>
-                          Baja
-                        </button>
-                        <button class="dropdown-item">
-                          <div class="prioridad">
-                            <div class="colorPrioridad rojo"></div>
-                          </div>
-                          Alta
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Fecha vencimiento" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                        <div class="input-group-append">
-                          <button class="input-group-text " (click)="d.toggle()" type="button">
-                            <i class="material-icons">date_range</i>
-                          </button> 
-                        </div>
-                      </div> 
-                </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputPassword" class="col-1 col-form-label">Asunto</label>
-              <div class="col-sm-11">
-                <input type="text" class="form-control" id="inputPassword" placeholder="">
-              </div>
-            </div>
-            <div class="form-row">
-                <div class="col-sm-8">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck5">
-                        <label class="custom-control-label" for="customCheck5">
-                          Invitar a Jorge a ver <span class="font-weight-semi-bold">informe de discapacidad Rodrigo Ramirez</span>
-                        </label>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <p  (click)="isCollapsed = !isCollapsed"
-                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Previsualizar antecedentes 
-                      <i class="material-icons align-middle">keyboard_arrow_down</i>
-                    </p>
-                </div>
-                <div class="col-12">
-                  <div class="previsualizar" [ngbCollapse]="isCollapsed">
-                    <div class="card">
-                      <div class="card-body">
-                        You can collapse this card by clicking Toggle
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            
-                
-            </div>
-            <div class="form-group row">
-              <!--información requerida -->
-              <div class="col-md-3">
-                <p>Información requerida</p>
-              </div>
-              <div class="col-md-9">
-                <input type="text" class="form-control" id="inputPassword" placeholder="">
-              </div><!--/información requerida -->
-            </div>
-
-            <div class="form-group row">
-              <div class="col-12">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
-               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-md-12">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                </div>
-              </div>
-            </div>
-          </form>  
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
-        <button type="button" class="btn btn-success" (click)="c('Close click')" routerLink="/respuesta-gestor-discapacidad">
-          Enviar <i class="material-icons align-middle">send</i>
-        </button>
-      </div>
-    </ng-template><!--modal  -->
