@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 import { Post } from '../../models/form_post';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -148,42 +148,26 @@ export class NuevaAtencionComponent implements OnInit {
       $(".switch").change(function(){
         //toggle class checked general
         $(this).toggleClass("checked");
-
         //caso discapacidad
         if($("#discapacidad-inline input").is(":checked")){
-          $('#nueva-btn-completar-discapacidad').prop("disabled",false);
+          $('#nueva-btn-completar-discapacidad, .elementDis input, .elementDis select, .elementDis textarea').prop("disabled",false);
           $("#caso-social-inline .switch.checked").click();
-          
-          //nuevo
-          $(".elementDis input, .elementDis select, .elementDis textarea").prop("disabled",false);
-          $(".elementDis").show();
-          $(".elementComun").show();
+          $(".elementDis, .elementComun").show();
           $(".elementAtencion").hide();
 
         }else{
-          $('#nueva-btn-completar-discapacidad').attr("disabled", 'disabled');
-
-          //nuevo
-          $(".elementDis input, .elementDis select, .elementDis textarea").attr("disabled", 'disabled');
-          $(".elementDis").hide();
-          $(".elementComun").hide();    
+          $('#nueva-btn-completar-discapacidad, .elementDis input, .elementDis select, .elementDis textarea').attr("disabled", 'disabled');
+          $(".elementDis, .elementComun").hide();
         }
         //caso social
         if($("#caso-social-inline input").is(":checked")){
           $("#discapacidad-inline .switch.checked").click();
-          $("#fila8 input").prop("disabled", false);
-          $(".btnAceptar").prop("disabled",false);  
-          //nuevo
-          $(".elementComun").show();
-          $(".elementAtencion").show();
+          $("#fila8 input, .btnAceptar, .elementAtencion input, .elementAtencion select, .elementAtencion textarea").prop("disabled", false);
+          $(".elementComun, .elementAtencion").show();
         }else{
           $("#fila8 .switch.checked").click();
-
-          $("#fila8 input").attr("disabled", 'disabled');
-          $(".btnAceptar").attr("disabled",'disabled');
-          //nuevo
+          $("#fila8 input, .btnAceptar, .elementAtencion input, .elementAtencion select, .elementAtencion textarea").attr("disabled", 'disabled');
           $(".elementAtencion").hide();
-          $(".elementAtencion input, .elementAtencion select, .elementAtencion textarea").attr("disabled", 'disabled');
         }
       }); 
       //editar resumen
