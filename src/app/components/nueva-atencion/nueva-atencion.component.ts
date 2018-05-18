@@ -147,23 +147,42 @@ export class NuevaAtencionComponent implements OnInit {
     setTimeout(function(){  
       $(".switch").change(function(){
         //toggle class checked general
-        $(this).toggleClass("checked");    
+        $(this).toggleClass("checked");
+
         //caso discapacidad
         if($("#discapacidad-inline input").is(":checked")){
           $('#nueva-btn-completar-discapacidad').prop("disabled",false);
           $("#caso-social-inline .switch.checked").click();
+          
+          //nuevo
+          $(".elementDis input, .elementDis select, .elementDis textarea").prop("disabled",false);
+          $(".elementDis").show();
+          $(".elementComun").show();
+          $(".elementAtencion").hide();
+
         }else{
-          $('#nueva-btn-completar-discapacidad').attr("disabled", 'disabled');    
+          $('#nueva-btn-completar-discapacidad').attr("disabled", 'disabled');
+
+          //nuevo
+          $(".elementDis input, .elementDis select, .elementDis textarea").attr("disabled", 'disabled');
+          $(".elementDis").hide();
+          $(".elementComun").hide();    
         }
         //caso social
         if($("#caso-social-inline input").is(":checked")){
           $("#discapacidad-inline .switch.checked").click();
           $("#fila8 input").prop("disabled", false);
           $(".btnAceptar").prop("disabled",false);  
+          //nuevo
+          $(".elementComun").show();
+          $(".elementAtencion").show();
         }else{
           $("#fila8 .switch.checked").click();
+
           $("#fila8 input").attr("disabled", 'disabled');
-          $(".btnAceptar").attr("disabled",'disabled');  
+          $(".btnAceptar").attr("disabled",'disabled');
+          //nuevo
+          $(".elementAtencion").hide();
         }
       }); 
       //editar resumen
