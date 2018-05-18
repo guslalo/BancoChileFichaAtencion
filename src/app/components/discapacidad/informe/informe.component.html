@@ -125,7 +125,7 @@
           <div class="form-group row">
             <label for="prioridad" class="col-12 col-md-1 col-form-label">Prioridad</label>
             <div class="col-sm-3" id="">
-              <select class="custom-select" name="prioridad" id="prioridad">
+              <select class="custom-select" name="prioridad" id="prioridad" required>
                 <option selected> -- Seleccione -- </option>
                 <option value="1">Alta</option>
                 <option value="2">Media</option>
@@ -135,14 +135,14 @@
             <label for="fecha_vencimiento" class="col-12 col-md-3 col-form-label">Fecha de vencimiento</label>
             <div class="col-sm-5">
               <div class="input-group">
-                <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date">
+                <input class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" placeholder="Fecha vencimiento" type="date" required>
               </div> 
             </div>
           </div>
           <div class="form-group row">
             <label for="asunto" class="col-1 col-form-label">Asunto</label>
             <div class="col-sm-11">
-              <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Ingresar asunto">
+              <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Ingresar asunto" required>
             </div>
           </div>
           <div class="form-row">
@@ -176,20 +176,20 @@
               <p>Información requerida</p>
             </div>
             <div class="col-md-9">
-              <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="">
+              <input type="text" name="informacion_requerida" id="informacion_requerida" class="form-control" placeholder="" required>
             </div><!--/información requerida -->
           </div>
 
           <div class="form-group row">
             <div class="col-12">
-              <textarea class="form-control" name="mensaje" id="mensaje" rows="6"></textarea>
+              <textarea class="form-control" name="mensaje" id="mensaje" rows="6" required></textarea>
               </div>
           </div>
 
           <div class="form-group row">
             <div class="col-md-12">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file" name="file" lang="es" (change)="handleFileInput($event)">
+                <input type="file" class="custom-file-input" id="file" name="file" lang="es" (change)="handleFileInput($event)" required>
                 <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
               </div>
             </div>

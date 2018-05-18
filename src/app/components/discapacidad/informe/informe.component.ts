@@ -105,12 +105,15 @@ export class InformeComponent implements OnInit {
 
   setTime(){
     setTimeout(function(){  
+      $(".padreTextarea textarea").removeAttr('required');​​​​​
       $(".switch").change(function(){
         $(this).toggleClass("checked");  
         $(this).parent().find(".padreTextarea").slideToggle("fast"); 
         $(this).parent().find(".padreTextarea textarea").prop("disabled",false);
+        $(this).parent().find(".padreTextarea textarea").prop('required',true);
         if(!$(this).hasClass("checked")){     
           $(this).parent().find(".padreTextarea textarea").attr("disabled","disabled");
+          $(this).parent().find(".padreTextarea textarea").removeAttr('required');​​​​​
         }
       }); 
     },0);
