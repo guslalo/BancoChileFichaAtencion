@@ -41,25 +41,34 @@
                     </ul>
                     <ng-template ngFor let-value [ngForOf]="values">
                       <ul class="list-unstyled">
-                        <li *ngIf="value.attribute['id_element']==='informe-input-check-jefatura-conoce'">Jefatura en conocimiento de diagnostico: <span class="font-weight-bold">Sí.</span></li>
-                        <li *ngIf="value.attribute['id_element']==='informe-input-check-jefatura-discapacidad'">Jefatura en conocimiento de la discapacidad: <span class="font-weight-bold">Sí.</span></li>
+                        <p><span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-input-check-jefatura-discapacidad'">Jefatura en conocimiento de diagnostico: </span></p>
+                        <p *ngIf="value.attribute['id_element']==='informe-textarea-observacion-jefatura'">{{value.value}}</p>
+                        <p><span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-input-check-jefatura-conoce'">Jefatura en conocimiento de la discapacidad: </span></p>
+                        <p *ngIf="value.attribute['id_element']==='informe-textarea-jefatura-conoce-discapacidad'">{{value.value}}</p>
                       </ul>
                     </ng-template>
                       <br>
-                      <p><span class="font-weight-bold">A través de este programa, el trabajador(a) podrá acceder a los siguientes beneficios:</span></p>
+                      <p>A través de este programa, el trabajador(a) podrá acceder a los siguientes beneficios:</p>
                       
                     <ng-template ngFor let-value [ngForOf]="values">
-                      <p *ngIf="value.attribute['id_element']==='input-check1'">{{value.attribute['default_value']}}</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check2'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check3'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check4'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check5'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check6'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check7'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check8'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check9'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check10'">{{value.attribute['default_value']}}.</p>
-                      <p *ngIf="value.attribute['id_element']==='informe-input-check11'">{{value.attribute['default_value']}}.</p>
+                      <p *ngIf="value.attribute['id_element']==='informe-select-extencion-seguro'"><span class="font-weight-bold">Exención aporte Seguro:</span> {{(value.value==='147')?'Si':'No'  }}</p>
+                      <p *ngIf="value.attribute['id_element']==='informe-select-continuacion-seguro'"><span class="font-weight-bold">Continuación del Seguro:</span> {{(value.value==='147')?'Si':'No'  }}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-dias-permiso'">Días de permiso adicional: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-dias-permiso'">{{value.value}}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-flexibilidad-horaria'">Flexibilidad horaria: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-flexibilidad-horaria'">{{value.value}}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-teletrabajo'">Sugerencia teletrabajo: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-teletrabajo'">{{value.value}}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-adecuacion'">Adecuación puesto trabajo: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-adecuacion'">{{value.value}}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-cambio-unidad'">Solicitud cambio de unidad de trabajo: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-cambio-unidad'">{{value.value}}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-checkbox-cambio-cargo'">Solicitud cambio de cargo: </span>
+                      <p *ngIf="value.attribute['id_element']==='informe-textarea-cambio-cargo'">{{value.value}}</p>
+                      <p *ngIf="value.attribute['id_element']==='informe-select-prev'"><span class="font-weight-bold">Requiere intervención de Prev. Riesgos:</span> {{(value.value==='147')?'Si':'No'  }}.</p>
+                      <p *ngIf="value.attribute['id_element']==='informe-select-arquitectura'"><span class="font-weight-bold">Requiere intervención de área Arquitectura:</span> {{(value.value==='147')?'Si':'No'  }}</p>
+                      <span class="font-weight-bold" *ngIf="value.attribute['id_element']==='informe-select-ayuda-gastos'">Ayuda Especial Gastos: </span><span *ngIf="value.attribute['id_element']==='informe-select-ayuda-gastos'">{{(value.value==='147')?'Si':'No'  }}</span>
+                      <p *ngIf="value.attribute['id_element']==='informe-input-tipo-gasto'">{{value.value}}</p>
                     </ng-template>
                     <br>
                       <p>Atentamente,</p>

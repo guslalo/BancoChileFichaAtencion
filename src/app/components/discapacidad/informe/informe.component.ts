@@ -139,6 +139,7 @@ export class InformeComponent implements OnInit {
       files: []
     }
 
+    console.log(formulario)
     this.FormsService.formPost(formulario).subscribe(
       (res) => {
         if(url == '/'){

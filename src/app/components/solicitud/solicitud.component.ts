@@ -24,8 +24,9 @@ export class SolicitudComponent implements OnInit {
       this.workingInformation = JSON.parse(params.workingInformation);
     });
 
-    this.subscription = this.FormsService.getElementsValues(this.attentionRequest['medical_attention']['patient']).subscribe( 
+    this.subscription = this.FormsService.getElementsValues(this.attentionRequest['medical_attention']['patient']['id']).subscribe( 
       data => {
+        console.log(data)
         this.values = data;
       },
       error => {
@@ -33,7 +34,7 @@ export class SolicitudComponent implements OnInit {
       }
     );
 
-    this.subscription = this.FormsService.trabajadoresInfo(this.attentionRequest['medical_attention']['professional']).subscribe( 
+    this.subscription = this.FormsService.trabajadoresInfo(this.attentionRequest['medical_attention']['professional']['id']).subscribe( 
       data => {
         for(let datos of data['results']){
           this.professionalInformation = datos;
