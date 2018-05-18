@@ -20,13 +20,13 @@ export class SolicitudComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      
       this.attentionRequest = JSON.parse(params.attention_request);
       this.workingInformation = JSON.parse(params.workingInformation);
     });
 
     this.subscription = this.FormsService.getElementsValues(this.attentionRequest['medical_attention']['patient']['id']).subscribe( 
       data => {
-        console.log(data)
         this.values = data;
       },
       error => {

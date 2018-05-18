@@ -13,7 +13,7 @@ export class RespuestaComponent implements OnInit {
   priority = {}
   attention_request = {}
 
-  constructor(private FormsService: FormService, private router: Router,) { }
+  constructor(private FormsService: FormService, private router: Router) { }
 
   ngOnInit() {
     let medicalAttention: JSON;

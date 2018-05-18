@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 import { FormService } from '../../services/servicios.service';
 
 @Component({
@@ -8,19 +8,20 @@ import { FormService } from '../../services/servicios.service';
   styleUrls: ['./mensajeria-detalle.component.scss']
 })
 export class MensajeriaDetalleComponent implements OnInit {
+  subscription;
   message: JSON
   content_object: JSON
   attention_request: JSON
   medical_attention: JSON
+  workingInformation: JSON;
   safeHtmlContent : string;
   public isCollapsed = false;
 
-  constructor(private route: ActivatedRoute, private FormsService: FormService) { }
+  constructor(private route: ActivatedRoute, private FormsService: FormService, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       let inboxManager: JSON = JSON.parse(params.inboxManager)
-
       this.FormsService.getOneMessages(inboxManager['id']).subscribe(
         (res) => {
           let inboxManager = res
@@ -34,11 +35,31 @@ export class MensajeriaDetalleComponent implements OnInit {
         }
       );
 
+      this.FormsService.trabajadoresInfo(inboxManager['content_object']['attention_request']['medical_attention']['patient']['id']).subscribe( 
+        data => {
+          for(let datos of data['results']){
+            this.workingInformation = datos;
+          }           
+        },
+        error => {
+            console.log(<any>error);
+        }
+      );
     });
   }
 
   setClass(priority:JSON) {
     return priority['css_class'];
+  }
+
+  goToAttentionRequestDetail(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        attention_request: JSON.stringify(this.attention_request),
+        workingInformation: JSON.stringify(this.workingInformation)
+      }
+    };
+    this.router.navigate(['/solicitud'], navigationExtras);
   }
 
   sendMessage(body,subject,message:JSON) {
