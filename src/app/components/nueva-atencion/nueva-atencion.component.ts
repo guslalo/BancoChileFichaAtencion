@@ -183,6 +183,7 @@ export class NuevaAtencionComponent implements OnInit {
           $(".btnAceptar").attr("disabled",'disabled');
           //nuevo
           $(".elementAtencion").hide();
+          $(".elementAtencion input, .elementAtencion select, .elementAtencion textarea").attr("disabled", 'disabled');
         }
       }); 
       //editar resumen
