@@ -1,7 +1,7 @@
 <!--wrap -->
 <div class="wrapGeneral">
-      <!--boxMensajeria -->
-      <div class="boxMensajeria d-none d-md-block d-lg-block d-xl-block">
+    <!--boxMensajeria -->
+    <div class="boxMensajeria d-none d-md-block d-lg-block d-xl-block">
         <!--contenedorAccion -->  
         <div class="contenedorAccion">
             <div class="cerrar">
@@ -9,28 +9,25 @@
             </div>
             <p>Solicitudes de información</p>
         </div><!--contenedorAccion -->
-        
-        <!--contenidoMensajeria -->
-        <app-mensajeria></app-mensajeria>
-       <!--contenidoMensajeria -->
 
-      </div><!--/boxMensajeria -->
-      <!--boxCuerpo -->
-      <div class="boxCuerpo">
-              <app-header></app-header>
+        <!--contenidoMensajeria -->
+        <app-mensajeria *ngIf="router.url != '/login'"></app-mensajeria>
+        <!--contenidoMensajeria -->
+    </div><!--/boxMensajeria -->
+
+
+    <!--boxCuerpo -->
+    <div class="boxCuerpo">
+        <app-header></app-header>
         <!--contenido -->    
         <div class="container-fluid cuerpo">
             <router-outlet></router-outlet>         
         </div><!--/contenido -->   
-      </div><!--/boxCuerpo -->
+    </div><!--/boxCuerpo -->
 </div><!--/wrap -->
 
 
 <!--
-<div *ngIf="model; else templateName">
+<div *ngIf="router.url != '/login'">
 
-</div>     
-<ng-template #templateName>
-    <span *ngIf="workingInformation">
-    </span>
-</ng-template>-->
+</div>-->

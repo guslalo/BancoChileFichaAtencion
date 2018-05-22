@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from "@angular/router";
 import * as $ from 'jquery';
 
 export class OtherModule {
@@ -14,17 +15,17 @@ const now = new Date();
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  title = 'app';
-  Model: {
-    "year": 2018,
-    "month": 3,
-    "day": 2
-  }
+
+  isLoggedIn: boolean = true;
   model: NgbDateStruct;
   date: {year: number, month: number};
 
   selectToday() {
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+  }
+
+  constructor( public router: Router) {
+
   }
 
 

@@ -219,6 +219,10 @@ switch {
     border-bottom: 1px dashed rgb(196, 196, 196);
 }
 .contenidoMensajeria{
+    /*height: 100%;
+    background: #ffffff;
+    z-index: 15;
+    position: relative;*/
     ul li {
         cursor: pointer;
     }

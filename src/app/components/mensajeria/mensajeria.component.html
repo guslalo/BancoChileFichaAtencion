@@ -19,10 +19,13 @@
     <div class="opcionOcultar">
         <input type="text" class="form-control" id="" aria-describedby="" placeholder="buscar">
     </div>
- 
-
   </div><!--opciones--> 
-  
+
+    <!-- loader 
+    <div class="boxloader" *ngIf="isLoading">
+        <loaders-css [loader]="'ball-pulse'" [loaderClass]="'my-loader'"></loaders-css>
+    </div> loader -->
+
     <ul class="list-group ">
         <ng-template ngFor let-message [ngForOf]="inboxManager">
             <li class="list-group-item list-group-item-action">
