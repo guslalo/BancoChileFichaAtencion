@@ -330,6 +330,12 @@ switch {
         border-color:rgb(180, 180, 180);
     }  
 }
+header {
+    .dropdown-menu {
+        width: 100% !important;
+    }
+}
+
 .numCantidad {
     font-weight: 700;
     font-size: 16px;

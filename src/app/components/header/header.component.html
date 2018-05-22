@@ -8,13 +8,16 @@
         </div>
         <div class="col-7 col-md-5  align-self-center">
           <!--form buscador-->
-          <form>
+          <form name="buscarTrabajador" ngNativeValidate>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Busca atenciones o trabajadores..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <input id="typeahead-template" [ngModelOptions]="{standalone: true}" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut"/>
               <div class="input-group-append">
-                <button class="btn btn-primary btn-gris" type="button">Buscar</button>
+                <button class="btn btn-primary btn-gris" (click)="cargarDatos(model)" type="button">Buscar</button>
               </div>
             </div>
+            <ng-template #rt let-r="result" let-t="term">
+              {{ r.first_name}} {{ r.last_name}}
+            </ng-template>
           </form><!--/form buscador-->
         </div>
         <div class="col d-none d-md-block d-lg-block d-xl-block">
