@@ -1,18 +1,18 @@
 <header class="container-fluid">
     <div class="row">
-        <div class="col-5 col-md-2 align-self-center">
+        <div class="col-12 col-md-2 align-self-center">
           <!--logo-->
-          <div class="logo">
+          <div class="logo text-center">
             <img routerLink="/" src="assets/img/bancodechile.svg">
           </div><!--logo-->    
         </div>
-        <div class="col-7 col-md-5  align-self-center">
+        <div class="col-12 col-md-5  align-self-center">
           <!--form buscador-->
           <form name="buscarTrabajador" ngNativeValidate>
             <div class="input-group">
               <input id="typeahead-template" [ngModelOptions]="{standalone: true}" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut"/>
               <div class="input-group-append">
-                <button class="btn btn-primary btn-gris" (click)="cargarDatos(model)" type="button">Buscar</button>
+                <button class="btn btn-primary btn-gris" type="button">Buscar</button>
               </div>
             </div>
             <ng-template #rt let-r="result" let-t="term">

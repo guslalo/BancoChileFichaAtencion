@@ -20,7 +20,7 @@
         <!--titulo user rut-->
         <div class="row mt-4 mt-md-5">
           <!-- buscador rut-->
-          <div class="col-3 pr-0">
+          <div class="col-12 col-md-3 pr-0">
             <form name="buscarTrabajador" ngNativeValidate>
               <input id="typeahead-template" [ngModelOptions]="{standalone: true}" type="text" class="form-control buscadorinput" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="ingresa rut" required/>
               <button class="btn btn-primary" (click)="cargarDatos(model)">Aceptar</button>

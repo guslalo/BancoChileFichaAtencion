@@ -14,7 +14,9 @@
           <div class="row mt-5">
               <div class="col-12 col-sm-12  col-md-9">
                 <h4>
-                  <span class="font-weight-bold align-middle">Rodrigo Ramirez (13.985.689-4)</span>
+                  <span class="font-weight-bold align-middle"  *ngIf="workingInformation">
+                    {{workingInformation.professional.first_name}} {{workingInformation.professional.last_name}}  (13.985.689-4)
+                  </span>
                 </h4>
               </div>
           </div>

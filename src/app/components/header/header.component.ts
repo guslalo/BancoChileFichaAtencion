@@ -11,6 +11,7 @@ import * as $ from 'jquery';
 })
 export class HeaderComponent implements OnInit {
   subscription;
+  model:any;
   constructor(private http : HttpClient, private FormsService: FormService,) {
 
 
