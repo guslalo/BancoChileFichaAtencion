@@ -14,17 +14,13 @@ export class MensajeriaComponent implements OnInit {
   subscription;
   inboxManager: JSON;
   public isCollapsed:boolean;
-  public loading = false;
-  public loadingComplete = false;
-  public isLoading = true ;
 
   constructor(private FormsService: FormService, private router: Router) {
     this.isCollapsed = false;
   }
 
   ngOnInit() {
-    /*this.isLoading = false;
-    this.loadingComplete = true;*/
+
     if(localStorage.getItem('currentUser')){
       this.subscription = this.FormsService.getMessages().subscribe( 
         data => {
