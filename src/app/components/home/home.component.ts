@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { FormService } from '../../services/servicios.service';
 
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -120,6 +122,8 @@ export class HomeComponent implements OnInit {
 
 
   }
+
+
 
   ngOnInit() {
     localStorage.removeItem('medicalAttention');

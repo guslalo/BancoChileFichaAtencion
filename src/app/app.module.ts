@@ -38,6 +38,8 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { DifferenceDateBtwTodayPipe } from './services/difference.pipe';
 import { SafeHtmlPipe } from './services/safe-html.pipe';
 
+import { CreateAssetModalComponent } from './components/modal/modal.component';
+
 
 @NgModule({
   declarations: [
@@ -59,9 +61,10 @@ import { SafeHtmlPipe } from './services/safe-html.pipe';
     AlertComponent,
     SolicitudComponent,
     DifferenceDateBtwTodayPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    CreateAssetModalComponent
+    
   ],
-  
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
@@ -85,6 +88,7 @@ import { SafeHtmlPipe } from './services/safe-html.pipe';
       multi: true
     }
   ],
+  entryComponents: [CreateAssetModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

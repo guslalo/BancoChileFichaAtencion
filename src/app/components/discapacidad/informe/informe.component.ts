@@ -6,8 +6,9 @@ import { Dynamic_Form } from '../../../models/dynamic_form';
 import { Dynamic_Element } from '../../../models/dynamic_form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { CreateAssetModalComponent } from '../../../components/modal/modal.component';
 
 
 @Component({

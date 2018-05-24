@@ -25,6 +25,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/merge';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateAssetModalComponent } from '../../components/modal/modal.component';
+
 var trabajadores;
 
 @Component({
@@ -49,9 +52,19 @@ export class NuevaAtencionComponent implements OnInit {
   hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
 
-  constructor(private http : HttpClient, private FormsService: FormService, private sanitizer: DomSanitizer, private router: Router) {
+  constructor(
+    private http : HttpClient, 
+    private FormsService: FormService, 
+    private sanitizer: DomSanitizer, 
+    private router: Router,
+    private modal: NgbModal) {
     
   }
+
+  onClick() {
+    this.modal.open(CreateAssetModalComponent);
+   }
+ 
 
   search = (text$: Observable<string>) =>
   text$
