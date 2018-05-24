@@ -20,11 +20,9 @@ export class MensajeriaComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    if(localStorage.getItem('currentUser')){
+    if(localStorage.getItem("currentUser")){
       this.subscription = this.FormsService.getMessages().subscribe( 
         data => {
-         
           this.inboxManager = data
         },
         error => {

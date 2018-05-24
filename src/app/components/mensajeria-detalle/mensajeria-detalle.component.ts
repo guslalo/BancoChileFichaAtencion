@@ -20,32 +20,35 @@ export class MensajeriaDetalleComponent implements OnInit {
   constructor(private route: ActivatedRoute, private FormsService: FormService, private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      let inboxManager: JSON = JSON.parse(params.inboxManager)
-      this.FormsService.getOneMessages(inboxManager['id']).subscribe(
-        (res) => {
-          let inboxManager = res
-          this.content_object = inboxManager['content_object']
-          this.attention_request = this.content_object['attention_request']
-          this.medical_attention = this.attention_request['medical_attention']
-          this.message = inboxManager['message']
-        },
-        error => {
-          console.log(error);
-        }
-      );
-
-      this.FormsService.trabajadoresInfo(inboxManager['content_object']['attention_request']['medical_attention']['patient']['id']).subscribe( 
-        data => {
-          for(let datos of data['results']){
-            this.workingInformation = datos;
-          }           
-        },
-        error => {
-            console.log(<any>error);
-        }
-      );
-    });
+    if(localStorage.getItem("currentUser")){
+      this.route.queryParams.subscribe(params => {
+        let inboxManager: JSON = JSON.parse(params.inboxManager)
+        this.FormsService.getOneMessages(inboxManager['id']).subscribe(
+          (res) => {
+            let inboxManager = res
+            this.content_object = inboxManager['content_object']
+            this.attention_request = this.content_object['attention_request']
+            this.medical_attention = this.attention_request['medical_attention']
+            this.message = inboxManager['message']
+          },
+          error => {
+            console.log(error);
+          }
+        );
+  
+        this.FormsService.trabajadoresInfo(inboxManager['content_object']['attention_request']['medical_attention']['patient']['id']).subscribe( 
+          data => {
+            for(let datos of data['results']){
+              this.workingInformation = datos;
+            }           
+          },
+          error => {
+              console.log(<any>error);
+          }
+        );
+      });
+    }
+    
   }
 
   setClass(priority:JSON) {

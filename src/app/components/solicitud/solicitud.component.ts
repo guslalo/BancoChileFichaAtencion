@@ -24,8 +24,8 @@ export class SolicitudComponent implements OnInit {
       this.attentionRequest = JSON.parse(params.attention_request);
       this.workingInformation = JSON.parse(params.workingInformation);
     });
-
-    this.subscription = this.FormsService.getElementsValues(this.attentionRequest['medical_attention']['patient']['id']).subscribe( 
+    
+    this.subscription = this.FormsService.getReportValues(this.attentionRequest['medical_attention']['id'],'informe_discapacidad').subscribe( 
       data => {
         this.values = data;
       },
